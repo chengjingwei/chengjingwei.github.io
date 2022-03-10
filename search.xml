@@ -172,7 +172,8 @@
     <title>博客介绍</title>
     <url>/2022/03/10/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1><span id="介绍">介绍</span></h1><blockquote>
-<p>本博客采用的是Hexo技术+Ayer主题，这是该主题作者的gitee<a href="https://github.com/Shen-Yu/hexo-theme-ayer">主题作者</a>。我将会在此博客分享我的学习和生活的经历，欢迎大家来访。下面介绍该博客涵盖的功能(大部分copy主题作者)。</p>
+<p>本博客采用的是Hexo技术+Ayer主题，这是该主题作者的gitee<a href="https://github.com/Shen-Yu/hexo-theme-ayer">主题作者</a>。我将会在此博客分享我的学习和生活的经历，欢迎大家来访。下面介绍该博客涵盖的功能(大部分copy)。</p>
+<span id="more"></span>
 </blockquote>
 <h1><span id="特性">特性</span></h1><ol>
 <li>干净且优雅，文章内容美观易读</li>
