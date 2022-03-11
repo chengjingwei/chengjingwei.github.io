@@ -422,6 +422,9 @@
 <p>由于ISP的拨号服务器一般都有缺省的DNS，所以你可以不用设置DNS，如果你需要指定一台DNS，你一定要了解这台DNS的准确IP（比如福州的163用户的DNS为202.101.98.55）。DNS设置方法如下：在“控制面板”下打开“网络”里的“TCP&#x2F;IP”的“属性”，在“DNS设置”栏目选择“启用DNS”，并将DNS的IP地址添加即可。</p>
 <p>作者：ALEXIRC<br>链接：<a href="https://www.jianshu.com/p/b9806fe2376e">https://www.jianshu.com/p/b9806fe2376e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 ]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
   </entry>
   <entry>
     <title>categories</title>
