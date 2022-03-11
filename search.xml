@@ -201,6 +201,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>中文输入时,使用英文的标点符号</title>
+    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
+<span id="more"></span>
+</blockquote>
+<h3><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
+
+<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>

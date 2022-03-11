@@ -6,7 +6,7 @@
   <link href="https://chengjingwei.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://chengjingwei.gitee.io/"/>
-  <updated>2022-03-10T09:42:30.667Z</updated>
+  <updated>2022-03-11T01:39:09.184Z</updated>
   <id>https://chengjingwei.gitee.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中文输入时,使用英文的标点符号</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</id>
+    <published>2022-03-11T01:38:25.073Z</published>
+    <updated>2022-03-11T01:39:09.184Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="小技巧" scheme="https://chengjingwei.gitee.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="tips" scheme="https://chengjingwei.gitee.io/tags/tips/"/>
+    
+  </entry>
   
   <entry>
     <title>故事的开始</title>
