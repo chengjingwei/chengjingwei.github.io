@@ -6,7 +6,7 @@
   <link href="https://chengjingwei.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://chengjingwei.gitee.io/"/>
-  <updated>2022-03-11T01:39:09.184Z</updated>
+  <updated>2022-03-11T03:28:41.291Z</updated>
   <id>https://chengjingwei.gitee.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux常见命令</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</id>
+    <published>2022-03-11T03:04:20.672Z</published>
+    <updated>2022-03-11T03:28:41.291Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;学习Linux最重要的就是学习命令，熟悉Linux命令菜鸟玩转linux，Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。接下来，让我们一起来看看都有那些常用的 Linux 命令吧！&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;a href=&quot;https://segmentfault.com/a/1190000020258483&quot;&gt;https://segmentfault.com/a/1190000020258483&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="linux" scheme="https://chengjingwei.gitee.io/categories/linux/"/>
+    
+    
+    <category term="linux" scheme="https://chengjingwei.gitee.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>中文输入时,使用英文的标点符号</title>
