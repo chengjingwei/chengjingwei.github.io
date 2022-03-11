@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>中文输入时,使用英文的标点符号</title>
+    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
+<span id="more"></span>
+</blockquote>
+<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
+
+<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ayer中文说明</title>
     <url>/2019/12/03/2019-12-03-Ayer%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="介绍"><span id="介绍">介绍</span></h1><blockquote>
@@ -188,24 +206,6 @@
       </categories>
   </entry>
   <entry>
-    <title>中文输入时,使用英文的标点符号</title>
-    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
-<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
-<span id="more"></span>
-</blockquote>
-<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
-
-<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
-]]></content>
-      <categories>
-        <category>小技巧</category>
-      </categories>
-      <tags>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux常见命令</title>
     <url>/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
@@ -370,29 +370,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>端口被莫名进程占用怎么办？</title>
-    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
-<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
-<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
-<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
-<p>查询到被占用端口号（10000）的进程</p>
-<p>netstat常见参数</p>
-<ul>
-<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
-</ul>
-<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
-<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
-<p>经过此过程、程序可以正常启动</p>
-]]></content>
-  </entry>
-  <entry>
     <title>了解ip、子网掩码、网关、DNS</title>
     <url>/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>网络管理中的IP地址、子网掩码和网关是每个网管必须要掌握的基础知识，只有掌握它，才能够真正理解TCP&#x2F;IP协议的设置。以下我们就来深入浅出地讲解什么是子网掩码。</p>
@@ -446,13 +423,36 @@
       </categories>
   </entry>
   <entry>
+    <title>端口被莫名进程占用怎么办？</title>
+    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
+<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
+<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
+<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
+<p>查询到被占用端口号（10000）的进程</p>
+<p>netstat常见参数</p>
+<ul>
+<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
+</ul>
+<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
+<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
+<p>经过此过程、程序可以正常启动</p>
+]]></content>
+  </entry>
+  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
-    <title>Gallery</title>
-    <url>/photos/index.html</url>
+    <title>tags</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
@@ -461,10 +461,15 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
+    <title>Gallery</title>
+    <url>/photos/index.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
     <title>影音播放</title>
     <url>/player/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="aplayer演示"><span id="aplayer演示">aplayer演示：</span></h3>
-    <div id="aplayer-hawjFvQW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-uISiiYNh" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 
 <br>
 
@@ -477,10 +482,5 @@
 <br>
 
 <h3 id="acfun"><span id="acfun">acfun：</span></h3><iframe src="https://www.acfun.cn/player/ac12945786" style="width:100%;height:500px;min-width:375px;min-height:200px" id="ACPlayer-re" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
 </search>
