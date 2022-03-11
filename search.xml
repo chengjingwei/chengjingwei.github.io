@@ -18,38 +18,112 @@
 <li>-R:连同文件的子目录一起列出（以递归的方式）</li>
 </ul>
 <h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>1.列出home目录下的所有文件</p>
-<figure class="highlight ls"><figcaption><span>-a -l</span><a href="/home">link</a></figcaption><table><tr><td class="code"><pre><span class="line">ls -a -l /home</span><br><span class="line">ls -al /home</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -a -l /home</span><br><span class="line">ls -al /home</span><br></pre></td></tr></table></figure>
 
 <p>2.列出当前目录下所有以“d”开头的文件目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls -l d*</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -l d*</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="2cd命令"><span id="2cd命令">2.cd命令</span></h2><p>最基本的命令语句，其他的命令语句要进行操作，都是建立在cd上</p>
 <h3 id="命令格式"><span id="命令格式">命令格式</span></h3><p>cd[目录名]</p>
 <h3 id="常见使用方式"><span id="常见使用方式">常见使用方式</span></h3><p>1.返回上一次访问的目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd -</span><br></pre></td></tr></table></figure>
 
 <p>2.返回用户主目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~</span><br></pre></td></tr></table></figure>
+
+<h2 id><span id></span></h2><h2 id="3pwd命令"><span id="3pwd命令">3.pwd命令</span></h2><p>查看当前目录的地址</p>
+<h3 id="常用参数"><span id="常用参数">常用参数</span></h3><ul>
+<li>-p：显示实际物理路径，而不是使用链接（link）路径</li>
+<li>-L:当目录为链接路径时，显示链接路径</li>
+</ul>
+<h2 id><span id></span></h2><h2 id="4mkdir命令"><span id="4mkdir命令">4.mkdir命令</span></h2><p>用来创建指定的名称的目录，要求创建目录的用户在当前目录中具有写权限，并且指定的目录名不能是当前目录中已有的目录。</p>
+<ul>
+<li>-m, –mode&#x3D;模式，设定权限&lt;模式&gt; (类似 chmod)，而不是 rwxrwxrwx 减 umask</li>
+<li>-p, –parents 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录;</li>
+<li>-v, –verbose 每次创建新目录都显示信息</li>
+<li>–help 显示此帮助信息并退出</li>
+<li>–version 输出版本信息并退出</li>
+</ul>
+<h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>1.创建权限为777的目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -m 777 test2</span><br></pre></td></tr></table></figure>
+
+<p>2.创建目录都显示信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -v test</span><br></pre></td></tr></table></figure>
+
+<h2 id="5rm命令"><span id="5rm命令">5.rm命令</span></h2><p>删除一个目录中的一个或多个文件或目录，如果没有使用- r选项，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<h3 id="常用参数"><span id="常用参数">常用参数</span></h3><ul>
+<li>-f, –force <strong>忽略不存在的文件并且进行强制删除</strong>的文件，从不给出提示。</li>
+<li>-i, –interactive 进行交互式删除</li>
+<li>-r, -R, –recursive 指示rm将参数中列出的<strong>全部目录和子目录均递归地删除</strong>。</li>
+<li>-v, –verbose 详细显示进行的步骤</li>
+<li>–help 显示此帮助信息并退出</li>
+<li>–version 输出版本信息并退出</li>
+</ul>
+<h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>2.强制删除 test.txt，系统不再提示。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> <span class="operator">-f</span> test.txt</span><br></pre></td></tr></table></figure>
+
+<p>3.将 test 子目录及目录中所有档案删除。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -r <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6mv命令"><span id="6mv命令">6.mv命令</span></h2><p>可以用来<strong>移动文件或者将文件改名</strong>（move (rename) files）。当第二个参数类型是文件时，mv命令完成文件重命名。当第二个参数是已存在的目录名称时，源文件或目录参数可以有多个，mv命令将各参数指定的源文件均移至目标目录中。</p>
+<ul>
+<li>-b ：若需覆盖文件，则覆盖前先行备份</li>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会更新(update)</li>
+<li>-t ： –target-directory&#x3D;DIRECTORY move all SOURCE arguments into DIRECTORY，即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后</li>
+</ul>
+<h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>1.将 test1.txt 重命名为 test2.txt</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv test.txt text2.text</span><br></pre></td></tr></table></figure>
+
+<p>2.移动文件test1.txt到test2</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv test1,txt test2</span><br></pre></td></tr></table></figure>
+
+<p>3.将文件test1、test2，移动到test3</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv test1.txt test2.txt test3</span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="7cp"><span id="7cp">7.cp</span></h2><p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+<h3 id="命令格式"><span id="命令格式">命令格式</span></h3><p>cp [选项] 源文件 目录 或 cp [选项] -t 目录 源文件</p>
+<h3 id="常用参数"><span id="常用参数">常用参数</span></h3><ul>
+<li>-t –target-directory 指定目标目录</li>
+<li>-i –interactive 覆盖前询问（使前面的 -n 选项失效）</li>
+<li>-n –no-clobber 不要覆盖已存在的文件（使前面的 -i 选项失效）</li>
+<li>-f –force 强行复制文件或目录，不论目的文件或目录是否已经存在</li>
+<li>-u –update 使用这项参数之后，只会在源文件的修改时间较目的文件更新时，或是对应的目的文件并不存在，才复制文件</li>
+</ul>
+<h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>1.复制文件 test1.txt 到 test1 目录</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cp</span> test1.txt test1 <span class="meta"># 若文件存在，会提示是否覆盖。若不存在直接完成复制</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>复制 test1 整个目录到 test2</li>
+</ol>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cp</span> -a test1 test2</span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="8touch命令"><span id="8touch命令">8.touch命令</span></h2><p>touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。</p>
+<h3 id="命令格式"><span id="命令格式">命令格式</span></h3><p>touch [选项] 文件</p>
+<h3 id="常用参数"><span id="常用参数">常用参数</span></h3><ul>
+<li>-a 或–time&#x3D;atime或–time&#x3D;access或–time&#x3D;use 　只更改存取时间</li>
+<li>-c 或–no-create 　不建立任何文档</li>
+<li>-d 　使用指定的日期时间，而非现在的时间</li>
+<li>-f 　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题</li>
+<li>-m 或–time&#x3D;mtime或–time&#x3D;modify 　只更改变动时间</li>
+<li>-r 　把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同 -t 　使用指定的日期时间，而非现在的时间</li>
+</ul>
+<h3 id="使用实例"><span id="使用实例">使用实例</span></h3><p>1.创建不存在的文件test.txt</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> test.txt</span><br></pre></td></tr></table></figure>
+
+<p>2.更新 test.txt 的实践和 test1.txt 时间戳相同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> -r test.txt test1.txt</span><br></pre></td></tr></table></figure>
 
 
 
-
-
-
-
-
-
-
-
-<h1 id><span id></span></h1><p>​</p>
+<p>​</p>
 ]]></content>
       <categories>
         <category>linux</category>
