@@ -6,7 +6,7 @@
   <link href="https://chengjingwei.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://chengjingwei.gitee.io/"/>
-  <updated>2022-03-11T08:19:06.762Z</updated>
+  <updated>2022-03-11T09:21:02.461Z</updated>
   <id>https://chengjingwei.gitee.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>了解ip、子网掩码、网关、DNS</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</id>
+    <published>2022-03-11T09:21:02.461Z</published>
+    <updated>2022-03-11T09:21:02.461Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>端口被莫名进程占用怎么办？</title>
