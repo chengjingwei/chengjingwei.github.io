@@ -351,6 +351,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title></title>
+    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
+<h2 id="title端口被占用怎么办"><span id="title端口被占用怎么办">‘title:端口被占用怎么办？’</span></h2><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
+<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
+<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
+<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
+<p>查询到被占用端口号（10000）的进程</p>
+<p>netstat常见参数</p>
+<ul>
+<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
+</ul>
+<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
+<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
+<p>经过此过程、程序可以正常启动</p>
+]]></content>
+  </entry>
+  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
