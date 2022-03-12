@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</loc>
+    
+    <lastmod>2022-03-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2022-03-12</lastmod>

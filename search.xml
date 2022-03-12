@@ -550,6 +550,133 @@
 ]]></content>
   </entry>
   <entry>
+    <title>linux的基本知识</title>
+    <url>/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="1linux下查看主机名及配置主机名"><span id="1linux下查看主机名及配置主机名">1.linux下查看主机名及配置主机名</span></h3><p>1.在linux在查看主机名</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hostname	</span><br><span class="line">hostname -f //显示完整的内容</span><br></pre></td></tr></table></figure>
+
+<p>2.设置主机名</p>
+<ul>
+<li><p>可以直接使用hostname命令修改，重启后失效</p>
+</li>
+<li><p>修改后需要编辑&#x2F;etx&#x2F;sysconfig&#x2F;network才会永久生效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hostname dewfwwf</span><br><span class="line">vim /etc/sysconfig/network</span><br><span class="line">------------------------------------------</span><br><span class="line">NETWORKING=yes</span><br><span class="line"></span><br><span class="line">HOSTNAME=dewfwwf</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2linux上ip地址配置"><span id="2linux上ip地址配置">2.linux上IP地址配置</span></h3><p>1.使用ifcongfig进行查看IP地址（windows上使用的是ipconfig不要记错了）</p>
+<p>2.可以直接通过ifconfig来修改IP地址，<strong>修改 &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eth0文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 192.168.12.22 修改ip地址</span><br><span class="line">如果想要永久生效</span><br><span class="line">修改 /etc/sysconfig/network-scripts/ifcfg-eth0文件</span><br><span class="line">DEVICE=eth0 #网卡名称</span><br><span class="line">BOOTPROTO=static #获取ip的方式(static/dhcp/bootp/none)</span><br><span class="line">HWADDR=00:0C:29:B5:B2:69 #MAC地址</span><br><span class="line">IPADDR=12.168.177.129 #IP地址</span><br><span class="line">NETMASK=255.255.255.0 #子网掩码</span><br><span class="line">NETWORK=192.168.177.0 #网络地址</span><br><span class="line">BROADCAST=192.168.0.255 #广播地址</span><br><span class="line">NBOOT=yes #  系统启动时是否设置此网络接口，设置为yes时，系统启动时激活此设备。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/12/BF9JnvtWYClPjcx.png" alt="image-20220312141904769"></p>
+<h3 id="3域名映射"><span id="3域名映射">3.域名映射</span></h3><p>&#x2F;etc&#x2F;hosts文件用以在通过主机名进行访问时做ip地址解析之用，相当于window中的C:\Windows\System32\drivers\etc\hosts文件的功能<img src="https://s2.loli.net/2022/03/12/YZEHa5tnmdSiu9T.png" alt="image-20220312143648646"></p>
+<h3 id="4网络服务管理"><span id="4网络服务管理">4.网络服务管理</span></h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service network status 查看指定服务的状态</span><br><span class="line">service network stop 停止指定服务</span><br><span class="line">service network start 启动指定服务</span><br><span class="line">service network restart 重启指定服务</span><br><span class="line"></span><br><span class="line">service --status–all 查看系统中所有后台服务</span><br><span class="line">netstat –nltp 查看系统中网络进程的端口监听情况</span><br><span class="line"></span><br><span class="line">防火墙设置</span><br><span class="line">防火墙根据配置文件/etc/sysconfig/iptables来控制本机的”出”、”入”网络访问行为。</span><br><span class="line">service iptables status 查看防火墙状态</span><br><span class="line">service iptables stop 关闭防火墙</span><br><span class="line">service iptables start 启动防火墙</span><br><span class="line">chkconfig  iptables off 禁止防火墙自启</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5linux上安装软件"><span id="5linux上安装软件">5.linux上安装软件</span></h3><p>Linux上的软件安装有以下几种常见方式介绍</p>
+<ol>
+<li><h6 id="二进制发布包"><span id="二进制发布包">二进制发布包</span></h6></li>
+</ol>
+<p>软件已经针对具体平台编译打包发布，只要解压，修改配置即可</p>
+<ol start="2">
+<li><h6 id="rpm包"><span id="rpm包">RPM包</span></h6></li>
+</ol>
+<p>软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装，<strong>对于依赖的库需要自己安装</strong></p>
+<ol start="3">
+<li><h6 id="yum在线安装"><span id="yum在线安装">Yum在线安装</span></h6></li>
+</ol>
+<p>软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，<strong>并且会自动解决软件安装过程中的库依赖问题</strong></p>
+<ol start="4">
+<li><h6 id="源码编译安装"><span id="源码编译安装">源码编译安装</span></h6></li>
+</ol>
+<p>软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</p>
+<h4 id><span id></span></h4><h3 id="6上传与下载工具介"><span id="6上传与下载工具介">6.上传与下载工具介</span></h3><h5 id="1lrzsz"><span id="1lrzsz">1.lrzsz</span></h5><p>我们可以使用yum安装方式安装 yum install lrzsz</p>
+<p>注意：必须有网络</p>
+<p>可以在crt中设置上传与下载目录</p>
+<p>​    <img src="https://s2.loli.net/2022/03/12/ljboNXBi84VUw6T.png" alt="image-20220312152445069">                                                                                         </p>
+<p>上传文件：rz命令，从本机上传到远程的linux服务器</p>
+<p><img src="https://s2.loli.net/2022/03/12/gerYwAua34VyX9n.png" alt="image-20220312152600327"></p>
+<p>下载文件：sz命令，从linux远程服务器下载文件到本机</p>
+<p><img src="https://s2.loli.net/2022/03/12/fjEMR1ZuxWYvtPK.png" alt="image-20220312152733050"></p>
+<h5 id="2sftp"><span id="2sftp">2.sftp</span></h5><p>使用alt + p 组合键打开sftp窗口</p>
+<p>1.使用put 命令上传</p>
+<p><img src="https://s2.loli.net/2022/03/12/gZaw9HI57Vem3nc.png" alt="image-20220312153211256"></p>
+<p>2.使用get命令下载</p>
+<p><img src="https://s2.loli.net/2022/03/12/fjHJlEgW9ixueFw.png" alt="image-20220312153229729"></p>
+<h3 id="7linux-系统目录结构"><span id="7linux-系统目录结构">7.Linux 系统目录结构</span></h3><p>登录系统后，在当前命令窗口下输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls / </span><br></pre></td></tr></table></figure>
+
+<p>你会看到如下图所示:</p>
+<p><img src="https://s2.loli.net/2022/03/12/bnjymeNPFLfEvTz.png" alt="img"></p>
+<p>树状目录结构：</p>
+<p><img src="https://s2.loli.net/2022/03/12/FA2Lp4lzTCBiHGa.jpg" alt="img"></p>
+<p>以下是对这些目录的解释：</p>
+<ul>
+<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
+</li>
+<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
+</li>
+<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+</li>
+<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
+</li>
+<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+</li>
+<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
+</li>
+<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+</li>
+<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+</li>
+<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
+</li>
+<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+</li>
+<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
+</li>
+<li><p><strong>&#x2F;sys</strong>：</p>
+<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
+<p>该文件系统是内核设备树的一个直观反映。</p>
+<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+</li>
+<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
+</li>
+<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，<strong>用户的很多应用程序和文件都放在这个目录下</strong>，类似于 windows 下的 program files 目录，<strong>用户自己安装软件的地方</strong>。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
+</li>
+<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+</li>
+<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
+</li>
+</ul>
+<p>在 Linux 系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</p>
+<p><strong>&#x2F;etc</strong>： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
+<p><strong>&#x2F;bin, &#x2F;sbin, &#x2F;usr&#x2F;bin, &#x2F;usr&#x2F;sbin</strong>: 这是系统预设的执行文件的放置目录，比如 <strong>ls</strong> 就是在 <strong>&#x2F;bin&#x2F;ls</strong> 目录下的。</p>
+<p>值得提出的是 <strong>&#x2F;bin</strong>、**&#x2F;usr&#x2F;bin** 是给系统用户使用的指令（除 root 外的通用用户），而&#x2F;sbin, &#x2F;usr&#x2F;sbin 则是给 root 使用的指令。</p>
+<p><strong>&#x2F;var</strong>： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在 &#x2F;var&#x2F;log 目录下，另外 mail 的预设放置也是在这里。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
