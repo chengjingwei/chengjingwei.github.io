@@ -88,7 +88,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.3k</span>
+            <span class="post-count">6.3k</span>
         </span>
     </span>
 
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">8 分钟</span>
+            <span class="post-count">23 分钟</span>
         </span>
     </span>
 </div>
@@ -132,24 +132,83 @@
 
 
 
-<h3 id="5linux上安装软件"><span id="5linux上安装软件">5.linux上安装软件</span></h3><p>Linux上的软件安装有以下几种常见方式介绍</p>
+<h3 id="5linux上安装软件"><span id="5linux上安装软件">5.linux上安装软件</span></h3><h4 id="一-rpm包安装方式步骤"><span id="一-rpm包安装方式步骤">一、rpm包安装方式步骤：</span></h4><p>1、找到相应的软件包，比如soft.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=version&spm=1001.2101.3001.7020">version</a>.rpm，下载到本机某个目录； </p>
+<p>2、打开一个终端，su -成<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=root&spm=1001.2101.3001.7020">root</a>用户； </p>
+<p>3、cd soft.version.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=rpm&spm=1001.2101.3001.7020">rpm</a>所在的目录； </p>
+<p>4、输入rpm -ivh soft.version.rpm</p>
+<p>*<strong>*详细介绍：*</strong></p>
 <ol>
-<li><h6 id="二进制发布包"><span id="二进制发布包">二进制发布包</span></h6></li>
+<li>安装：<br>　　我只需简单的一句话，就可以说完。执行：<br>　　rpm –ivh rpm的软件包名<br>　  更高级的，请见下表：<br>　　rpm参数 参数说明<br>　　-i 安装软件<br>　　-t 测试安装，不是真的安装<br>　　-p 显示安装进度<br>　　-f 忽略任何错误<br>　　-U 升级安装<br>　　-v 检测套件是否正确安装<br>　　这些参数可以同时采用。更多的内容可以参考RPM的命令帮助。<ol start="2">
+<li>卸载：<br>　　我同样只需简单的一句话，就可以说完。执行：<br>　　rpm –e 软件名<br>　　不过要注意的是，后面使用的是软件名，而不是软件包名。例如，要安装software-1.2.3-1.i386.rpm这个包时，应执行：<br>　　rpm –ivh software-1.2.3-1.i386.rpm<br>　　而当卸载时，则应执行：<br>　　rpm –e software。<br>另外，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux&spm=1001.2101.3001.7020">Linux</a>中还提供了象GnoRPM、kpackage等图形化的RPM工具，使得整个过程会更加简单。</li>
 </ol>
-<p>软件已经针对具体平台编译打包发布，只要解压，修改配置即可</p>
-<ol start="2">
-<li><h6 id="rpm包"><span id="rpm包">RPM包</span></h6></li>
+</li>
 </ol>
-<p>软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装，<strong>对于依赖的库需要自己安装</strong></p>
-<ol start="3">
-<li><h6 id="yum在线安装"><span id="yum在线安装">Yum在线安装</span></h6></li>
+<h4 id="二-deb包安装方式步骤"><span id="二-deb包安装方式步骤">二、deb包安装方式步骤：</span></h4><p>1、找到相应的软件包，比如soft.version.deb，下载到本机某个目录； </p>
+<p>2、打开一个终端，su -成root用户； </p>
+<p>3、cd soft.version.deb所在的目录； </p>
+<p>4、输入dpkg -i soft.version.deb</p>
+<p><em><strong>*详细介绍：*</strong></em><br>    这是Debian Linux提供的一个包管理器，它与RPM十分类似。</p>
+<p>​    但由于RPM出现得更早，所以在各种版本的Linux都常见到。</p>
+<p>​    而debian的包管理器dpkg则只出现在Debina Linux中，其它Linux版本一般都没有。<br>　　1. 安装<br>　  dpkg –i deb的软件包名<br>　　如：dpkg –i software-1.2.3-1.deb<br>　　2. 卸载<br>　　 dpkg –e 软件名<br>　　如：dpkg –e software</p>
+<p>​       3.查询：查询当前系统安装的软件包：</p>
+<p>​    dpkg –l ‘<em>软件包名</em>’</p>
+<p>​    如：dpkg –l ‘<em>software</em>‘</p>
+<h4 id="三-targz源代码包安装方式"><span id="三-targz源代码包安装方式">三、tar.gz源代码包安装方式：</span></h4><p>1、找到相应的软件包，比如soft.tar.gz，下载到本机某个目录； </p>
+<p>2、打开一个终端，su -成root用户； </p>
+<p>3、cd soft.tar.gz所在的目录； </p>
+<p>4、tar -xzvf soft.tar.gz &#x2F;&#x2F;一般会生成一个soft目录 </p>
+<p>5、cd soft </p>
+<p>6、.&#x2F;configure </p>
+<p>7、make </p>
+<p>8、make install</p>
+<p><em><strong>*详细介绍：*</strong></em></p>
+<ol>
+<li>安装：<br>　　整个安装过程可以分为以下几步：<br>　　1） 取得应用软件：通过下载、购买光盘的方法获得；<br>　　2）解压缩文件：一般tar包，都会再做一次压缩，如gzip、bz2等，所以你需要先解压。如果是最常见的gz格式，则可以执行：“tar –xvzf 软件包名”，就可以一步完成解压与解包工作。如果不是，则先用解压软件，再执行“tar –xvf 解压后的tar包”进行解包；<br>　　3） 阅读附带的INSTALL文件、README文件；<br>　　4） 执行“.&#x2F;configure”命令为编译做好准备；<br>　　5） 执行“make”命令进行软件编译；<br>　　6） 执行“make install”完成安装；<br>　　7） 执行“make clean”删除安装时产生的临时文件。<br>　　好了，到此大功告成。我们就可以运行应用程序了。但这时，有的读者就会问，我怎么执行呢？这也是一个Linux特色的问题。其实，一般来说， Linux的应用软件的可执行文件会存放在&#x2F;usr&#x2F;local&#x2F;bin目录下！不过这并不是“放四海皆准”的真理，最可靠的还是看这个软件的 INSTALL和README文件，一般都会有说明。<ol start="2">
+<li>卸载：<br>　　通常软件的开发者很少考虑到如何卸载自己的软件，而tar又仅是完成打包的工作，所以并没有提供良好的卸载方法。<br>　　那么是不是说就不能够卸载呢！其实也不是，有两个软件能够解决这个问题，那就是Kinstall和Kife，它们是tar包安装、卸载的黄金搭档。</li>
 </ol>
-<p>软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，<strong>并且会自动解决软件安装过程中的库依赖问题</strong></p>
-<ol start="4">
-<li><h6 id="源码编译安装"><span id="源码编译安装">源码编译安装</span></h6></li>
+</li>
 </ol>
-<p>软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</p>
-<h4 id><span id></span></h4><h3 id="6上传与下载工具介"><span id="6上传与下载工具介">6.上传与下载工具介</span></h3><h5 id="1lrzsz"><span id="1lrzsz">1.lrzsz</span></h5><p>我们可以使用yum安装方式安装 yum install lrzsz</p>
+<h4 id="四-tarbz2源代码包安装方式"><span id="四-tarbz2源代码包安装方式">四、tar.bz2源代码包安装方式：</span></h4><p>1、找到相应的软件包，比如soft.tar.bz2，下载到本机某个目录； </p>
+<p>2、打开一个终端，su -成root用户； </p>
+<p>3、cd soft.tar.bz2所在的目录； </p>
+<p>4、tar -xjvf soft.tar.bz2 &#x2F;&#x2F;一般会生成一个soft目录 </p>
+<p>5、cd soft </p>
+<p>6、.&#x2F;configure </p>
+<p>7、make </p>
+<p>8、make install </p>
+<h4 id="五-apt方式安装安装deb包"><span id="五-apt方式安装安装deb包">五、apt方式安装：（安装deb包）</span></h4><p>1、打开一个终端，su -成root用户； </p>
+<p>2、apt-cache search soft 注：soft是你要找的软件的名称或相关信息 </p>
+<p>3、如果2中找到了软件soft.version，则用apt-get install soft.version命令安装软件</p>
+<p>注：只要你可以上网，只需要用apt-cache search查找软件，用apt-get install软件<br><em><strong>*详细介绍：*</strong></em></p>
+<p>apt-get是debian，ubuntu发行版的包管理工具，与红帽中的yum工具非常类似。</p>
+<p>apt-get命令一般需要<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/3967294.htm">root权限</a>执行，所以一般跟着sudo命令例sudo apt-get xxxx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apt-get install packagename——安装一个新软件包（参见下文的aptitude）</span><br><span class="line">apt-get remove packagename——卸载一个已安装的软件包（保留配置文件）</span><br><span class="line">apt-get --purge remove packagename——卸载一个已安装的软件包（删除配置文件）</span><br><span class="line">dpkg --force-all --purge packagename ——有些软件很难卸载，而且还阻止了别的软件的应用，就可以用这个，不过有点冒险。</span><br><span class="line">apt-get autoremove——因为apt会把已装或已卸的软件都备份在硬盘上，所以如果需要空间的话，可以让这个命令来删除你已经删掉的软件。</span><br><span class="line">apt-get autoclean——定期运行这个命令来清除那些已经卸载的软件包的.deb文件。通过这种方式，可以释放大量的磁盘空间。如果需求十分迫切，可以使用apt-get clean以释放更多空间。这个命令会将已安装软件包裹的.deb文件一并删除。</span><br><span class="line">apt-get clean——这个命令会把安装的软件的备份也删除，不过这样不会影响软件的使用的。</span><br><span class="line">apt-get upgrade——更新所有已安装的软件包</span><br><span class="line">apt-get dist-upgrade——将系统升级到新版本</span><br><span class="line">apt-cache search string——在软件包列表中搜索字符串</span><br><span class="line">apt-cache showpkg pkgs——显示软件包信息。</span><br><span class="line">apt-cache stats——查看库里有多少软件</span><br><span class="line">apt-cache dumpavail——打印可用软件包列表。</span><br><span class="line">apt-cache show pkgs——显示软件包记录，类似于dpkg –print-avail。</span><br><span class="line">apt-cache pkgnames——打印软件包列表中所有软件包的名称</span><br><span class="line">（需要定期运行这一命令以确保您的软件包列表是最新的）</span><br><span class="line">简单的说： dpkg只能安装已经下载到本地机器上的deb包. apt-get能在线下载并安装deb包,能更新系统,</span><br><span class="line">且还能自动处理包与包之间的依赖问题,这个是dpkg工具所不具备的。</span><br></pre></td></tr></table></figure>
+
+<h4 id="六-yum方式安装安装rpm包"><span id="六-yum方式安装安装rpm包">六、yum方式安装：(安装rpm包)</span></h4><p>rpm 是linux的一种软件包名称，以.rmp结尾，安装的时候语法为：rpm -ivh。<br>rpm包的安装有个很大的缺点就是文件的关联性太大，有时装一个软件要安装很多其他的软件包，很麻烦。<br>所以为此RedHat小红帽开发了yum安装方法，他可以彻底解决这个关联性的问题，很方便，只要配置两个文件即可安装，安装方法是：yum -y install 。<br>yum并不是一中包，而是安装包的软件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">简单的说： rpm 只能安装已经下载到本地机器上的rpm 包. yum能在线下载并安装rpm包,能更新系统,</span><br><span class="line">且还能自动处理包与包之间的依赖问题,这个是rpm 工具所不具备的。</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="七-bin文件安装"><span id="七-bin文件安装">七、bin文件安装：</span></h4><p>如果你下载到的软件名是soft.bin，一般情况下是个可执行文件，安装方法如下： </p>
+<p>1、打开一个终端，su -成root用户； </p>
+<p>2、chmod +x soft.bin </p>
+<p>3、.&#x2F;soft.bin &#x2F;&#x2F;运行这个命令就可以安装软件了 </p>
+<p>八、不需要安装的软件：<br>有了些软件，比如lumaqq，是不需要安装的，自带jre解压缩后可直接运行。假设 </p>
+<p>下载的是lumaqq.tar.gz，使用方法如下： </p>
+<p>1、打开一个终端，su -成root用户； </p>
+<p>2、tar -xzvf lumaqq.tar.gz &#x2F;&#x2F;这一步会生成一个叫LumaQQ的目录 </p>
+<p>3、cd LumaQQ </p>
+<p>4、chmod +x lumaqq &#x2F;&#x2F;设置lumaqq这个程序文件为可运行 </p>
+<p>5、此时就可以运行lumaqq了，用命令.&#x2F;lumaqq即可，但每次运行要输入全路径或 </p>
+<p>切换到刚才生成的LumaQQ目录里 </p>
+<p>6、为了保证不设置路径就可以用，你可以在&#x2F;bin目录下建立一个lumaqq的链接， </p>
+<p>用命令ln -s lumaqq &#x2F;bin&#x2F; 即可，以后任何时候打开一个终端输入lumaqq就可以 </p>
+<p>启动QQ聊天软件了 </p>
+<p>7、 如果你要想lumaqq有个菜单项，使用菜单编辑工具，比如Alacarte Menu </p>
+<p>Editor，找到上面生成的LumaQQ目录里的lumaqq设置一个菜单项就可以了，当然你 </p>
+<p>也可以直接到 &#x2F;usr&#x2F;share&#x2F;applications目录，按照里面其它*.desktop文件的格 </p>
+<p>式生成一个自己的desktop文件即可。</p>
+<h3 id="6上传与下载工具介"><span id="6上传与下载工具介">6.上传与下载工具介</span></h3><h5 id="1lrzsz"><span id="1lrzsz">1.lrzsz</span></h5><p>我们可以使用yum安装方式安装 yum install lrzsz</p>
 <p>注意：必须有网络</p>
 <p>可以在crt中设置上传与下载目录</p>
 <p>​    <img src="https://s2.loli.net/2022/03/12/ljboNXBi84VUw6T.png" alt="image-20220312152445069">                                                                                         </p>
@@ -228,6 +287,197 @@
 <p><strong>&#x2F;bin, &#x2F;sbin, &#x2F;usr&#x2F;bin, &#x2F;usr&#x2F;sbin</strong>: 这是系统预设的执行文件的放置目录，比如 <strong>ls</strong> 就是在 <strong>&#x2F;bin&#x2F;ls</strong> 目录下的。</p>
 <p>值得提出的是 <strong>&#x2F;bin</strong>、**&#x2F;usr&#x2F;bin** 是给系统用户使用的指令（除 root 外的通用用户），而&#x2F;sbin, &#x2F;usr&#x2F;sbin 则是给 root 使用的指令。</p>
 <p><strong>&#x2F;var</strong>： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在 &#x2F;var&#x2F;log 目录下，另外 mail 的预设放置也是在这里。</p>
+<h3 id="8linux的打包tar和压缩命令"><span id="8linux的打包tar和压缩命令">8.linux的打包tar和压缩命令</span></h3><p>打包跟压缩的区别：</p>
+<p><strong>打包是指将多个文件或者目录放在一起，形成一个总的包</strong>，这样便于保存和传输，但是大小是没有变化的，<strong>压缩是指将一个或者多个大文件或者目录通过压缩算法使文件的体积变小以达到压缩的目的</strong>，可以节省存储空间，在压缩的时候通常是先打包再压缩；</p>
+<h4 id="1tar命令"><span id="1tar命令">1.tar命令</span></h4><p>tar命令参数前面加”-“与不加“-”的区别：</p>
+<p>tar命令参数前面加不加“-”执行命令的结果是没有区别的，区别只要是在于linux风格方面，加“-”属于System V风格，不加“-”属于BSD风格，所以在使用tar命令的时候它的参数加不加“-”结果是一样的，看个人的使用方式；</p>
+<p><strong>语法格式：</strong>tar [参数] [文件或目录]</p>
+<p><strong>常用参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>-A</th>
+<th>新增文件到以存在的备份文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-B</td>
+<td>设置区块大小</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>建立新的备份文件</td>
+</tr>
+<tr>
+<td>-C &lt;目录&gt;</td>
+<td>切换工作目录，先进入指定目录再执行压缩&#x2F;解压缩操作，可用于仅压缩特定目录里的内容或解压缩到特定目录</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>记录文件的差别</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>从归档文件中提取文件</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>列出备份文件的内容</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>通过gzip指令压缩&#x2F;解压缩文件，文件名最好为*.tar.gz</td>
+</tr>
+<tr>
+<td>-Z</td>
+<td>通过compress指令处理备份文件</td>
+</tr>
+<tr>
+<td>-f&lt;备份文件&gt;</td>
+<td>指定备份文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示指令执行过程</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>添加文件到已经压缩的文件</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>添加改变了和现有的文件到已经存在的压缩文件</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>通过bzip2指令压缩&#x2F;解压缩文件，文件名最好为*.tar.bz2</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示操作过程</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>文件系统边界设置</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>保留原有文件不覆盖</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>保留文件不被覆盖</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>确认压缩文件的正确性</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保留原来的文件权限与属性</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>使用文件名的绝对路径，不移除文件名称前的“&#x2F;”号</td>
+</tr>
+<tr>
+<td>-N &lt;日期格式&gt;</td>
+<td>只将较指定日期更新的文件保存到备份文件里</td>
+</tr>
+<tr>
+<td>– -exclude&#x3D;&lt;范本样式&gt;</td>
+<td>排除符合范本样式的文件</td>
+</tr>
+<tr>
+<td>– -remove-files</td>
+<td>归档&#x2F;压缩之后删除源文件</td>
+</tr>
+</tbody></table>
+<p>&#x3D;&#x3D;使用文件名，在f后面要接压缩后的文件的名字，只要用到tar命令，-f选项是必须要用的，-f参数在使用的时候一定排在其他参数的后面，在最右边&#x3D;&#x3D;</p>
+<p>将所有.jpg的文件打成一个名为all.tar的包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -cf all.tar *.jpg</span><br></pre></td></tr></table></figure>
+
+<p>打包文件之后删除源文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -cvf linuxcool.tar linuxcool --remove-files</span><br></pre></td></tr></table></figure>
+
+<p>打包文件以后，以 gzip 压缩：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -zcvf log.tar.gz linuxcool.log</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/12/QHzJIsOfoStL3Xw.png" alt="image-20220312233310714"></p>
+<h4 id="2压缩"><span id="2压缩"><strong>2.压缩</strong></span></h4><p>linux主要有三种压缩方式：<br>1.gzip：是公认的压缩这速度最快，压缩大文件的时候与其他的压缩方式相比更加明显，历史最久，应用最广泛的压缩方式<br>2.bzip：压缩形成的文件小，但是可用性不如gzip<br>3.xz：是最新的压缩方式，可以自动提供最佳的压缩率</p>
+<p>建议的压缩的时候标明后缀：</p>
+<p><img src="https://s2.loli.net/2022/03/12/PswocXSZM2zub15.png" alt="image-20220312234503832"></p>
+<p><img src="https://s2.loli.net/2022/03/12/yj4vW8hOAKnclEM.png" alt="image-20220312234531786"></p>
+<p><img src="https://s2.loli.net/2022/03/12/LnmRbVj3Sy4aX95.png" alt="image-20220312234609691"></p>
+<h4 id="3解压"><span id="3解压"><em>3.解压</em></span></h4><p>在解压gz压缩方式<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">压缩文件</a>的时候并不需要加上-z，直接用参数-xf即可，另外两种压缩方式在解压的时候一样，因为tar命令会自动选择，解压之后压缩文件还在，如果不指定解压出来的文件保存在哪里，那么会直接解压在当前目录</p>
+<p><img src="https://s2.loli.net/2022/03/12/fClyR4zXjrQa1SL.png" alt="img"></p>
+<p>补充：<br>a.在打包和压缩的过程中，我们有时候会看到这样的语句：tar: 从成员名中删除开头的“&#x2F;”，这个并不是报错，是因为没有加上-P选项，没有保留原来的绝对路径去打包或者压缩，提取打包的内容跟解压一样，下面举一个例子：</p>
+<p>将&#x2F;root&#x2F;目录以gzip的方式压缩为root.tar.gz压缩文件：</p>
+<p>1.没有加-P选项：</p>
+<p><img src="https://s2.loli.net/2022/03/12/ElRrBb7dKG1Qcq8.png" alt="img"></p>
+<p>2.加上-P选项：</p>
+<p><img src="https://s2.loli.net/2022/03/12/o2KUYBhVZcAI4rM.png" alt="img"></p>
+<p>解压的时候同理，如果在压缩文件的时候使用了-P选项，那么在解压的时候也要加上-P选项，不然也会出现”tar: 从成员名中删除开头的“&#x2F;”“，如下图：</p>
+<p>1.不加-P选项解压使用了-P选项压缩&#x2F;root&#x2F;后的root.tar.gz文件：</p>
+<p><img src="https://s2.loli.net/2022/03/12/RvF8G35HhSTeCzq.png" alt="img"></p>
+<p>2.加上-P选项解压使用了-P选项压缩&#x2F;root&#x2F;后的root.tar.gz文件：</p>
+<p><img src="https://s2.loli.net/2022/03/12/RvF8G35HhSTeCzq.png"></p>
+<p><strong>b.在使用tar压缩或者打包的时候，可以通过增加–exclude来达到排除指定的文件的目的</strong></p>
+<p>将&#x2F;root&#x2F;目录下的harry目录打包，但是不打包harry目录下的ha.txt文件，如下图：</p>
+<p><img src="https://s2.loli.net/2022/03/12/PkCn8iIdstO3F69.png" alt="img"></p>
+<p>压缩文件也是同理，想要排除指定的目录压缩或者打包也是同理</p>
+<h4 id="4zip命令"><span id="4zip命令"><strong>4.zip命令</strong></span></h4><p>基本用法：</p>
+<p>zip [参数] [压缩包名] [压缩的目录或者文件的路径]</p>
+<h5 id="常用参数"><span id="常用参数">常用参数：</span></h5><p><img src="https://s2.loli.net/2022/03/12/mkqjl6F7IDCSVgU.png" alt="image-20220312235408640"></p>
+<h5 id="实例"><span id="实例">实例：</span></h5><p>a.压缩目录，将&#x2F;root&#x2F;目录下的harry目录压缩为名为harry.zip压缩包：</p>
+<p>1.正常压缩，不加-q选项，显示压缩的过程：</p>
+<p><img src="https://s2.loli.net/2022/03/12/wQyuCLDiqcpJaks.png" alt="img"></p>
+<p>2.加上-q选项，安静模式输出，不显示压缩的过程：</p>
+<p><img src="https://s2.loli.net/2022/03/12/Wfakm9ryO8EundQ.png" alt="img"></p>
+<p>b.压缩多个文件，将&#x2F;root&#x2F;目录下的ceshi.txt文件和anaconda-ks.cfg文件和Golden.apk文件压缩为名为jihe.zip的压缩包：</p>
+<p><strong>因为压缩的全是文件，所以可以不用加上-r选项</strong></p>
+<p><img src="https://s2.loli.net/2022/03/12/GThxu4BLRvP1b5N.png" alt="img"></p>
+<p>c.压缩文件跟目录，将&#x2F;root&#x2F;下的ceshi.txt文件和anaconda-ks.cfg文件和harry目录压缩成名为dajihe.zip的压缩包：</p>
+<p><img src="https://s2.loli.net/2022/03/12/sm32U5xJYf6j1Pc.png" alt="img"></p>
+<p>d.将&#x2F;root&#x2F;目录下的harry目录压缩为harry1.zip压缩包，排除harry目录下的ha.txt文件：</p>
+<p><img src="https://s2.loli.net/2022/03/12/EOu3AseyGLFd6oJ.png" alt="img"></p>
+<h4 id="5unzip命令"><span id="5unzip命令">5.unzip命令</span></h4><p>基本用法：</p>
+<p>unzip [参数] [压缩文件]  （-d [目录]）  &#x2F;&#x2F;如果不是用括号里面的内容，则解压文件在当前工作目录</p>
+<h5 id="常用参数"><span id="常用参数"><strong>常用参数：</strong></span></h5><p><img src="https://s2.loli.net/2022/03/12/hC6fDeBXiwo2ynl.png" alt="image-20220312235709386"></p>
+<h5 id="实例"><span id="实例"><strong>实例：</strong></span></h5><p>a.将harry.zip压缩包解压缩的结果显示出来：</p>
+<p><img src="https://s2.loli.net/2022/03/12/XhQSxIPW5YLZHyD.png" alt="img"></p>
+<p>具体会显示到每一个文件跟每一个文件的内容</p>
+<p>b.显示jihe.zip压缩包里面包含的文件</p>
+<p><img src="https://s2.loli.net/2022/03/13/YmwDQaEIG3yvqA2.png" alt="img"></p>
+<p>c.检查dajihe.zip压缩文件是否正确：</p>
+<p><img src="https://s2.loli.net/2022/03/13/QJa7TgycLduUik9.png" alt="img"></p>
+<p>全部OK表示全部文件都是正确的</p>
+<p>d.不解压压缩文件dajihe.zip，查看压缩包里面的内容（查看显示的文件列表还包含压缩比率）：</p>
+<p><img src="https://s2.loli.net/2022/03/13/XIWHGtV2a8YFEhx.png" alt="img"></p>
+<p>#使用-v显示的信息比使用-l显示的信息更加详细</p>
+<p>e.将dajihe.zip压缩包解压到&#x2F;opt&#x2F;目录下：</p>
+<p><img src="https://s2.loli.net/2022/03/13/dviNTsjHcXo9ql4.png"></p>
+<p><strong>补充：</strong>使用r选项增加.tar归档文件的内容应该如何怎么操作？</p>
+<p>我们先来了解一下tar命令-r选项的作用：</p>
+<p><img src="https://s2.loli.net/2022/03/13/8BYUgZmxEpAKXvn.png" alt="img"></p>
+<p>通过tar –help命令查看帮助</p>
+<p>-r选项的作用：把要存档的文件追加到档案文件的未尾。例如用户已经作好备份文件，又发现还有一个目录或是一些文件忘记备份了，这时可以使用该选项，将忘记的目录或文件追加到备份文件中</p>
+<p>使用实例：</p>
+<p><img src="https://s2.loli.net/2022/03/13/MCfiy69NZbSW2EO.png" alt="img"></p>
+<p>看上图，可以看到我ops用户家目录下标记了一个文件，一个目录，我现在先将目录归档，然后再将文件追加到档案里面</p>
+<p>1.归档操作</p>
+<p><img src="https://s2.loli.net/2022/03/13/4V1LCqUmI3cd7gX.png" alt="img"></p>
+<p>生成.tar文件，目录归档完毕！</p>
+<p>2.将calculating_time.sh追加进入.tar文件中</p>
+<p><img src="https://s2.loli.net/2022/03/13/Tm584gcVKx3XPSj.png" alt="img"></p>
+<p>3.验证</p>
+<p>a.查看.tar文件的归档信息</p>
+<p><img src="https://s2.loli.net/2022/03/13/btYnUcyBxrZv93f.png" alt="img"></p>
+<p><img src="https://s2.loli.net/2022/03/13/G47QJcRxwndEpei.png" alt="img"></p>
+<p>可以看到calculating_time.sh文件已经被追加到档案的末尾了</p>
+<p>b.提取Check_Configuration_20201118_PM.tar 到&#x2F;mnt目录下</p>
+<p><img src="https://s2.loli.net/2022/03/13/walGn9Ft8zoVE3e.png" alt="img"></p>
+<p>使用-r选项追加文件至.tar文件成功</p>
  
       <!-- reward -->
       
