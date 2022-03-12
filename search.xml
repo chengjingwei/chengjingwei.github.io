@@ -424,132 +424,6 @@
       </tags>
   </entry>
   <entry>
-    <title>了解ip、子网掩码、网关、DNS</title>
-    <url>/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>网络管理中的IP地址、子网掩码和网关是每个网管必须要掌握的基础知识，只有掌握它，才能够真正理解TCP&#x2F;IP协议的设置。以下我们就来深入浅出地讲解什么是子网掩码。</p>
-<h4 id="ip地址的结构"><span id="ip地址的结构">IP地址的结构</span></h4><p>要想理解什么是子网掩码，就不能不了解IP地址的构成。互联网是由许多小型网络构成的，每个网络上都有许多主机，这样便构成了一个有层次的结构。IP地址在设计时就考虑到地址分配的层次特点，将每个IP地址都分割成网络号和主机号两部分，以便于IP地址的寻址操作。</p>
-<p>IP地址的网络号和主机号各是多少位呢？如果不指定，就不知道哪些位是网络号、哪些是主机号，这就需要通过子网掩码来实现。</p>
-<h4 id="什么是子网掩码"><span id="什么是子网掩码">什么是子网掩码</span></h4><p>子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。子网掩码的设定必须遵循一定的规则。与IP地址相同，子网掩码的长度也是32位，左边是网络位，用二进制数字“1”表示；右边是主机位，用二进制数字“0”表示。</p>
-<p>“192.168.1.1”和子网掩码为“255.255.255.0”的二进制对照。其中，“1”有24个，代表与此相对应的IP地址左边24位是网络号；“0”有8个，代表与此相对应的IP地址右边8位是主机号。这样，子网掩码就确定了一个IP地址的32位二进制数字中哪些是网络号、哪些是主机号。这对于采用TCP&#x2F;IP协议的网络来说非常重要，只有通过子网掩码，才能表明一台主机所在的子网与其他子网的关系，使网络正常工作。</p>
-<p>常用的子网掩码有数百种，这里只介绍最常用的两种子网掩码，它们分别是“255.255.255.0”和“255.255.0.0”。</p>
-<p>\1. 子网掩码是“255.255.255.0”的网络：最后面一个数字可以在0~255范围内任意变化，因此可以提供256个IP地址。但是实际可用的IP地址数量是256-2，即254个，因为主机号不能全是“0”或全是“1”。</p>
-<p>\2. 子网掩码是“255.255.0.0”的网络：后面两个数字可以在0~255范围内任意变化，可以提供2552个IP地址。但是实际可用的IP地址数量是2552-2，即65023个。</p>
-<p>IP地址的子网掩码设置不是任意的。如果将子网掩码设置过大，也就是说子网范围扩大，那么，根据子网寻径规则，很可能发往和本地机不在同一子网内的目的机的数据，会因为错误的判断而认为目的机是在同一子网内，那么，数据包将在本子网内循环，直到超时并抛弃，使数据不能正确到达目的机，导致网络传输错误；如果将子网掩码设置得过小，那么就会将本来属于同一子网内的机器之间的通信当做是跨子网传输，数据包都交给缺省网关处理，这样势必增加缺省网关的负担，造成网络效率下降。因此，子网掩码应该根据网络的规模进行设置。 如果一个网络的规模不超过254台电脑，采用“255.255.255.0”作为子网掩码就可以了，现在大多数局域网都不会超过这个数字，因此“255.255.255.0”是最常用的IP地址子网掩码；笔者见到的最大规模的中小学校园网具有1500多台电脑，这种规模的局域网可以使用“255.255.0.0”。</p>
-<p>默认子网掩码 在Windows 2000 Server中，如果给一个网卡指定IP地址，系统会自动填入一个默认的子网掩码。这是Windows 2000 Server为了节省用户输入时间自动产生的子网掩码。比如，局域网最常使用的IP地址“192.168.x.x”默认的子网掩码是“255.255.255.0”。一般情况下，IP地址使用默认子网掩码就可以了。</p>
-<h4 id="网关"><span id="网关">网关</span></h4><p>大家都知道，从一个房间走到另一个房间，必然要经过一扇门。同样，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关。</p>
-<p><strong>什么是网关</strong></p>
-<p> 顾名思义，<strong>网关</strong>（Gateway）就是一个网络连接到另一个网络的“关口”。 按照不同的分类标准，网关也有很多种。TCP&#x2F;IP协议里的网关是最常用的，在这里我们所讲的“网关”均指TCP&#x2F; IP协议下的网关。</p>
-<p>那么网关到底是什么呢？网关实质上是一个网络通向其他网络的IP地址。比如有网络A和网络B，网络A的IP地址范围为“192.168.1.1<del>192. 168.1.254”，子网掩码为255.255.255.0；网络B的IP地址范围为“192.168.2.1</del>192. 168.2.254”，子网掩码为255.255.255.0。在没有路由器的情况下，两个网络之间是不能进行TCP&#x2F;IP通信的，即使是两个网络连接在同一台交换机（或集线器）上，TCP&#x2F;IP协议也会根据子网掩码（255.255.255.0）判定两个网络中的主机处在不同的网络里。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。网络B向网络A转发数据包的过程也是如此。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。网络B向网络A转发数据包的过程也是如此 所以说，只有设置好网关的IP地址，TCP&#x2F;IP协议才能实现不同网络之间的相互通信。那么这个IP地址是哪台机器的IP地址呢？网关的IP地址是具有路由功能的设备的IP地址，具有路由功能的设备有路由器、启用了路由协议的服务器（实质上相当于一台路由器）、代理服务器（也相当于一台路由器）。</p>
-<p>什么是<strong>默认网关</strong> ？如果搞清了什么是网关，默认网关也就好理解了。就好像一个房间可以有多扇门一样，一台主机可以有多个网关。默认网关的意思是一台主机如果找不到可用的网关，就把数据包发给默认指定的网关，由这个网关来处理数据包。现在主机使用的网关，一般指的是默认网关。</p>
-<p>如何设置默认网关　一台电脑的默认网关是不可以随随便便指定的，必须正确地指定，否则一台电脑就会将数据包发给不是网关的电脑，从而无法与其他网络的电脑通信。默认网关的设定有手动设置和自动设置两种方式。</p>
-<p><strong>1. 手动设置</strong>：手动设置适用于电脑数量比较少、TCP&#x2F;IP参数基本不变的情况，比如只有几台到十几台电脑。因为这种方法需要在联入网络的每台电脑上设置“默认网关”，非常费劲，一旦因为迁移等原因导致必须修改默认网关的IP地址，就会给网管带来很大的麻烦，所以不推荐使用。在Windows 9x中，设置默认网关的方法是在“网上邻居”上右击，在弹出的菜单中点击“属性”，在网络属性对话框中选择“TCP&#x2F;IP协议”，点击“属性”，在“默认网关”选项卡中填写新的默认网关的IP地址就可以了。需要特别注意的是：默认网关必须是电脑自己所在的网段中的IP地址，而不能填写其他网段中的IP地址。</p>
-<p><strong>2. 自动设置</strong>：自动设置就是利用DHCP服务器来自动给网络中的电脑分配IP地址、子网掩码和默认网关。这样做的好处是一旦网络的默认网关发生了变化时，只要更改了DHCP服务器中默认网关的设置，那么网络中所有的电脑均获得了新的默认网关的IP地址。这种方法适用于网络规模较大、TCP&#x2F;IP参数有可能变动的网络。另外一种自动获得网关的办法是通过安装代理服务器软件（如MS Proxy）的客户端程序来自动获得，其原理和方法和DHCP有相似之处。由于篇幅所限，就不再详述了。</p>
-<p>通过简单的实验深入透析子网掩码，网关与ARP协议的作用子网掩码，网关与ARP协议的概念和工作原理是学习网络知识的初学者首先遇到的几个重要的知识点，其中子网掩码与ARP协议的作用和基本工作原理更是思科网络技术学院教程Semester 1中的重点与难点，初学者往往难以一下子掌握这些抽象复杂的机理。因此很有必要通过实验来帮助学员更加深入直观地了解子网掩码，网关与ARP协议的基本概念与工作原理。在对实验进行讲解之前，首先对子网掩码，网关与ARP协议的基本知识进行概述子网掩码子网掩码的主要功能是告知网络设备，一个特定的IP地址的哪一部分是包含网络地址与子网地址，哪一部分是主机地址。网络的路由设备只要识别出目的地址的网络号与子网号即可作出路由寻址决策，IP地址的主机部分不参与路由器的路由寻址操作，只用于在网段中唯一标识一个网络设备的接口。本来，如果网络系统中只使用A、B、C这三种主类地址，而不对这三种主类地址作子网划分或者进行主类地址的汇总，则网络设备根据IP地址的第一个字节的数值范围即可判断它属于A、B、C中的哪一个主类网，进而可确定该IP地址的网络部分和主机部分，不需要子网掩码的辅助。</p>
-<p>但为了使系统在对A、B、C这三种主类网进行了子网的划分，或者采用无类别的域间选路技术（Classless Inte r-Domain Routing，CIDR）对网段进行汇总的情况下，也能对IP地址的网络及子网部分与主机部分作正确的区分，就必须依赖于子网掩码的帮助。</p>
-<p>子网掩码使用与IP相同的编址格式，子网掩码为1的部分对应于IP地址的网络与子网部分，子网掩码为0的部分对应于IP地址的主机部分。将子网掩码和IP地址作”与”操作后，IP地址的主机部分将被丢弃，剩余的是网络地址和子网地址。例如，一个IP分组的目的IP地址为：10.2.2.1，若子网掩码为：255.255.255.0，与之作”与”运算得：10.2.2.0，则网络设备认为该IP地址的网络号与子网号为：10.2.2.0。</p>
-<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
-<p>IP地址英文IP address是分配给主机的32位地址,它标识了在网络上的一个节点,并且指定了在一个互连网络上的路由信息.</p>
-<p>INTERNET上的每台主机(HOST)都有一个唯一的IP地址.</p>
-<p>但我们这些拨号上见用户,或ISDN用户,网络接入商为节约资源,一般采用动态IP,即是说:你每次拨号上网ISP就分配一个IP给你.</p>
-<p>IP,通俗,不规范的说:它相当于你家的电话号码,或是你家的地址.所以除特殊情况外,不要随便告诉你的IP给别人知道.</p>
-<p>(可想知道现在网上什么人都有.IP炸弹乱飞.一不小心你就PK啦!说不好你的机有安全漏洞,别人黑啦你.)</p>
-<p><strong>IP协议</strong>就是使用这个地址的主机之间传递信息,这是INTERNET能够运行的基础.</p>
-<p>IP地址的长度为32位,分为4段,每段8位,用十进制数字表示,每段数字范围为1~254,段与段之间用点隔开.例如:202.103.44.194.</p>
-<p>IP地址有两部分组成,一部分为网络地址,另一部分为主机地址.IP地址分为A,B,C,D,E5类.常用的是B和C两类.</p>
-<p><strong>A类：</strong></p>
-<p>A类IP地址的第一段数字范围为1~127，第个A类地址可连接16387064台主机，INTERNET上有126个A类地址</p>
-<p><strong>B类：</strong></p>
-<p>第一段数字范围为128~191，每个B类地址可连接64516台主机，INTERNET上有16256个B类地址。</p>
-<p><strong>C类：</strong></p>
-<p>192~133，可接254台主机，有2054512个</p>
-<p><strong>D类：</strong></p>
-<p>224~239，D类地址用作多目的的地信息的传输，作备用</p>
-<p><strong>E类：</strong></p>
-<p>240~254。E类地址保留，仅作为INTERNET的实验和开发之用。</p>
-<p>仅仅靠WINDOWS不能打开网页。如果想办到，必须用IIS等软件辅助。</p>
-<h4 id="什么是-dns"><span id="什么是-dns">什么是 DNS</span></h4><p>DNS 全名叫 Domain Name Server，中文俗称“<strong>域名服务器</strong>”，在说明 DNS Server 之前，可能要先说明什么叫 Domain Name(<strong>域名</strong>)。正如上面所讲，在网上辨别一台电脑的方法是利用 IP地址，但是 IP用数字表示，没有特殊的意义，很不好记，因此，我们一般会为网上的电脑取一个有某种含义又容易记忆的名字，这个名字我们就叫它“Domain Name”。 例如：对著名的YAHOO！搜索引擎来说，一般使用者在浏览这个网站时，都会输入[url]<a href="http://www.yahoo.com[/url]，很少有人会记住这台Server的">http://www.yahoo.com[/url]，很少有人会记住这台Server的</a> IP 是多少？所以[url]<a href="http://www.yahoo.com[/url]就是YAHOO!站点的">http://www.yahoo.com[/url]就是YAHOO!站点的</a> Domain Name。这正如我们在跟朋友打招呼时，一定是叫他的名字，几乎没有人是叫对方身份证号码的吧！但是由于在 Internet 上真实</p>
-<p>辨认机器的还是IP，所以当使用者在浏览器中输入Domain Name 后，浏览器必须先到一台有 Domain Name 和 IP 对应信息的主机去查询这台电脑的 IP，而这台被查询的主机，我们称它为 Domain Name Server，简称 DNS，例如：当你输入[url]<a href="http://www.yahoo.com[/url]时，浏览器会将[url]http://www.yahoo.com[/url]这个名字传送到离它最近的">http://www.yahoo.com[/url]时，浏览器会将[url]http://www.yahoo.com[/url]这个名字传送到离它最近的</a> DNS Server 去做辨认，如果查询到结果，则会传回这台主机的 IP地址，进而跟它发生连接，但如果没有查询到，就会出现类似 DNS NOT FOUND 等告警信息。所以一旦你的电脑的DNS Server 设置不正确，就好比是路标错了，电脑也就不知道该把信息送到哪里。</p>
-<p>由于ISP的拨号服务器一般都有缺省的DNS，所以你可以不用设置DNS，如果你需要指定一台DNS，你一定要了解这台DNS的准确IP（比如福州的163用户的DNS为202.101.98.55）。DNS设置方法如下：在“控制面板”下打开“网络”里的“TCP&#x2F;IP”的“属性”，在“DNS设置”栏目选择“启用DNS”，并将DNS的IP地址添加即可。</p>
-<p>作者：ALEXIRC<br>链接：<a href="https://www.jianshu.com/p/b9806fe2376e">https://www.jianshu.com/p/b9806fe2376e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>中文输入时,使用英文的标点符号</title>
-    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
-<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
-<span id="more"></span>
-</blockquote>
-<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
-
-<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
-]]></content>
-      <categories>
-        <category>小技巧</category>
-      </categories>
-      <tags>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>故事的开始</title>
-    <url>/2022/03/10/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="介绍"><span id="介绍">介绍</span></h1><blockquote>
-<p>​        本博客采用的是Hexo技术+Ayer主题，这是该主题作者的gitee<a href="https://github.com/Shen-Yu/hexo-theme-ayer">主题作者</a>。我将会在此博客分享我的学习和生活的经历，欢迎大家来访。写博客无疑需要大量知识的沉淀，如果不具备相关领域的丰富知识，很难写出真正有干货的文章，所以，写博客我说一个逼着自己去深入了解领域知识的好方法。只有把一个东西成体系的表达出来，才算是真正的融会贯通。每一篇博客，都可以加深对技术进一步的理解，这就是存在的意义。</p>
-<p>​                                                                                                                                                                    </p>
-</blockquote>
-<p><img src="https://s2.loli.net/2022/03/10/LRnsXqUribmxe6O.jpg" alt="写博客的意义"></p>
-<span id="more"></span>
-
-<h2 id="写作是让思考体系化的有效方式"><span id="写作是让思考体系化的有效方式"><strong>写作是让思考体系化的有效方式</strong></span></h2><p>书面表达与口头表达最大的差异，是口头表达只需要告诉对方发生了什么，而书面表达需要把一个事情全面而透彻的讲清楚，前者如何把想法传进对方的心底更重要，后者如何建立一个坚实的<a href="https://www.zhihu.com/search?q=%E6%80%9D%E7%BB%B4%E6%A1%86%E6%9E%B6&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">思维框架</a>更重要。且不说历史上不可尽数的牛人都是写作的大师，写文章与写代码本来就十分相似，优秀的作家与优秀的程序员一样都是体系的架构者。然而大部分初级的技术人没有机会去做一个足够大的系统，大部分时间是在处理点状的问题，这时写作就等于创造了一个能够升维思考的契机，让你可以把点连成线汇成面。举个例子，当你需要给刚做过的某个项目写一份总结文档，为了避免受众一脸懵逼，你不得不去想：</p>
-<ul>
-<li>我做这个项目是为了解决什么问题？</li>
-<li>在整个系统之中我的项目起到了什么作用？</li>
-<li>业界其他领先团队在面对这个问题时会采用什么方案？</li>
-<li>我的方案与他们对比有什么优势？</li>
-<li>未来有哪些潜在的可迭代优化的方向？</li>
-</ul>
-<p>而当你把这些问题都想明白写透彻，就等于干了比你高一到两个技术级别的同事的活，自然比原来只精通那一亩三分地的细节要强得多。<strong>写作，首先是一条成长之道</strong>。</p>
-<h2 id="写作是驱动学习的有效方式"><span id="写作是驱动学习的有效方式"><strong>写作是驱动学习的有效方式</strong></span></h2><p>写作无疑是需要大量知识沉淀的，如果不具备相关领域的丰富知识，很难写出真正有干货的文章。所以，写作是一个逼着自己去深入了解领域知识的好办法，普遍意义的学习仅仅只是获取信息而已，没有经过实践或其他方式的转化，知识不过是暂存在你大脑的某个内存空间，是一个没有被充分训练的特征值，而写作就是性价比最高的知识转化方式。举个我自己的例子，刚毕业时因为工作中要使用一种算法，必须在短时间内精通这种算法的每一个细节，于是遍览了所有经搜索引擎可找到的优质资料，后来觉得单凭阅读的学习效率太低了，索性开了个专栏连着写了三篇文章介绍自己对该种算法的理解，三年之后回头看竟然在谷歌的索引排序都不低。学习的方式有许多种，靠阅读是一种，靠实践是一种，靠交流是一种，但都不如靠写作来得有效，因为只有能把一个东西成体系的表达出来，才真的算融会贯通。<strong>写作，其次是一条学习之道</strong>。</p>
-<h2 id="写作是扩大沟通范围的有效方式"><span id="写作是扩大沟通范围的有效方式"><strong>写作是扩大沟通范围的有效方式</strong></span></h2><p>除了上台演讲，大部分场景技术人的沟通范围是有限的，而写作等于创造了一个与理论上人数没有上限的受众沟通的机会，你有机会让更多人了解你的思想、框架、技能与方法。而除开写作之外的其他方式，几乎都很难如此系统的表达自我。麦肯锡有一条著名的<a href="https://www.zhihu.com/search?q=30%E7%A7%92%E7%94%B5%E6%A2%AF%E7%90%86%E8%AE%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">30秒电梯理论</a>，意为如果不能在电梯从1层到30层的运行过程中把事情表述清楚，对方将不会再有兴趣与你就此事交流，虽然这是一个典型的商业场景，却也体现了口头表达的困境，口头表达必须集中火力讲一两个点、必须投对方所好创造共同话题、必须有趣精彩引人入胜，而写作却不必如此，哪怕是一篇枯燥乏味的技术文档，也大可郑重其事的当做在创造一个我的世界。有这么一类技术人，他们在现实生活中木讷寡言，开个玩笑都会老脸一红，写起东西来却洋洋洒洒眼界宏大光彩照人，丝毫不影响圈粉无数。<strong>写作，最后是一条沟通之道</strong>。</p>
-<p>写到这儿估计有小伙伴要举手了：我也知道写作有诸多好处，然而一来工作忙成狗，二来无从下笔，怎么破？</p>
-<p>万事开头难，然后中间难结尾难。上中学时就为了作文凑够800字生不如死，现在猝不及防都要*<a href="https://www.zhihu.com/search?q=996.icu&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">996.icu</a>*了，晚上下班还得挑灯夜战写东西，这简直要老命了。而且写什么更是想破了脑袋，写点技术怕写出来贻笑大方，写点生活更怕平淡如水写成碎碎念，该写什么？我太「南」了。</p>
-<p>别怕，都是这么过来的。送上三个锦囊，给即将开始写作的技术人。</p>
-<h2 id="从你熟悉的领域开始或者多写技术或工作文档"><span id="从你熟悉的领域开始或者多写技术或工作文档"><strong>从你熟悉的领域开始，或者多写技术或工作文档</strong></span></h2><p>我们生活在一个差异性越来越重要的世界。哪怕一个等级超高的技术天才，也难以成为全部领域的专才。反过来想，哪怕是遇到一个阿里P9以上的大牛，总有一些你懂他不懂的东西，也许是一个小众的配置文件系统，也许是一种冷门到被人遗忘的算法，也许是搞定某个业务专项的trick。当你开始分享时，不妨从这些你所熟悉的领域开始，因为你就是这个领域无可争议的王者段位选手，能有充分的自信把文章写「顺」，继而找到文字表达这项技艺的感觉。自信与感觉，对刚开始写作的技术人而言至关重要。</p>
-<p>假如你现在扫描了一遍自己的大脑，然而没有发现上面所说的特别擅长的领域，那么我会建议你由<a href="https://www.zhihu.com/search?q=%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">技术文档</a>或者工作文档开始。文档就像造火箭盖楼房的设计草图，重要性不言而喻，但我接触的许多程序员恰恰是很排斥写文档的，宁愿写多几行代码。其实文档是一个帮助你从作者思维升级到读者思维的好工具，因为文档是写给小白看的，怎么让一个小白顺着你的文档跑起来，哪些步骤要走起来，哪些细节需要重点标识，其实就是一项琢磨受众需要什么的练习。</p>
-<h2 id="从小范围的分享开始像写代码一样的最佳实践"><span id="从小范围的分享开始像写代码一样的最佳实践"><strong>从小范围的分享开始，像写代码一样的最佳实践</strong></span></h2><p>放心，怕写不好是所有的人刚起步时的共同担心。所以我们可以从身边的同事开始，比如做一个小组级别的文档分享，然后慢慢到部门内、公司内的文档分享，等自己更有把握了，再扩大到不熟悉的受众。循序渐进有助于培养写作的自信，也更便于收集身边人的反馈，通过小范围的试错迭代内容。一旦验证文章能对读者产生帮助，就可以进一步扩大传播，无论公众号、知乎还是技术博客都是一个适合优质内容沉淀和传播的选项（<em>当然，文章不可包含不宜公开的内容</em>）。</p>
-<p>写作和编程的最佳实践是极其相似的，首先在纸上列一个简要的提纲，想明白自己期望表达的重点内容，其次开始写初稿，这个初稿遵循的原则是先完成再完美，把想表达的内容顺畅传递出来就好了，最后不可少的是花一点时间重构：也许是调整段落之间的顺序，也许是为某个不够接地气的部分增加case，也许是修改表达的措辞细节，与软件的重构相似，文章的重构消除了「坏味道」，提高了文章的可读性。</p>
-<h2 id="定时定量写作排除社交杂音的干扰"><span id="定时定量写作排除社交杂音的干扰"><strong>定时定量写作，排除社交杂音的干扰</strong></span></h2><p>我有一个习惯，是用苹果的日历记录自己过往的时间耗费，反正花在「工作」类目上的时间是绝对超过<code>12 * 6</code>的，但如果每天回到家还没觉得筋疲力尽，就会继续掏出笔记本写点东西。得益于文档同步工具，我也会不定期在上下班通勤的过程中利用手机接着写（<em>移动端写作的速度并不见得慢</em>）。然而，我建议所有刚开始写作的技术人，先给自己制定一个写作的计划，再给自己制定一个写作的<code>KPI</code>，比如工作日每天写200字、节假日每天写500字之类的，由易到难，如果害怕坚持不住的，可以定一个<code>写作时间</code>，和写代码一样写作也是需要沉浸的，把手机调到<code>勿扰模式</code>并反扣在桌面，关闭一切社交客户端与网页，全身心投入其中。只要平衡得好，写作并不为繁重的业务所累，反而会对工作有正向的推动，因为提升了思考与总结的能力。作家冯唐就是在一路晋升麦肯锡合伙人的几年间，在每周80小时+的工作时长之外，完成了6本小说、2本杂文集的出版。</p>
-<p>大学时有幸成为一个知名企业家的弟子，曾有一次面谈，聊到他对年轻人的要求，总结为六个字：<strong>能做、会说、善写</strong>。我想对技术人也是如此，期待这篇小文章激发到一些人的写作潜力，为技术圈创造更多的知识沉淀。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>端口被莫名进程占用怎么办？</title>
-    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
-<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
-<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
-<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
-<p>查询到被占用端口号（10000）的进程</p>
-<p>netstat常见参数</p>
-<ul>
-<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
-</ul>
-<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
-<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
-<p>经过此过程、程序可以正常启动</p>
-]]></content>
-  </entry>
-  <entry>
     <title>linux的基本知识</title>
     <url>/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="1linux下查看主机名及配置主机名"><span id="1linux下查看主机名及配置主机名">1.linux下查看主机名及配置主机名</span></h3><p>1.在linux在查看主机名</p>
@@ -677,6 +551,132 @@
       </tags>
   </entry>
   <entry>
+    <title>中文输入时,使用英文的标点符号</title>
+    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
+<span id="more"></span>
+</blockquote>
+<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
+
+<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>了解ip、子网掩码、网关、DNS</title>
+    <url>/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>网络管理中的IP地址、子网掩码和网关是每个网管必须要掌握的基础知识，只有掌握它，才能够真正理解TCP&#x2F;IP协议的设置。以下我们就来深入浅出地讲解什么是子网掩码。</p>
+<h4 id="ip地址的结构"><span id="ip地址的结构">IP地址的结构</span></h4><p>要想理解什么是子网掩码，就不能不了解IP地址的构成。互联网是由许多小型网络构成的，每个网络上都有许多主机，这样便构成了一个有层次的结构。IP地址在设计时就考虑到地址分配的层次特点，将每个IP地址都分割成网络号和主机号两部分，以便于IP地址的寻址操作。</p>
+<p>IP地址的网络号和主机号各是多少位呢？如果不指定，就不知道哪些位是网络号、哪些是主机号，这就需要通过子网掩码来实现。</p>
+<h4 id="什么是子网掩码"><span id="什么是子网掩码">什么是子网掩码</span></h4><p>子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。子网掩码的设定必须遵循一定的规则。与IP地址相同，子网掩码的长度也是32位，左边是网络位，用二进制数字“1”表示；右边是主机位，用二进制数字“0”表示。</p>
+<p>“192.168.1.1”和子网掩码为“255.255.255.0”的二进制对照。其中，“1”有24个，代表与此相对应的IP地址左边24位是网络号；“0”有8个，代表与此相对应的IP地址右边8位是主机号。这样，子网掩码就确定了一个IP地址的32位二进制数字中哪些是网络号、哪些是主机号。这对于采用TCP&#x2F;IP协议的网络来说非常重要，只有通过子网掩码，才能表明一台主机所在的子网与其他子网的关系，使网络正常工作。</p>
+<p>常用的子网掩码有数百种，这里只介绍最常用的两种子网掩码，它们分别是“255.255.255.0”和“255.255.0.0”。</p>
+<p>\1. 子网掩码是“255.255.255.0”的网络：最后面一个数字可以在0~255范围内任意变化，因此可以提供256个IP地址。但是实际可用的IP地址数量是256-2，即254个，因为主机号不能全是“0”或全是“1”。</p>
+<p>\2. 子网掩码是“255.255.0.0”的网络：后面两个数字可以在0~255范围内任意变化，可以提供2552个IP地址。但是实际可用的IP地址数量是2552-2，即65023个。</p>
+<p>IP地址的子网掩码设置不是任意的。如果将子网掩码设置过大，也就是说子网范围扩大，那么，根据子网寻径规则，很可能发往和本地机不在同一子网内的目的机的数据，会因为错误的判断而认为目的机是在同一子网内，那么，数据包将在本子网内循环，直到超时并抛弃，使数据不能正确到达目的机，导致网络传输错误；如果将子网掩码设置得过小，那么就会将本来属于同一子网内的机器之间的通信当做是跨子网传输，数据包都交给缺省网关处理，这样势必增加缺省网关的负担，造成网络效率下降。因此，子网掩码应该根据网络的规模进行设置。 如果一个网络的规模不超过254台电脑，采用“255.255.255.0”作为子网掩码就可以了，现在大多数局域网都不会超过这个数字，因此“255.255.255.0”是最常用的IP地址子网掩码；笔者见到的最大规模的中小学校园网具有1500多台电脑，这种规模的局域网可以使用“255.255.0.0”。</p>
+<p>默认子网掩码 在Windows 2000 Server中，如果给一个网卡指定IP地址，系统会自动填入一个默认的子网掩码。这是Windows 2000 Server为了节省用户输入时间自动产生的子网掩码。比如，局域网最常使用的IP地址“192.168.x.x”默认的子网掩码是“255.255.255.0”。一般情况下，IP地址使用默认子网掩码就可以了。</p>
+<h4 id="网关"><span id="网关">网关</span></h4><p>大家都知道，从一个房间走到另一个房间，必然要经过一扇门。同样，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关。</p>
+<p><strong>什么是网关</strong></p>
+<p> 顾名思义，<strong>网关</strong>（Gateway）就是一个网络连接到另一个网络的“关口”。 按照不同的分类标准，网关也有很多种。TCP&#x2F;IP协议里的网关是最常用的，在这里我们所讲的“网关”均指TCP&#x2F; IP协议下的网关。</p>
+<p>那么网关到底是什么呢？网关实质上是一个网络通向其他网络的IP地址。比如有网络A和网络B，网络A的IP地址范围为“192.168.1.1<del>192. 168.1.254”，子网掩码为255.255.255.0；网络B的IP地址范围为“192.168.2.1</del>192. 168.2.254”，子网掩码为255.255.255.0。在没有路由器的情况下，两个网络之间是不能进行TCP&#x2F;IP通信的，即使是两个网络连接在同一台交换机（或集线器）上，TCP&#x2F;IP协议也会根据子网掩码（255.255.255.0）判定两个网络中的主机处在不同的网络里。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。网络B向网络A转发数据包的过程也是如此。而要实现这两个网络之间的通信，则必须通过网关。如果网络A中的主机发现数据包的目的主机不在本地网络中，就把数据包转发给它自己的网关，再由网关转发给网络B的网关，网络B的网关再转发给网络B的某个主机。网络B向网络A转发数据包的过程也是如此 所以说，只有设置好网关的IP地址，TCP&#x2F;IP协议才能实现不同网络之间的相互通信。那么这个IP地址是哪台机器的IP地址呢？网关的IP地址是具有路由功能的设备的IP地址，具有路由功能的设备有路由器、启用了路由协议的服务器（实质上相当于一台路由器）、代理服务器（也相当于一台路由器）。</p>
+<p>什么是<strong>默认网关</strong> ？如果搞清了什么是网关，默认网关也就好理解了。就好像一个房间可以有多扇门一样，一台主机可以有多个网关。默认网关的意思是一台主机如果找不到可用的网关，就把数据包发给默认指定的网关，由这个网关来处理数据包。现在主机使用的网关，一般指的是默认网关。</p>
+<p>如何设置默认网关　一台电脑的默认网关是不可以随随便便指定的，必须正确地指定，否则一台电脑就会将数据包发给不是网关的电脑，从而无法与其他网络的电脑通信。默认网关的设定有手动设置和自动设置两种方式。</p>
+<p><strong>1. 手动设置</strong>：手动设置适用于电脑数量比较少、TCP&#x2F;IP参数基本不变的情况，比如只有几台到十几台电脑。因为这种方法需要在联入网络的每台电脑上设置“默认网关”，非常费劲，一旦因为迁移等原因导致必须修改默认网关的IP地址，就会给网管带来很大的麻烦，所以不推荐使用。在Windows 9x中，设置默认网关的方法是在“网上邻居”上右击，在弹出的菜单中点击“属性”，在网络属性对话框中选择“TCP&#x2F;IP协议”，点击“属性”，在“默认网关”选项卡中填写新的默认网关的IP地址就可以了。需要特别注意的是：默认网关必须是电脑自己所在的网段中的IP地址，而不能填写其他网段中的IP地址。</p>
+<p><strong>2. 自动设置</strong>：自动设置就是利用DHCP服务器来自动给网络中的电脑分配IP地址、子网掩码和默认网关。这样做的好处是一旦网络的默认网关发生了变化时，只要更改了DHCP服务器中默认网关的设置，那么网络中所有的电脑均获得了新的默认网关的IP地址。这种方法适用于网络规模较大、TCP&#x2F;IP参数有可能变动的网络。另外一种自动获得网关的办法是通过安装代理服务器软件（如MS Proxy）的客户端程序来自动获得，其原理和方法和DHCP有相似之处。由于篇幅所限，就不再详述了。</p>
+<p>通过简单的实验深入透析子网掩码，网关与ARP协议的作用子网掩码，网关与ARP协议的概念和工作原理是学习网络知识的初学者首先遇到的几个重要的知识点，其中子网掩码与ARP协议的作用和基本工作原理更是思科网络技术学院教程Semester 1中的重点与难点，初学者往往难以一下子掌握这些抽象复杂的机理。因此很有必要通过实验来帮助学员更加深入直观地了解子网掩码，网关与ARP协议的基本概念与工作原理。在对实验进行讲解之前，首先对子网掩码，网关与ARP协议的基本知识进行概述子网掩码子网掩码的主要功能是告知网络设备，一个特定的IP地址的哪一部分是包含网络地址与子网地址，哪一部分是主机地址。网络的路由设备只要识别出目的地址的网络号与子网号即可作出路由寻址决策，IP地址的主机部分不参与路由器的路由寻址操作，只用于在网段中唯一标识一个网络设备的接口。本来，如果网络系统中只使用A、B、C这三种主类地址，而不对这三种主类地址作子网划分或者进行主类地址的汇总，则网络设备根据IP地址的第一个字节的数值范围即可判断它属于A、B、C中的哪一个主类网，进而可确定该IP地址的网络部分和主机部分，不需要子网掩码的辅助。</p>
+<p>但为了使系统在对A、B、C这三种主类网进行了子网的划分，或者采用无类别的域间选路技术（Classless Inte r-Domain Routing，CIDR）对网段进行汇总的情况下，也能对IP地址的网络及子网部分与主机部分作正确的区分，就必须依赖于子网掩码的帮助。</p>
+<p>子网掩码使用与IP相同的编址格式，子网掩码为1的部分对应于IP地址的网络与子网部分，子网掩码为0的部分对应于IP地址的主机部分。将子网掩码和IP地址作”与”操作后，IP地址的主机部分将被丢弃，剩余的是网络地址和子网地址。例如，一个IP分组的目的IP地址为：10.2.2.1，若子网掩码为：255.255.255.0，与之作”与”运算得：10.2.2.0，则网络设备认为该IP地址的网络号与子网号为：10.2.2.0。</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>IP地址英文IP address是分配给主机的32位地址,它标识了在网络上的一个节点,并且指定了在一个互连网络上的路由信息.</p>
+<p>INTERNET上的每台主机(HOST)都有一个唯一的IP地址.</p>
+<p>但我们这些拨号上见用户,或ISDN用户,网络接入商为节约资源,一般采用动态IP,即是说:你每次拨号上网ISP就分配一个IP给你.</p>
+<p>IP,通俗,不规范的说:它相当于你家的电话号码,或是你家的地址.所以除特殊情况外,不要随便告诉你的IP给别人知道.</p>
+<p>(可想知道现在网上什么人都有.IP炸弹乱飞.一不小心你就PK啦!说不好你的机有安全漏洞,别人黑啦你.)</p>
+<p><strong>IP协议</strong>就是使用这个地址的主机之间传递信息,这是INTERNET能够运行的基础.</p>
+<p>IP地址的长度为32位,分为4段,每段8位,用十进制数字表示,每段数字范围为1~254,段与段之间用点隔开.例如:202.103.44.194.</p>
+<p>IP地址有两部分组成,一部分为网络地址,另一部分为主机地址.IP地址分为A,B,C,D,E5类.常用的是B和C两类.</p>
+<p><strong>A类：</strong></p>
+<p>A类IP地址的第一段数字范围为1~127，第个A类地址可连接16387064台主机，INTERNET上有126个A类地址</p>
+<p><strong>B类：</strong></p>
+<p>第一段数字范围为128~191，每个B类地址可连接64516台主机，INTERNET上有16256个B类地址。</p>
+<p><strong>C类：</strong></p>
+<p>192~133，可接254台主机，有2054512个</p>
+<p><strong>D类：</strong></p>
+<p>224~239，D类地址用作多目的的地信息的传输，作备用</p>
+<p><strong>E类：</strong></p>
+<p>240~254。E类地址保留，仅作为INTERNET的实验和开发之用。</p>
+<p>仅仅靠WINDOWS不能打开网页。如果想办到，必须用IIS等软件辅助。</p>
+<h4 id="什么是-dns"><span id="什么是-dns">什么是 DNS</span></h4><p>DNS 全名叫 Domain Name Server，中文俗称“<strong>域名服务器</strong>”，在说明 DNS Server 之前，可能要先说明什么叫 Domain Name(<strong>域名</strong>)。正如上面所讲，在网上辨别一台电脑的方法是利用 IP地址，但是 IP用数字表示，没有特殊的意义，很不好记，因此，我们一般会为网上的电脑取一个有某种含义又容易记忆的名字，这个名字我们就叫它“Domain Name”。 例如：对著名的YAHOO！搜索引擎来说，一般使用者在浏览这个网站时，都会输入[url]<a href="http://www.yahoo.com[/url]，很少有人会记住这台Server的">http://www.yahoo.com[/url]，很少有人会记住这台Server的</a> IP 是多少？所以[url]<a href="http://www.yahoo.com[/url]就是YAHOO!站点的">http://www.yahoo.com[/url]就是YAHOO!站点的</a> Domain Name。这正如我们在跟朋友打招呼时，一定是叫他的名字，几乎没有人是叫对方身份证号码的吧！但是由于在 Internet 上真实</p>
+<p>辨认机器的还是IP，所以当使用者在浏览器中输入Domain Name 后，浏览器必须先到一台有 Domain Name 和 IP 对应信息的主机去查询这台电脑的 IP，而这台被查询的主机，我们称它为 Domain Name Server，简称 DNS，例如：当你输入[url]<a href="http://www.yahoo.com[/url]时，浏览器会将[url]http://www.yahoo.com[/url]这个名字传送到离它最近的">http://www.yahoo.com[/url]时，浏览器会将[url]http://www.yahoo.com[/url]这个名字传送到离它最近的</a> DNS Server 去做辨认，如果查询到结果，则会传回这台主机的 IP地址，进而跟它发生连接，但如果没有查询到，就会出现类似 DNS NOT FOUND 等告警信息。所以一旦你的电脑的DNS Server 设置不正确，就好比是路标错了，电脑也就不知道该把信息送到哪里。</p>
+<p>由于ISP的拨号服务器一般都有缺省的DNS，所以你可以不用设置DNS，如果你需要指定一台DNS，你一定要了解这台DNS的准确IP（比如福州的163用户的DNS为202.101.98.55）。DNS设置方法如下：在“控制面板”下打开“网络”里的“TCP&#x2F;IP”的“属性”，在“DNS设置”栏目选择“启用DNS”，并将DNS的IP地址添加即可。</p>
+<p>作者：ALEXIRC<br>链接：<a href="https://www.jianshu.com/p/b9806fe2376e">https://www.jianshu.com/p/b9806fe2376e</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>故事的开始</title>
+    <url>/2022/03/10/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="介绍"><span id="介绍">介绍</span></h1><blockquote>
+<p>​        本博客采用的是Hexo技术+Ayer主题，这是该主题作者的gitee<a href="https://github.com/Shen-Yu/hexo-theme-ayer">主题作者</a>。我将会在此博客分享我的学习和生活的经历，欢迎大家来访。写博客无疑需要大量知识的沉淀，如果不具备相关领域的丰富知识，很难写出真正有干货的文章，所以，写博客我说一个逼着自己去深入了解领域知识的好方法。只有把一个东西成体系的表达出来，才算是真正的融会贯通。每一篇博客，都可以加深对技术进一步的理解，这就是存在的意义。</p>
+<p>​                                                                                                                                                                    </p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/03/10/LRnsXqUribmxe6O.jpg" alt="写博客的意义"></p>
+<span id="more"></span>
+
+<h2 id="写作是让思考体系化的有效方式"><span id="写作是让思考体系化的有效方式"><strong>写作是让思考体系化的有效方式</strong></span></h2><p>书面表达与口头表达最大的差异，是口头表达只需要告诉对方发生了什么，而书面表达需要把一个事情全面而透彻的讲清楚，前者如何把想法传进对方的心底更重要，后者如何建立一个坚实的<a href="https://www.zhihu.com/search?q=%E6%80%9D%E7%BB%B4%E6%A1%86%E6%9E%B6&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">思维框架</a>更重要。且不说历史上不可尽数的牛人都是写作的大师，写文章与写代码本来就十分相似，优秀的作家与优秀的程序员一样都是体系的架构者。然而大部分初级的技术人没有机会去做一个足够大的系统，大部分时间是在处理点状的问题，这时写作就等于创造了一个能够升维思考的契机，让你可以把点连成线汇成面。举个例子，当你需要给刚做过的某个项目写一份总结文档，为了避免受众一脸懵逼，你不得不去想：</p>
+<ul>
+<li>我做这个项目是为了解决什么问题？</li>
+<li>在整个系统之中我的项目起到了什么作用？</li>
+<li>业界其他领先团队在面对这个问题时会采用什么方案？</li>
+<li>我的方案与他们对比有什么优势？</li>
+<li>未来有哪些潜在的可迭代优化的方向？</li>
+</ul>
+<p>而当你把这些问题都想明白写透彻，就等于干了比你高一到两个技术级别的同事的活，自然比原来只精通那一亩三分地的细节要强得多。<strong>写作，首先是一条成长之道</strong>。</p>
+<h2 id="写作是驱动学习的有效方式"><span id="写作是驱动学习的有效方式"><strong>写作是驱动学习的有效方式</strong></span></h2><p>写作无疑是需要大量知识沉淀的，如果不具备相关领域的丰富知识，很难写出真正有干货的文章。所以，写作是一个逼着自己去深入了解领域知识的好办法，普遍意义的学习仅仅只是获取信息而已，没有经过实践或其他方式的转化，知识不过是暂存在你大脑的某个内存空间，是一个没有被充分训练的特征值，而写作就是性价比最高的知识转化方式。举个我自己的例子，刚毕业时因为工作中要使用一种算法，必须在短时间内精通这种算法的每一个细节，于是遍览了所有经搜索引擎可找到的优质资料，后来觉得单凭阅读的学习效率太低了，索性开了个专栏连着写了三篇文章介绍自己对该种算法的理解，三年之后回头看竟然在谷歌的索引排序都不低。学习的方式有许多种，靠阅读是一种，靠实践是一种，靠交流是一种，但都不如靠写作来得有效，因为只有能把一个东西成体系的表达出来，才真的算融会贯通。<strong>写作，其次是一条学习之道</strong>。</p>
+<h2 id="写作是扩大沟通范围的有效方式"><span id="写作是扩大沟通范围的有效方式"><strong>写作是扩大沟通范围的有效方式</strong></span></h2><p>除了上台演讲，大部分场景技术人的沟通范围是有限的，而写作等于创造了一个与理论上人数没有上限的受众沟通的机会，你有机会让更多人了解你的思想、框架、技能与方法。而除开写作之外的其他方式，几乎都很难如此系统的表达自我。麦肯锡有一条著名的<a href="https://www.zhihu.com/search?q=30%E7%A7%92%E7%94%B5%E6%A2%AF%E7%90%86%E8%AE%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">30秒电梯理论</a>，意为如果不能在电梯从1层到30层的运行过程中把事情表述清楚，对方将不会再有兴趣与你就此事交流，虽然这是一个典型的商业场景，却也体现了口头表达的困境，口头表达必须集中火力讲一两个点、必须投对方所好创造共同话题、必须有趣精彩引人入胜，而写作却不必如此，哪怕是一篇枯燥乏味的技术文档，也大可郑重其事的当做在创造一个我的世界。有这么一类技术人，他们在现实生活中木讷寡言，开个玩笑都会老脸一红，写起东西来却洋洋洒洒眼界宏大光彩照人，丝毫不影响圈粉无数。<strong>写作，最后是一条沟通之道</strong>。</p>
+<p>写到这儿估计有小伙伴要举手了：我也知道写作有诸多好处，然而一来工作忙成狗，二来无从下笔，怎么破？</p>
+<p>万事开头难，然后中间难结尾难。上中学时就为了作文凑够800字生不如死，现在猝不及防都要*<a href="https://www.zhihu.com/search?q=996.icu&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">996.icu</a>*了，晚上下班还得挑灯夜战写东西，这简直要老命了。而且写什么更是想破了脑袋，写点技术怕写出来贻笑大方，写点生活更怕平淡如水写成碎碎念，该写什么？我太「南」了。</p>
+<p>别怕，都是这么过来的。送上三个锦囊，给即将开始写作的技术人。</p>
+<h2 id="从你熟悉的领域开始或者多写技术或工作文档"><span id="从你熟悉的领域开始或者多写技术或工作文档"><strong>从你熟悉的领域开始，或者多写技术或工作文档</strong></span></h2><p>我们生活在一个差异性越来越重要的世界。哪怕一个等级超高的技术天才，也难以成为全部领域的专才。反过来想，哪怕是遇到一个阿里P9以上的大牛，总有一些你懂他不懂的东西，也许是一个小众的配置文件系统，也许是一种冷门到被人遗忘的算法，也许是搞定某个业务专项的trick。当你开始分享时，不妨从这些你所熟悉的领域开始，因为你就是这个领域无可争议的王者段位选手，能有充分的自信把文章写「顺」，继而找到文字表达这项技艺的感觉。自信与感觉，对刚开始写作的技术人而言至关重要。</p>
+<p>假如你现在扫描了一遍自己的大脑，然而没有发现上面所说的特别擅长的领域，那么我会建议你由<a href="https://www.zhihu.com/search?q=%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:867707748%7D">技术文档</a>或者工作文档开始。文档就像造火箭盖楼房的设计草图，重要性不言而喻，但我接触的许多程序员恰恰是很排斥写文档的，宁愿写多几行代码。其实文档是一个帮助你从作者思维升级到读者思维的好工具，因为文档是写给小白看的，怎么让一个小白顺着你的文档跑起来，哪些步骤要走起来，哪些细节需要重点标识，其实就是一项琢磨受众需要什么的练习。</p>
+<h2 id="从小范围的分享开始像写代码一样的最佳实践"><span id="从小范围的分享开始像写代码一样的最佳实践"><strong>从小范围的分享开始，像写代码一样的最佳实践</strong></span></h2><p>放心，怕写不好是所有的人刚起步时的共同担心。所以我们可以从身边的同事开始，比如做一个小组级别的文档分享，然后慢慢到部门内、公司内的文档分享，等自己更有把握了，再扩大到不熟悉的受众。循序渐进有助于培养写作的自信，也更便于收集身边人的反馈，通过小范围的试错迭代内容。一旦验证文章能对读者产生帮助，就可以进一步扩大传播，无论公众号、知乎还是技术博客都是一个适合优质内容沉淀和传播的选项（<em>当然，文章不可包含不宜公开的内容</em>）。</p>
+<p>写作和编程的最佳实践是极其相似的，首先在纸上列一个简要的提纲，想明白自己期望表达的重点内容，其次开始写初稿，这个初稿遵循的原则是先完成再完美，把想表达的内容顺畅传递出来就好了，最后不可少的是花一点时间重构：也许是调整段落之间的顺序，也许是为某个不够接地气的部分增加case，也许是修改表达的措辞细节，与软件的重构相似，文章的重构消除了「坏味道」，提高了文章的可读性。</p>
+<h2 id="定时定量写作排除社交杂音的干扰"><span id="定时定量写作排除社交杂音的干扰"><strong>定时定量写作，排除社交杂音的干扰</strong></span></h2><p>我有一个习惯，是用苹果的日历记录自己过往的时间耗费，反正花在「工作」类目上的时间是绝对超过<code>12 * 6</code>的，但如果每天回到家还没觉得筋疲力尽，就会继续掏出笔记本写点东西。得益于文档同步工具，我也会不定期在上下班通勤的过程中利用手机接着写（<em>移动端写作的速度并不见得慢</em>）。然而，我建议所有刚开始写作的技术人，先给自己制定一个写作的计划，再给自己制定一个写作的<code>KPI</code>，比如工作日每天写200字、节假日每天写500字之类的，由易到难，如果害怕坚持不住的，可以定一个<code>写作时间</code>，和写代码一样写作也是需要沉浸的，把手机调到<code>勿扰模式</code>并反扣在桌面，关闭一切社交客户端与网页，全身心投入其中。只要平衡得好，写作并不为繁重的业务所累，反而会对工作有正向的推动，因为提升了思考与总结的能力。作家冯唐就是在一路晋升麦肯锡合伙人的几年间，在每周80小时+的工作时长之外，完成了6本小说、2本杂文集的出版。</p>
+<p>大学时有幸成为一个知名企业家的弟子，曾有一次面谈，聊到他对年轻人的要求，总结为六个字：<strong>能做、会说、善写</strong>。我想对技术人也是如此，期待这篇小文章激发到一些人的写作潜力，为技术圈创造更多的知识沉淀。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>端口被莫名进程占用怎么办？</title>
+    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
+<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
+<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
+<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
+<p>查询到被占用端口号（10000）的进程</p>
+<p>netstat常见参数</p>
+<ul>
+<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
+</ul>
+<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
+<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
+<p>经过此过程、程序可以正常启动</p>
+]]></content>
+  </entry>
+  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
@@ -692,15 +692,10 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
-  </entry>
-  <entry>
     <title>影音播放</title>
     <url>/player/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="aplayer演示"><span id="aplayer演示">aplayer演示：</span></h3>
-    <div id="aplayer-wBBireRe" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-RQWSbNDR" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 
 <br>
 
@@ -713,5 +708,10 @@
 <br>
 
 <h3 id="acfun"><span id="acfun">acfun：</span></h3><iframe src="https://www.acfun.cn/player/ac12945786" style="width:100%;height:500px;min-width:375px;min-height:200px" id="ACPlayer-re" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
 </search>
