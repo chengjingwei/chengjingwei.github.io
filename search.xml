@@ -259,7 +259,7 @@
 <p>2.返回用户主目录</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~</span><br></pre></td></tr></table></figure>
 
-<h2 id><span id></span></h2><h2 id="3pwd命令"><span id="3pwd命令">3.pwd命令</span></h2><p>查看当前目录的地址</p>
+<h2 id="3pwd命令"><span id="3pwd命令">3.pwd命令</span></h2><p>查看当前目录的地址</p>
 <h3 id="常用参数"><span id="常用参数">常用参数</span></h3><ul>
 <li>-p：显示实际物理路径，而不是使用链接（link）路径</li>
 <li>-L:当目录为链接路径时，显示链接路径</li>
@@ -349,8 +349,73 @@
 
 
 
-<p>​</p>
-]]></content>
+<h2 id="9netstat命令"><span id="9netstat命令">9.netstat命令</span></h2><p>Netstat是控制台命令,是一个监控TCP&#x2F;IP网络的非常有用的工具，它可以显示路由表、实际的网络连接以及每一个网络接口设备的状态信息。Netstat用于显示与IP、TCP、UDP和ICMP协议相关的统计数据，一般用于检验本机各端口的网络连接情况。</p>
+<p>二、输出信息描述<br>执行netstat后输出如下：</p>
+<figure class="highlight tap"><table><tr><td class="code"><pre><span class="line">[root@sy-suz-srv51 ~]<span class="comment"># netstat</span></span><br><span class="line">Active Internet connections (w/o servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.sui:sun-sr-https k8sdev.suiyi.com.:34880 SYN_RECV</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.c:2379 10.1.62.21:47910        ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.c:2379 k8sdev.suiyi.com.:37790 ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>sy-suz-srv:pcsync-https 10.1.62.162:49200       ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.:52866 k8sdev.sui:sun-sr-https ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.:37728 k8sdev.suiyi.com.c:2379 ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.sui:sun-sr-https k8sdev.suiyi.com.:52852 ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.sui:sun-sr-https 10.1.62.162:32841       ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>sy-suz-srv:pcsync-https sy-suz-srv51:60094      ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>localhost:webcache      localhost:40136         ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.:35466 10.1.62.21:sun-sr-https ESTABLISHED</span><br><span class="line">tcp       <span class="number"> 0 </span>    <span class="number"> 0 </span>k8sdev.suiyi.com.:34358 10.1.62.21:sun-sr-https ESTABLISHED</span><br><span class="line">Active UNIX domain sockets (w/o servers)</span><br><span class="line">Proto RefCnt Flags       Type       State         I-Node   Path</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         DGRAM                   <span class="number"> 18442 </span>   /run/systemd/notify</span><br><span class="line">unix <span class="number"> 2 </span>     [ ]         DGRAM                   <span class="number"> 18444 </span>   /run/systemd/cgroups-agent</span><br><span class="line">unix <span class="number"> 2 </span>     [ ]         DGRAM                   <span class="number"> 23822 </span>   /var/run/chrony/chronyd.sock</span><br><span class="line">unix <span class="number"> 8 </span>     [ ]         DGRAM                   <span class="number"> 18455 </span>   /run/systemd/journal/socket</span><br><span class="line">unix <span class="number"> 18 </span>    [ ]         DGRAM                   <span class="number"> 18457 </span>   /dev/log</span><br><span class="line">unix <span class="number"> 2 </span>     [ ]         DGRAM                   <span class="number"> 14151 </span>   /var/run/nscd/socket</span><br><span class="line">unix <span class="number"> 2 </span>     [ ]         DGRAM                   <span class="number"> 584 </span>     /run/systemd/shutdownd</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 124439388 </span>/run/dbus/system_bus_socket</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 42312 </span>   /run/systemd/journal/stdout</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED     39909</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED     21675</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED     47538</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 124585242 </span>/var/run/docker/containerd/docker-containerd.sock</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED     21658</span><br><span class="line">unix <span class="number"> 2 </span>     [ ]         STREAM     CONNECTED     30160</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 33750 </span>   /run/systemd/journal/stdout</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 124614293 </span>@/containerd-shim/moby/c44e49ee0f86d8a4109afb176701795c64f44655abb1861275bbd3b2a9f76394/shim.sock</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 124609611 </span>@/containerd-shim/moby/a736ba153c07f0bbf099ae1a1069530e35bfa28ae93f8f235d6c35a6c5ed9ce7/shim.sock</span><br><span class="line">unix <span class="number"> 3 </span>     [ ]         STREAM     CONNECTED    <span class="number"> 124601653 </span>@/containerd-shim/moby/20d3fd59d03455d45b1da2636fca25d0edd79dac1947c17045a797eb8506157c/shim.sock</span><br></pre></td></tr></table></figure>
+
+<p>netstat的输出结果可以分为两个部分</p>
+<p>1、Active Internet connections 有源TCP连接，其中”Recv-Q”和”Send-Q”指接收队列和发送队列。这些数字一般都应该是0。如果不是则表示软件包正在队列中堆积。这种情况只能在非常少的情况见到。</p>
+<p>2、Active UNIX domain sockets 有源Unix域套接口(和网络套接字一样，但是只能用于本机通信，性能可以提高一倍)。</p>
+<p>列名解释：</p>
+<p>Proto：显示连接使用的协议。</p>
+<p>RefCnt：表示连接到本套接口上的进程号。</p>
+<p>Types：显示套接口的类型。</p>
+<p>State：显示套接口当前的状态。</p>
+<p>Path：表示连接到套接口的其它进程使用的路径名。</p>
+<p>三、netstat常见参数<br>-a (all) 显示所有选项，默认不显示LISTEN相关。<br>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
+<p>-p 显示建立相关链接的程序名<br>-r 显示路由信息，路由表<br>-e 显示扩展信息，例如uid等<br>-s 按各个协议进行统计<br>-c 每隔一个固定时间，执行该netstat命令。</p>
+<p>LISTEN和LISTENING的状态只有用-a或者-l才能看到。</p>
+<p>四、netstat网络状态详解<br>一个正常的TCP连接，都会有三个阶段:1、TCP三次握手;2、数据传送;3、TCP四次挥手</p>
+<p>如图：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000022686711" alt="img"></p>
+<p>SYN：(同步序列编号,Synchronize Sequence Numbers)该标志仅在三次握手建立TCP连接时有效。表示一个新的TCP连接请求。</p>
+<p>ACK：(确认编号,Acknowledgement Number)是对TCP请求的确认标志,同时提示对端系统已经成功接收所有数据。</p>
+<p>FIN：(结束标志,FINish)用来结束一个TCP回话.但对应端口仍处于开放状态,准备接收后续数据。</p>
+<p>LISTEN：首先服务端需要打开一个socket进行监听，状态为LISTEN， The socket is listening for incoming connections. 侦听来自远方TCP端口的连接请求 。</p>
+<p>SYN_SENT：客户端通过应用程序调用connect进行active open.于是客户端tcp发送一个SYN以请求建立一个连接，之后状态置为SYN_SENT，The socket is actively attempting to establish a connection. 在发送连接请求后等待匹配的连接请求。</p>
+<p>SYN_RECV：服务端应发出ACK确认客户端的SYN，同时自己向客户端发送一个SYN， 之后状态置为SYN_RECV ，</p>
+<p>A connection request has been received from the network. 在收到和发送一个连接请求后等待对连接请求的确认 。</p>
+<p>ESTABLISHED：代表一个打开的连接，双方可以进行或已经在数据交互了， The socket has an established connection. 代表一个打开的连接，数据可以传送给用户。</p>
+<p>FIN_WAIT1：主动关闭(active close)端应用程序调用close，于是其TCP发出FIN请求主动关闭连接，之后进入FIN_WAIT1状态。 The socket is closed, and the connection is shutting down. 等待远程TCP的连接中断请求，或先前的连接中断请求的确认。</p>
+<p>CLOSE_WAIT：被动关闭(passive close)端TCP接到FIN后，就发出ACK以回应FIN请求(它的接收也作为文件结束符传递给上层应用程序),并进入CLOSE_WAIT， The remote end has shut down, waiting for the socket to close. 等待从本地用户发来的连接中断请求 。</p>
+<p>FIN_WAIT2：主动关闭端接到ACK后，就进入了FIN-WAIT-2 ， Connection is closed, and the socket is waiting for a shutdown from the remote end. 从远程TCP等待连接中断请求。</p>
+<p>LAST_ACK：被动关闭端一段时间后，接收到文件结束符的应用程序将调用CLOSE关闭连接。这导致它的TCP也发送一个 FIN,等待对方的ACK.就进入了LAST-ACK ， The remote end has shut down, and the socket is closed. Waiting for acknowledgement. 等待原来发向远程TCP的连接中断请求的确认。</p>
+<p>TIME_WAIT：在主动关闭端接收到FIN后，TCP就发送ACK包，并进入TIME-WAIT状态。 The socket is waiting after close to handle packets still in the network.等待足够的时间以确保远程TCP接收到连接中断请求的确认。</p>
+<p>CLOSING：比较少见， Both sockets are shut down but we still don’t have all our data sent. 等待远程TCP对连接中断的确认。</p>
+<p>CLOSED： 被动关闭端在接受到ACK包后，就进入了closed的状态。连接结束， The socket is not being used. 没有任何连接状态。</p>
+<p>TIME_WAIT状态的形成只发生在主动关闭连接的一方。<br>主动关闭方在接收到被动关闭方的FIN请求后，发送成功给对方一个ACK后,将自己的状态由FIN_WAIT2修改为TIME_WAIT，而必须再等2倍 的MSL(Maximum Segment Lifetime,MSL是一个数据报在internetwork中能存在的时间)时间之后双方才能把状态 都改为CLOSED以关闭连接。目前RHEL里保持TIME_WAIT状态的时间为60秒。</p>
+<p>Linux的相关keepalive参数<br>1、tcp_keepalive_time – INTEGER</p>
+<p>How often TCP sends out keepalive messages when keepalive is enabled.（Default: 2hours）</p>
+<p>一个连接需要TCP开始发送keepalive探测数据包之前的空闲时间，以秒为单位。</p>
+<p>2、tcp_keepalive_probes – INTEGER</p>
+<p>How many keepalive probes TCP sends out, until it decides that the connection is broken. （Default value: 9）</p>
+<p>发送TCP keepalive探测数据包的最大数量，默认是9.如果发送9个keepalive探测包后对端仍然没有响应，就关掉这个连接。</p>
+<p>3、tcp_keepalive_intvl – INTEGER</p>
+<p>How frequently the probes are send out. Multiplied by tcp_keepalive_probes it is time to kill not responding connection,<br>after probes started. Default value: 75sec i.e. connection will be aborted after ~11 minutes of retries.</p>
+<p>发送两个TCP keepalive探测数据包的间隔时间，默认是75秒。</p>
+<p>五、常用netstat相关命令<br>1、列出所有端口 #netstat -a</p>
+<p>2、列出所有 tcp 端口 #netstat -at</p>
+<p>3、列出所有 udp 端口 #netstat -au</p>
+<p>4、只显示监听端口 #netstat -l</p>
+<p>5、只列出所有监听 tcp 端口 #netstat -lt</p>
+<p>6、只列出所有监听 udp 端口 #netstat -lu</p>
+<p>7、列出所有监听 UNIX 端口 #netstat -lx</p>
+<p>8、显示所有端口的统计信息 #netstat -s</p>
+<p>9、显示 TCP 或 UDP 端口的统计信息 #netstat -st 或 -su</p>
+<p>10、 输出中显示 PID 和进程名称 #netstat -p</p>
+<p>11、netstat 输出中不显示主机，端口和用户名 (host, port or user)</p>
+<p>当你不想让主机，端口和用户名显示，使用 netstat -n。将会使用数字代替那些名称。</p>
+<p>同样可以加速输出，因为不用进行比对查询。</p>
+<h3 id="netstat-an"><span id="netstat-an">netstat -an</span></h3><p>如果只是不想让这三个名称中的一个被显示，使用以下命令</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"># netsat -<span class="selector-tag">a</span> <span class="attr">--numeric-ports</span></span><br><span class="line"># netsat -<span class="selector-tag">a</span> <span class="attr">--numeric-hosts</span></span><br><span class="line"># netsat -<span class="selector-tag">a</span> <span class="attr">--numeric-users</span></span><br></pre></td></tr></table></figure>
+
+<p>12、持续输出 netstat 信息 #netstat -c</p>
+<p>13、找出程序运行的端口 #netstat -ap | grep ‘80’</p>
+<p>14、查看连接某服务端口最多的的IP地址（前20个）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="language-bash">netstat -nat | grep <span class="string">&quot;10.1.62.23:443&quot;</span> |awk <span class="string">&#x27;&#123;print $5&#125;&#x27;</span>|awk -F: <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>|<span class="built_in">sort</span>|<span class="built_in">uniq</span> -c|<span class="built_in">sort</span> -nr|<span class="built_in">head</span> -20</span></span><br><span class="line">15、TCP各种状态列表 </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">netstat -nat |awk <span class="string">&#x27;&#123;print $6&#125;&#x27;</span></span></span><br><span class="line"></span><br><span class="line">统计数量</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">netstat -nat |awk <span class="string">&#x27;&#123;print $6&#125;&#x27;</span>|<span class="built_in">sort</span>|<span class="built_in">uniq</span> -c</span></span><br><span class="line"></span><br><span class="line">排序</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">netstat -nat |awk <span class="string">&#x27;&#123;print $6&#125;&#x27;</span>|<span class="built_in">sort</span>|<span class="built_in">uniq</span> -c|<span class="built_in">sort</span> -rn</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="language-bash">netstat -n | awk <span class="string">&#x27;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&#x27;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>16、直接统计tcp数量监听的数量</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="language-bash">netstat -ant | <span class="built_in">wc</span> -l</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>
