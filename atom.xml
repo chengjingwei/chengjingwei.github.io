@@ -6,7 +6,7 @@
   <link href="https://chengjingwei.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://chengjingwei.gitee.io/"/>
-  <updated>2022-03-12T16:04:42.604Z</updated>
+  <updated>2022-03-13T13:05:44.371Z</updated>
   <id>https://chengjingwei.gitee.io/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>linux的基本知识</title>
-    <link href="https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
-    <id>https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</id>
+    <title></title>
+    <link href="https://chengjingwei.gitee.io/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/</id>
+    <published>2022-03-13T13:05:44.371Z</published>
+    <updated>2022-03-13T13:05:44.371Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://chengjingwei.gitee.io/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2022-03-13T11:23:12.881Z</published>
+    <updated>2022-03-13T13:03:14.467Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux的基本知识（一）</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2022-03-12T06:13:52.664Z</published>
-    <updated>2022-03-12T16:04:42.604Z</updated>
+    <updated>2022-03-13T11:25:07.193Z</updated>
     
     
       
@@ -113,7 +155,7 @@
     <link href="https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"/>
     <id>https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</id>
     <published>2022-03-11T03:04:20.672Z</published>
-    <updated>2022-03-12T12:49:06.391Z</updated>
+    <updated>2022-03-13T12:06:31.896Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;

@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>IP地址的构成、相同网段、网络掩码 |  快乐星球</title>
+      <title> 快乐星球</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/ayer-side.svg" />
@@ -57,38 +57,24 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-IP地址的构成、相同网段、网络掩码"
+  id="post-linux基本知识（二）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  IP地址的构成、相同网段、网络掩码
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
-      <a href="/2022/03/11/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9E%84%E6%88%90%E3%80%81%E7%9B%B8%E5%90%8C%E7%BD%91%E6%AE%B5%E3%80%81%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/" class="article-date">
-  <time datetime="2022-03-11T09:33:30.366Z" itemprop="datePublished">2022-03-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-  </div>
-  
+      <a href="/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2022-03-13T11:23:12.881Z" itemprop="datePublished">2022-03-13</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.4k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -104,62 +90,57 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><strong>看完这篇文章希望可以解答的问题是：</strong></p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、<span class="built_in">IP</span>地址的构成</span><br><span class="line"><span class="number">2</span>、什么是网络掩码？</span><br><span class="line"><span class="number">3</span>、如何才算是处于相同网段的通信？</span><br></pre></td></tr></table></figure>
+  <hr>
+<h2 id="titlelinux基本知识二-tagslinux"><span id="titlelinux基本知识二-tagslinux">‘title:linux基本知识（二） tags:linux’</span></h2><h2 id="1vim编辑器"><span id="1vim编辑器">1.vim编辑器</span></h2><p>所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。但是目前我们使用比较多的是 vim 编辑器。vim 具有程序编辑的能力，可以主动<strong>的以字体颜色辨别语法的正确性</strong>，方便程序设计</p>
+<p><img src="https://s2.loli.net/2022/03/13/P1meIBDhyu34Aln.gif" alt="img"></p>
+<p>基本上 vi&#x2F;vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）</strong>和<strong>底线命令模式（Last line mode）</strong>。</p>
+<p><img src="https://s2.loli.net/2022/03/13/Sg3hmeMPwUliW75.png" alt="img"></p>
+<h3 id="命令模式"><span id="命令模式">命令模式：</span></h3><p>用户刚刚启动 vi&#x2F;vim，便进入了命令模式。</p>
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+<p>以下是常用的几个命令：</p>
+<ul>
+<li><strong>i</strong> 切换到输入模式，以输入字符。</li>
+<li><strong>x</strong> 删除当前光标所在处的字符。</li>
+<li><strong>:</strong> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul>
+<p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+<h3 id="输入模式"><span id="输入模式">输入模式</span></h3><p>在命令模式下按下i就进入了输入模式。</p>
+<p>在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+<li><strong>ENTER</strong>，回车键，换行</li>
+<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+<li><strong>方向键</strong>，在文本中移动光标</li>
+<li><strong>HOME</strong>&#x2F;<strong>END</strong>，移动光标到行首&#x2F;行尾</li>
+<li><strong>Page Up</strong>&#x2F;<strong>Page Down</strong>，上&#x2F;下翻页</li>
+<li><strong>Insert</strong>，切换光标为输入&#x2F;替换模式，光标将变成竖线&#x2F;下划线</li>
+<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul>
+<h2 id="2linux账号和密码文件"><span id="2linux账号和密码文件">2.Linux账号和密码文件</span></h2><p>Linux系统中，所有用户（包括系统管理员）的账号和密码都可以在&#x2F;etc&#x2F;passwd和&#x2F;etc&#x2F;<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=shadow&spm=1001.2101.3001.7020">shadow</a>这两个文件中找到，（用户和密码就放在文件中，不怕被其他人看的或者修改吗？&#x2F;etc&#x2F;passwd只有系统管理员才可以修改的，其他用户可以查看，&#x2F;etc&#x2F;shadow其他用户看不了）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Python-3.5.0]# vim /etc/shadow</span><br><span class="line">[root@localhost Python-3.5.0]# ls -al /etc/passwd /etc/shadow</span><br><span class="line">-rw-r--r--. 1 root root 2250 12月 14 00:17 /etc/passwd</span><br><span class="line">----------. 1 root root 1263 12月 14 00:17 /etc/shadow</span><br></pre></td></tr></table></figure>
 
-<p><strong>看懂所需要的门槛是</strong>：二进制换算</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">计算机之间的通信，可以分为相同网段的通信和不同网段的通信。那什么是相同网段和不同网段呢？不管三七二十一，先画个图，感受一下。</span><br></pre></td></tr></table></figure>
+<h3 id="x2fetcx2fpasswd"><span id="x2fetcx2fpasswd">&#x2F;etc&#x2F;passwd</span></h3><p>通过指令 vi &#x2F;etc&#x2F;passwd 打开passwd文件来看看，下面列举部分内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/bin/sh</span><br><span class="line">bin:x:2:2:bin:/bin:/bin/sh</span><br><span class="line">sys:x:3:3:sys:/dev:/bin/sh</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/03/11/UE61DOpI934ztyF.jpg" alt="download.png"><br>员工A和B就属于相同网段，A与C、B与C就是不同网段。在图中我们可以看到有IP地址和网关两个玩意儿，他们究竟是什么呢？为什么又能来区分相同网段和不同网段？</p>
-<p>在回答之前，先介绍一下什么是IP地址：</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">IP</span>地址相当于网络中的身份唯一认证ID，跟身份证ID一样是唯一的，唯一不同的是，<span class="built_in">IP</span>地址是可以变的，只是不管怎么变，都将会是唯一的。Mac地址的性质更加接近于身份证ID，它是设备的唯一ID。</span><br></pre></td></tr></table></figure>
+<p>上面每一行都代表一个用户，每一行又通过[:]分为七个部分。</p>
+<p>　　1、账号名称<br>　　2、原先用来保存密码的，现在密码都放在&#x2F;etc&#x2F;shadow中，所以这里显示x<br>　　3、UID，也就是使用者ID。默认的系统管理员的UID为0，我们添加用户的时候最好使用1000以上的UID，1-1000范围的UID最好保留给系统用。<br>　　4、GID，也就是群组ID<br>　　5、关于账号的一些说明信息（暂时可以忽略）<br>　　6、账号的家目录，家目录就是你登陆系统后默认的那个目录<br>　　7、账号使用的shell</p>
+<h3 id="x2fetcx2fshadow"><span id="x2fetcx2fshadow">&#x2F;etc&#x2F;shadow</span></h3><p> vi &#x2F;etc&#x2F;shadow</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root:!:15324:0:99999:7:::</span><br><span class="line">daemon:*:15259:0:99999:7:::</span><br><span class="line">bin:*:15259:0:99999:7:::</span><br><span class="line">letuknowit:$1$cPf/cIvr$sCws95uSip2ljTK052DDB.:15400:5:60:7:2:15490:</span><br></pre></td></tr></table></figure>
 
-<p><strong>IP地址 &#x3D; 网络地址 + 主机地址</strong></p>
-<p>IP地址目前普遍是IPv4版本，由32位二进制数分成4组，每组1字节Byte（8比特Bit）组成。分别用十进制表示再用圆点隔开，就是现在的172.1.1.10。</p>
-<p><strong>什么是网络地址和主机地址？图中172.1.1.10&#x2F;24的24又指的是什么？</strong><br>说到这里不得不解释一下什么是子网掩码(又称网络掩码)</p>
-<p>24指的是子网掩码的长度，用子网掩码来表示，就是：255.255.255.0。它的作用主要是用来区分网络地址和主机地址。</p>
-<p>上面我们说了，员工A和B就属于相同网段。而归根究底是因为他们有相同的网络号，偏偏子网掩码又是用来告诉我们他们是真的有着相同的网络号的。</p>
-<p>255.255.255.0用二进制表示，则是：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
-
-<p>172.1.1.10用二进制表示，则是：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
-
-<p>连续24个1，也就是172.1.1.10&#x2F;24中24的由来。</p>
-<p>通过按位与最终得到网段号：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
-
-<p>按位与&#x2F;&amp; : 1 &amp; 1 &#x3D;&gt; 1 、 1 &amp; 0 &#x3D;&gt; 0 、 0 &amp; 0 &#x3D;&gt; 0<br><img src="https://s2.loli.net/2022/03/11/yLrwR3f2sN1DVdx.png" alt="download \(1\).png"></p>
-<p>所以172.1.1.10中剩下的10(00001010)即是主机号，172.1.1是网段号，那回到上面的员工A、B、C中：<br>    员工A（172.1.1.10&#x2F;24）的网段号：172.1.1<br>    员工B（172.1.1.11&#x2F;24）的网段号：172.1.1<br>    员工C（172.1.2.10&#x2F;24）的网段号：172.1.2<br>    显然A、B在同一个网段里</p>
-<p>是不是看上去很容易了，那我们学以致用，<strong>现在有一个IP地址：172.1.1.10&#x2F;25，请问，这里的网络位、主机位是多少？主机数是多少？网络地址和广播地址是多少？网络掩码是多少？</strong></p>
-<p>解题步骤：<br>1、首先我们将IP地址转为32位二进制：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
-
-<p>2、从地址中知道子网掩码的长度是25，总长为32Bit，那我们可以写上25个连续的1，剩下的补上0，得到：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">10000000</span> (<span class="number">255.255.255.128</span>)</span><br></pre></td></tr></table></figure>
-
-<p>按位与操作后，可以拿到网络位：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">1</span>xxxxxxx</span><br></pre></td></tr></table></figure>
-
-<p>3、那网络地址和广播地址是什么呢，我们将上面的7个x，改为0，得到的就是网络地址（网络号），全部改为1，得到的就是广播地址。所以：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">网络地址：<span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">10000000</span></span><br><span class="line">十进制：<span class="number">172.1.1.128</span></span><br><span class="line">广播地址: <span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">11111111</span></span><br><span class="line">十进制：<span class="number">172.1.1.255</span></span><br></pre></td></tr></table></figure>
-
-<p>4、那么我们的主机位有多少呢？</p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">172.1.1.128</span> ~<span class="number">172</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">255</span> 之间（抛开网络地址和广播地址）一共可以有<span class="number">126</span>个主机位。</span><br></pre></td></tr></table></figure>
-
-<p>当然这样算太累了，用一个比较简便的算法，<strong>IP地址总长 32 - 子网掩码长度 25 &#x3D; 主机位 7，那么根据排列组合主机位 &#x3D; 2 ^ 7 - 2 &#x3D; 126</strong>，减2是减去广播地址以及网络地址。</p>
-<p>算完上面的题目，是不是感觉清晰了很多，那问题又来了？<strong>255.255.255.198这个掩码又是不是合法呢？</strong></p>
-<p>我们上面的掩码长度，都是连续的1，可 255.255.255.198转为二进制是：11111111.11111111.11111111.11000110</p>
-<p>不是连续的1了，很多人认为，这样的子网掩码是不合法的。这是错误的理解，IP协议中给子网掩码提供了一定得灵活性，允许子网掩码中的0和1不连续，但是这样的子网掩码给分配主机以及找到相同网段都造成了一定的难度。市面上也只有极少路由器支持在子网中这样使用。所以实际应用中大多都是采用上述方式。</p>
-<p>当我们的企业、公司去申请一个IP地址时，实际上拿到的是网络号，通过网络的性质以及规模，由自己的企业去自行分配主机号。</p>
-<p>当然，网络号自然是要划分三六九等的，因为网络的规模差异比较大、而我们的IP资源有限，根据网络号和主机地址来分，主要分为A、B、C三类和特殊地址D、E（可以粗略了解，传送门：<a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=fReILbGBAK25qpXGAwKzzQ==.nx8VGSwf8h9QAo6De4PXQhTeF6ZCQOzmX6D60jJ+e1pt3OiOfArjmmvC0WyqNP++">https://blog.51cto.com/huchina/2159073</a>）</p>
-<p>至此，文章开头的问题，应该是有所解答了。</p>
+<p>这里也是由[:]来进行分割，但是这里一共分出来九个栏目，每个栏目的解释如下：</p>
+<p>　　1、账户名称（密码需要与账户对应的嘛）<br>　　2、加密后的密码（总不能学CSDN放明文密码，是吧），如果这一栏的第一个字符为!或者*的话，说明这是一个不能登录的账户，从上面可以看出，ubuntu默认的就不启用root账户。<br>　　3、最近改动密码的日期（不是日期吗，咋是一堆数字，别急，这个是从1970年1月1日算起的总的天数）。那怎么才能知道今天距1970年1月1日有多少天呢？很简单，你改下密码，然后看下这个栏目中的数字是多少就可以了！<br>　　4、密码不可被变更的天数：设置了这个值，则表示从变更密码的日期算起，多少天内无法再次修改密码，如果是0的话，则没有限制<br>　　5、密码需要重新变更的天数：密码经常更换才能保证安全，为了提醒某些经常不更换密码的用户，可以设置一个天数，强制让用户更换密码，也就是说该用户的密码会在多少天后过期，如果为99999则没有限制<br>　　6、密码过期预警天数：如果在5中设置了密码需要重新变更的天数，则会在密码过期的前多少天进行提醒，提示用户其密码将在多少天后过期<br>　　7、密码过期的宽恕时间：如果在5中设置的日期过后，用户仍然没有修改密码，则该用户还可以继续使用的天数<br>　　8、账号失效日期，过了这个日期账号就不能用了<br>　　9、保留的</p>
+<p>以上面最后用户letuknowit为例（15400对应的日期为2012年3月1日），其保护如下信息：</p>
+<p>　　3、用户letuknowit最近一次修改密码的日期是2012年3月1日，<br>　　4、在2012年3月6日之前不能再改动密码了，<br>　　5、在2012-3-1到2012-4-29期间letuknowit需要更改密码，<br>　　6、在2012-4-29之前的7天，letuknowit登陆系统的时候，系统会提示letuknowit其密码即将过期，<br>　　7、如果letuknowit一直到2012-4-29都没有修改密码，则其仍然可以继续使用该账户2天，2天后该账户将不可用<br>　　8、无论如何，到了2012年5月29日，该账号都将失效</p>
  
       <!-- reward -->
       
@@ -230,7 +211,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://chengjingwei.gitee.io/2022/03/11/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9E%84%E6%88%90%E3%80%81%E7%9B%B8%E5%90%8C%E7%BD%91%E6%AE%B5%E3%80%81%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://chengjingwei.gitee.io/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -241,19 +222,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-nav-link">
+      <a href="/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            linux的基本知识（一）
+            (no title)
           
         </div>
       </a>
     
     
-      <a href="/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/" class="article-nav-link">
+      <a href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">了解ip、子网掩码、网关、DNS</div>
+        <div class="article-nav-title">linux的基本知识（一）</div>
       </a>
     
   </nav>

@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>linux的基本知识 |  快乐星球</title>
+      <title>linux的基本知识（一） |  快乐星球</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/ayer-side.svg" />
@@ -57,7 +57,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-linux的基本知识"
+  id="post-linux的基本知识 （一）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -68,7 +68,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  linux的基本知识
+  linux的基本知识（一）
 </h1>
  
 
@@ -76,7 +76,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="article-date">
+      <a href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
   <time datetime="2022-03-12T06:13:52.664Z" itemprop="datePublished">2022-03-12</time>
 </a> 
   <div class="article-category">
@@ -138,8 +138,8 @@
 <p>4、输入rpm -ivh soft.version.rpm</p>
 <p>*<strong>*详细介绍：*</strong></p>
 <ol>
-<li>安装：<br>　　我只需简单的一句话，就可以说完。执行：<br>　　rpm –ivh rpm的软件包名<br>　  更高级的，请见下表：<br>　　rpm参数 参数说明<br>　　-i 安装软件<br>　　-t 测试安装，不是真的安装<br>　　-p 显示安装进度<br>　　-f 忽略任何错误<br>　　-U 升级安装<br>　　-v 检测套件是否正确安装<br>　　这些参数可以同时采用。更多的内容可以参考RPM的命令帮助。<ol start="2">
-<li>卸载：<br>　　我同样只需简单的一句话，就可以说完。执行：<br>　　rpm –e 软件名<br>　　不过要注意的是，后面使用的是软件名，而不是软件包名。例如，要安装software-1.2.3-1.i386.rpm这个包时，应执行：<br>　　rpm –ivh software-1.2.3-1.i386.rpm<br>　　而当卸载时，则应执行：<br>　　rpm –e software。<br>另外，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux&spm=1001.2101.3001.7020">Linux</a>中还提供了象GnoRPM、kpackage等图形化的RPM工具，使得整个过程会更加简单。</li>
+<li>安装：<br>　　我只需简单的一句话，就可以说完。执行：<br>   　　rpm –ivh rpm的软件包名<br>   　  更高级的，请见下表：<br>   　　rpm参数 参数说明<br>   　　-i 安装软件<br>   　　-t 测试安装，不是真的安装<br>   　　-p 显示安装进度<br>   　　-f 忽略任何错误<br>   　　-U 升级安装<br>   　　-v 检测套件是否正确安装<br>   　　这些参数可以同时采用。更多的内容可以参考RPM的命令帮助。<ol start="2">
+<li>卸载：<br>　　我同样只需简单的一句话，就可以说完。执行：<br>   　　rpm –e 软件名<br>   　　不过要注意的是，后面使用的是软件名，而不是软件包名。例如，要安装software-1.2.3-1.i386.rpm这个包时，应执行：<br>   　　rpm –ivh software-1.2.3-1.i386.rpm<br>   　　而当卸载时，则应执行：<br>   　　rpm –e software。<br>另外，在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Linux&spm=1001.2101.3001.7020">Linux</a>中还提供了象GnoRPM、kpackage等图形化的RPM工具，使得整个过程会更加简单。</li>
 </ol>
 </li>
 </ol>
@@ -149,7 +149,7 @@
 <p>4、输入dpkg -i soft.version.deb</p>
 <p><em><strong>*详细介绍：*</strong></em><br>    这是Debian Linux提供的一个包管理器，它与RPM十分类似。</p>
 <p>​    但由于RPM出现得更早，所以在各种版本的Linux都常见到。</p>
-<p>​    而debian的包管理器dpkg则只出现在Debina Linux中，其它Linux版本一般都没有。<br>　　1. 安装<br>　  dpkg –i deb的软件包名<br>　　如：dpkg –i software-1.2.3-1.deb<br>　　2. 卸载<br>　　 dpkg –e 软件名<br>　　如：dpkg –e software</p>
+<p>​    而debian的包管理器dpkg则只出现在Debina Linux中，其它Linux版本一般都没有。<br>　　1. 安装<br>　  dpkg –i deb的软件包名<br>　  　  　  　　如：dpkg –i software-1.2.3-1.deb<br>　　2. 卸载<br>　　 dpkg –e 软件名<br>　　 　　 　　 　　如：dpkg –e software</p>
 <p>​       3.查询：查询当前系统安装的软件包：</p>
 <p>​    dpkg –l ‘<em>软件包名</em>’</p>
 <p>​    如：dpkg –l ‘<em>software</em>‘</p>
@@ -163,8 +163,8 @@
 <p>8、make install</p>
 <p><em><strong>*详细介绍：*</strong></em></p>
 <ol>
-<li>安装：<br>　　整个安装过程可以分为以下几步：<br>　　1） 取得应用软件：通过下载、购买光盘的方法获得；<br>　　2）解压缩文件：一般tar包，都会再做一次压缩，如gzip、bz2等，所以你需要先解压。如果是最常见的gz格式，则可以执行：“tar –xvzf 软件包名”，就可以一步完成解压与解包工作。如果不是，则先用解压软件，再执行“tar –xvf 解压后的tar包”进行解包；<br>　　3） 阅读附带的INSTALL文件、README文件；<br>　　4） 执行“.&#x2F;configure”命令为编译做好准备；<br>　　5） 执行“make”命令进行软件编译；<br>　　6） 执行“make install”完成安装；<br>　　7） 执行“make clean”删除安装时产生的临时文件。<br>　　好了，到此大功告成。我们就可以运行应用程序了。但这时，有的读者就会问，我怎么执行呢？这也是一个Linux特色的问题。其实，一般来说， Linux的应用软件的可执行文件会存放在&#x2F;usr&#x2F;local&#x2F;bin目录下！不过这并不是“放四海皆准”的真理，最可靠的还是看这个软件的 INSTALL和README文件，一般都会有说明。<ol start="2">
-<li>卸载：<br>　　通常软件的开发者很少考虑到如何卸载自己的软件，而tar又仅是完成打包的工作，所以并没有提供良好的卸载方法。<br>　　那么是不是说就不能够卸载呢！其实也不是，有两个软件能够解决这个问题，那就是Kinstall和Kife，它们是tar包安装、卸载的黄金搭档。</li>
+<li>安装：<br>　　整个安装过程可以分为以下几步：<br>   　　1） 取得应用软件：通过下载、购买光盘的方法获得；<br>   　　2）解压缩文件：一般tar包，都会再做一次压缩，如gzip、bz2等，所以你需要先解压。如果是最常见的gz格式，则可以执行：“tar –xvzf 软件包名”，就可以一步完成解压与解包工作。如果不是，则先用解压软件，再执行“tar –xvf 解压后的tar包”进行解包；<br>   　　3） 阅读附带的INSTALL文件、README文件；<br>   　　4） 执行“.&#x2F;configure”命令为编译做好准备；<br>   　　5） 执行“make”命令进行软件编译；<br>   　　6） 执行“make install”完成安装；<br>   　　7） 执行“make clean”删除安装时产生的临时文件。<br>   　　好了，到此大功告成。我们就可以运行应用程序了。但这时，有的读者就会问，我怎么执行呢？这也是一个Linux特色的问题。其实，一般来说， Linux的应用软件的可执行文件会存放在&#x2F;usr&#x2F;local&#x2F;bin目录下！不过这并不是“放四海皆准”的真理，最可靠的还是看这个软件的 INSTALL和README文件，一般都会有说明。<ol start="2">
+<li>卸载：<br>　　通常软件的开发者很少考虑到如何卸载自己的软件，而tar又仅是完成打包的工作，所以并没有提供良好的卸载方法。<br>   　　那么是不是说就不能够卸载呢！其实也不是，有两个软件能够解决这个问题，那就是Kinstall和Kife，它们是tar包安装、卸载的黄金搭档。</li>
 </ol>
 </li>
 </ol>
@@ -548,7 +548,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -560,6 +560,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
     
     
       <a href="/2022/03/11/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9E%84%E6%88%90%E3%80%81%E7%9B%B8%E5%90%8C%E7%BD%91%E6%AE%B5%E3%80%81%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/" class="article-nav-link">

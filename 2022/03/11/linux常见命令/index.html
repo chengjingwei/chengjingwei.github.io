@@ -88,7 +88,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.4k</span>
+            <span class="post-count">4.7k</span>
         </span>
     </span>
 
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">17 分钟</span>
+            <span class="post-count">19 分钟</span>
         </span>
     </span>
 </div>
@@ -414,7 +414,60 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -cvf linuxcool.tar linuxcool --remove-files</span><br></pre></td></tr></table></figure>
 
 <p>打包文件以后，以 gzip 压缩：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -zcvf log.tar.gz linuxcool.log</span><br></pre></td></tr></table></figure> 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# tar -zcvf log.tar.gz linuxcool.log</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="11passwd命令"><span id="11passwd命令">11.passwd命令</span></h2><p>passwd命令用于设置用户的认证信息，包括用户密码、账户锁定、密码失效等。直接运行passwd命令修改当前的用户密码，对其他用户的密码操作需要管理员权限。</p>
+<p><strong>常用格式：</strong>passwd [参数]</p>
+<h3 id="常用参数"><span id="常用参数"><strong>常用参数</strong>：</span></h3><table>
+<thead>
+<tr>
+<th>-d</th>
+<th>删除密码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>锁定用户密码，无法被用户自行修改</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>解开已锁定用户密码，允许用户自行修改</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>密码立即过期，下次登陆强制修改密码</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>保留即将过期的用户在期满后能仍能使用</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>查询密码状态</td>
+</tr>
+</tbody></table>
+<h3 id="参考实例"><span id="参考实例">参考实例</span></h3><p>修改当前登陆的账户密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd</span><br></pre></td></tr></table></figure>
+
+<p>修改其他用户密码(假设有linuxprobe用户)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd linuxcool</span><br></pre></td></tr></table></figure>
+
+<p>锁定密码不允许用户修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd -l linuxcool</span><br></pre></td></tr></table></figure>
+
+<p>解除锁定密码，允许用户修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd -u linuxcool</span><br></pre></td></tr></table></figure>
+
+<p>下次登陆强制改密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd -e linuxcool</span><br></pre></td></tr></table></figure>
+
+<p>清除登录密码。清除之后登录时无需密码，风险极大，不推荐使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd -d linuxcool</span><br></pre></td></tr></table></figure>
+
+<p>查询密码状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@linuxcool ~]# passwd -S linuxcool</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">

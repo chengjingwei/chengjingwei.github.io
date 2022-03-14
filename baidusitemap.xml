@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2022-03-12</lastmod>
+    <loc>https://chengjingwei.gitee.io/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/</loc>
+    <lastmod>2022-03-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjingwei.gitee.io/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <lastmod>2022-03-13</lastmod>
   </url>
   <url>
     <loc>https://chengjingwei.gitee.io/2022/03/11/linux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2022-03-12</lastmod>
+    <lastmod>2022-03-13</lastmod>
+  </url>
+  <url>
+    <loc>https://chengjingwei.gitee.io/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    <lastmod>2022-03-13</lastmod>
   </url>
   <url>
     <loc>https://chengjingwei.gitee.io/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</loc>
