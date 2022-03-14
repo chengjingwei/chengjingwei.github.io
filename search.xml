@@ -227,10 +227,9 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>linux基本知识（二）</title>
     <url>/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
-<h2 id="titlelinux基本知识二-tagslinux"><span id="titlelinux基本知识二-tagslinux">‘title:linux基本知识（二） tags:linux’</span></h2><h2 id="1vim编辑器"><span id="1vim编辑器">1.vim编辑器</span></h2><p>所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。但是目前我们使用比较多的是 vim 编辑器。vim 具有程序编辑的能力，可以主动<strong>的以字体颜色辨别语法的正确性</strong>，方便程序设计</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="1vim编辑器"><span id="1vim编辑器">1.vim编辑器</span></h2><p>所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。但是目前我们使用比较多的是 vim 编辑器。vim 具有程序编辑的能力，可以主动<strong>的以字体颜色辨别语法的正确性</strong>，方便程序设计</p>
 <p><img src="https://s2.loli.net/2022/03/13/P1meIBDhyu34Aln.gif" alt="img"></p>
 <p>基本上 vi&#x2F;vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）</strong>和<strong>底线命令模式（Last line mode）</strong>。</p>
 <p><img src="https://s2.loli.net/2022/03/13/Sg3hmeMPwUliW75.png" alt="img"></p>
@@ -273,12 +272,14 @@
 <p>以上面最后用户letuknowit为例（15400对应的日期为2012年3月1日），其保护如下信息：</p>
 <p>　　3、用户letuknowit最近一次修改密码的日期是2012年3月1日，<br>　　4、在2012年3月6日之前不能再改动密码了，<br>　　5、在2012-3-1到2012-4-29期间letuknowit需要更改密码，<br>　　6、在2012-4-29之前的7天，letuknowit登陆系统的时候，系统会提示letuknowit其密码即将过期，<br>　　7、如果letuknowit一直到2012-4-29都没有修改密码，则其仍然可以继续使用该账户2天，2天后该账户将不可用<br>　　8、无论如何，到了2012年5月29日，该账号都将失效</p>
 ]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>Linux下目录/usr缩写 及 目录结构说明</title>
     <url>/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><hr>
-<h2 id="titlelinux下-目录x2fusr缩写-及-目录结构说明-categorieslinux"><span id="titlelinux下-目录x2fusr缩写-及-目录结构说明-categorieslinux">‘title:Linux下 目录&#x2F;usr缩写 及 目录结构说明 categories:linux’</span></h2><p>原文链接：<a href="https://blog.csdn.net/u010692239/article/details/52756014">https://blog.csdn.net/u010692239/article/details/52756014</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>原文链接：<a href="https://blog.csdn.net/u010692239/article/details/52756014">https://blog.csdn.net/u010692239/article/details/52756014</a></p>
 <p>在 linux 文件结构中，有一个很神奇的目录 —— &#x2F;usr。</p>
 <p>讨论中，大部分观点认为：</p>
 <p>usr 是 unix system resources 的缩写；</p>
@@ -324,6 +325,9 @@
 <p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;Rules.make : 当有多个 Makefile 时，根据它的规则执行 make；</p>
 <p>&#x2F;usr&#x2F;tmp : 已经被众多发行版抛弃的临时文件夹。</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>linux常见命令</title>
