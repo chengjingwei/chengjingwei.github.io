@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> 快乐星球</title>
+      <title>Mysql |  快乐星球</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/ayer-side.svg" />
@@ -55,54 +55,7 @@
         style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">快乐星球</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['嘀嘀嘀~，欢迎来到快乐星球！', '什么是快乐星球？什么是快乐星球', '想要的都拥有，这里就是快乐星球！'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: false,
-        backSpeed: 1000,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
+      <section class="outer">
   
   <ul class="ads">
     
@@ -121,501 +74,84 @@
 </ul>
   
   
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
   <article class="articles">
     
     
+    <h1 class="page-type-title">Mysql</h1>
     
     
-    <article
-  id="post-JDBC,连接池，数据库驱动的关系？"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2022" class="archive-year">2022</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/" class="archive-article-date">
+  <time datetime="2022-03-17T02:48:42.382Z" itemprop="datePublished">03/17</time>
+</a>
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/"
+  <a class="archive-article-title" href="/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/"
     >JDBC,连接池，数据库驱动的关系？</a> 
 </h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/" class="article-date">
-  <time datetime="2022-03-17T02:48:42.382Z" itemprop="datePublished">2022-03-17</time>
-</a> 
+    
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
   </div>
-   
-    </div>
-       
 
-    <!-- copyright -->
     
-    <footer class="article-footer">
-       
-    </footer>
+    
   </div>
-
-    
- 
-    
 </article>
-
-    
-    <article
-  id="post-Mysql远程登录授权"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
+      
+  
+  
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/" class="archive-article-date">
+  <time datetime="2022-03-16T12:02:54.063Z" itemprop="datePublished">03/16</time>
+</a>
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/"
+  <a class="archive-article-title" href="/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/"
     >Mysql远程登录授权</a> 
 </h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/" class="article-date">
-  <time datetime="2022-03-16T12:02:54.063Z" itemprop="datePublished">2022-03-16</time>
-</a> 
+    
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
   </div>
-   
-    </div>
-       
 
-    <!-- copyright -->
     
-    <footer class="article-footer">
-       
-    </footer>
+    
   </div>
-
-    
- 
-    
 </article>
-
-    
-    <article
-  id="post-关于x86、x86_64x64、amd64和arm64aarch64"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/16/%E5%85%B3%E4%BA%8Ex86%E3%80%81x86_64x64%E3%80%81amd64%E5%92%8Carm64aarch64/"
-    >关于x86、x86_64/x64、amd64和arm64/aarch64</a> 
-</h2>
- 
-
       
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/16/%E5%85%B3%E4%BA%8Ex86%E3%80%81x86_64x64%E3%80%81amd64%E5%92%8Carm64aarch64/" class="article-date">
-  <time datetime="2022-03-16T11:40:50.407Z" itemprop="datePublished">2022-03-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/">计算机常识</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-jdk-6u24-windows-i586ia64x64-区别"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/16/jdk-6u24-windows-i586ia64x64-%E5%8C%BA%E5%88%AB/"
-    >jdk-6u24-windows-i586/ia64/x64 区别</a> 
-</h2>
- 
-
       
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/16/jdk-6u24-windows-i586ia64x64-%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time datetime="2022-03-16T11:27:55.039Z" itemprop="datePublished">2022-03-16</time>
-</a>    
     </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
   </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Linux 查看端口占用情况"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/15/Linux%20%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%83%85%E5%86%B5/"
-    >Linux 查看端口占用情况</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/15/Linux%20%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%83%85%E5%86%B5/" class="article-date">
-  <time datetime="2022-03-15T02:36:14.989Z" itemprop="datePublished">2022-03-15</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-什么是公网IP、内网IP和NAT转换"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/14/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E7%BD%91IP%E3%80%81%E5%86%85%E7%BD%91IP%E5%92%8CNAT%E8%BD%AC%E6%8D%A2/"
-    >什么是公网IP、内网IP和NAT转换</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/14/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E7%BD%91IP%E3%80%81%E5%86%85%E7%BD%91IP%E5%92%8CNAT%E8%BD%AC%E6%8D%A2/" class="article-date">
-  <time datetime="2022-03-14T12:20:20.235Z" itemprop="datePublished">2022-03-14</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Linux下-目录usr缩写-及-目录结构说明"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/"
-    >Linux下目录/usr缩写 及 目录结构说明</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/" class="article-date">
-  <time datetime="2022-03-13T13:05:44.371Z" itemprop="datePublished">2022-03-13</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-删除rz上传失败的乱码文件"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/13/%E5%88%A0%E9%99%A4rz%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E7%9A%84%E4%B9%B1%E7%A0%81%E6%96%87%E4%BB%B6/"
-    >删除rz上传失败的乱码文件</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/13/%E5%88%A0%E9%99%A4rz%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5%E7%9A%84%E4%B9%B1%E7%A0%81%E6%96%87%E4%BB%B6/" class="article-date">
-  <time datetime="2022-03-13T12:45:48.237Z" itemprop="datePublished">2022-03-13</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/" rel="tag">tips</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-linux基本知识（二）"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/"
-    >linux基本知识（二）</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/13/linux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
-  <time datetime="2022-03-13T11:23:12.881Z" itemprop="datePublished">2022-03-13</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-linux的基本知识 （一）"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/"
-    >linux的基本知识（一）</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/12/linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%20%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
-  <time datetime="2022-03-12T06:13:52.664Z" itemprop="datePublished">2022-03-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-  </article>
+  
   
 
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-  </nav>
   
 </section>
-</div>
-
       <footer class="footer">
   <div class="outer">
     <ul>

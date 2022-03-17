@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chengjingwei.gitee.io/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjingwei.gitee.io/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/</loc>
+    
+    <lastmod>2022-03-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chengjingwei.gitee.io/2022/03/16/%E5%85%B3%E4%BA%8Ex86%E3%80%81x86_64x64%E3%80%81amd64%E5%92%8Carm64aarch64/</loc>
     
     <lastmod>2022-03-16</lastmod>
@@ -184,7 +202,7 @@
 
   <url>
     <loc>https://chengjingwei.gitee.io/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -192,21 +210,21 @@
   
   <url>
     <loc>https://chengjingwei.gitee.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/tags/linux/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/tags/tips/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -215,35 +233,42 @@
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/linux/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/</loc>
-    <lastmod>2022-03-16</lastmod>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjingwei.gitee.io/categories/Mysql/</loc>
+    <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
