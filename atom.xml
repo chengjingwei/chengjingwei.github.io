@@ -6,7 +6,7 @@
   <link href="https://chengjingwei.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://chengjingwei.gitee.io/"/>
-  <updated>2022-03-17T08:39:58.491Z</updated>
+  <updated>2022-03-18T07:19:30.145Z</updated>
   <id>https://chengjingwei.gitee.io/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring体系结构</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/18/spring%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/18/spring%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</id>
+    <published>2022-03-18T07:19:30.145Z</published>
+    <updated>2022-03-18T07:19:30.145Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SSM框架" scheme="https://chengjingwei.gitee.io/categories/SSM%E6%A1%86%E6%9E%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring是什么？</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/18/spring%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/18/spring%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</id>
+    <published>2022-03-18T07:13:56.530Z</published>
+    <updated>2022-03-18T07:13:56.530Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SSM框架" scheme="https://chengjingwei.gitee.io/categories/SSM%E6%A1%86%E6%9E%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>sping的ioc原理</title>
+    <link href="https://chengjingwei.gitee.io/2022/03/18/sping%E7%9A%84ioc%E5%8E%9F%E7%90%86/"/>
+    <id>https://chengjingwei.gitee.io/2022/03/18/sping%E7%9A%84ioc%E5%8E%9F%E7%90%86/</id>
+    <published>2022-03-18T07:00:36.735Z</published>
+    <updated>2022-03-18T07:00:36.735Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SSM框架" scheme="https://chengjingwei.gitee.io/categories/SSM%E6%A1%86%E6%9E%B6/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JDBC,连接池，数据库驱动的关系？</title>

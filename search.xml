@@ -1,73 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IP地址的构成、相同网段、网络掩码</title>
-    <url>/2022/03/11/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9E%84%E6%88%90%E3%80%81%E7%9B%B8%E5%90%8C%E7%BD%91%E6%AE%B5%E3%80%81%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><strong>看完这篇文章希望可以解答的问题是：</strong></p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>、<span class="built_in">IP</span>地址的构成</span><br><span class="line"><span class="number">2</span>、什么是网络掩码？</span><br><span class="line"><span class="number">3</span>、如何才算是处于相同网段的通信？</span><br></pre></td></tr></table></figure>
-
-<p><strong>看懂所需要的门槛是</strong>：二进制换算</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">计算机之间的通信，可以分为相同网段的通信和不同网段的通信。那什么是相同网段和不同网段呢？不管三七二十一，先画个图，感受一下。</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/UE61DOpI934ztyF.jpg" alt="download.png"><br>员工A和B就属于相同网段，A与C、B与C就是不同网段。在图中我们可以看到有IP地址和网关两个玩意儿，他们究竟是什么呢？为什么又能来区分相同网段和不同网段？</p>
-<p>在回答之前，先介绍一下什么是IP地址：</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="built_in">IP</span>地址相当于网络中的身份唯一认证ID，跟身份证ID一样是唯一的，唯一不同的是，<span class="built_in">IP</span>地址是可以变的，只是不管怎么变，都将会是唯一的。Mac地址的性质更加接近于身份证ID，它是设备的唯一ID。</span><br></pre></td></tr></table></figure>
-
-<p><strong>IP地址 &#x3D; 网络地址 + 主机地址</strong></p>
-<p>IP地址目前普遍是IPv4版本，由32位二进制数分成4组，每组1字节Byte（8比特Bit）组成。分别用十进制表示再用圆点隔开，就是现在的172.1.1.10。</p>
-<p><strong>什么是网络地址和主机地址？图中172.1.1.10&#x2F;24的24又指的是什么？</strong><br>说到这里不得不解释一下什么是子网掩码(又称网络掩码)</p>
-<p>24指的是子网掩码的长度，用子网掩码来表示，就是：255.255.255.0。它的作用主要是用来区分网络地址和主机地址。</p>
-<p>上面我们说了，员工A和B就属于相同网段。而归根究底是因为他们有相同的网络号，偏偏子网掩码又是用来告诉我们他们是真的有着相同的网络号的。</p>
-<p>255.255.255.0用二进制表示，则是：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
-
-<p>172.1.1.10用二进制表示，则是：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
-
-<p>连续24个1，也就是172.1.1.10&#x2F;24中24的由来。</p>
-<p>通过按位与最终得到网段号：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
-
-<p>按位与&#x2F;&amp; : 1 &amp; 1 &#x3D;&gt; 1 、 1 &amp; 0 &#x3D;&gt; 0 、 0 &amp; 0 &#x3D;&gt; 0<br><img src="https://s2.loli.net/2022/03/11/yLrwR3f2sN1DVdx.png" alt="download \(1\).png"></p>
-<p>所以172.1.1.10中剩下的10(00001010)即是主机号，172.1.1是网段号，那回到上面的员工A、B、C中：<br>    员工A（172.1.1.10&#x2F;24）的网段号：172.1.1<br>    员工B（172.1.1.11&#x2F;24）的网段号：172.1.1<br>    员工C（172.1.2.10&#x2F;24）的网段号：172.1.2<br>    显然A、B在同一个网段里</p>
-<p>是不是看上去很容易了，那我们学以致用，<strong>现在有一个IP地址：172.1.1.10&#x2F;25，请问，这里的网络位、主机位是多少？主机数是多少？网络地址和广播地址是多少？网络掩码是多少？</strong></p>
-<p>解题步骤：<br>1、首先我们将IP地址转为32位二进制：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
-
-<p>2、从地址中知道子网掩码的长度是25，总长为32Bit，那我们可以写上25个连续的1，剩下的补上0，得到：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">10000000</span> (<span class="number">255.255.255.128</span>)</span><br></pre></td></tr></table></figure>
-
-<p>按位与操作后，可以拿到网络位：</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">1</span>xxxxxxx</span><br></pre></td></tr></table></figure>
-
-<p>3、那网络地址和广播地址是什么呢，我们将上面的7个x，改为0，得到的就是网络地址（网络号），全部改为1，得到的就是广播地址。所以：</p>
-<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">网络地址：<span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">10000000</span></span><br><span class="line">十进制：<span class="number">172.1.1.128</span></span><br><span class="line">广播地址: <span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">11111111</span></span><br><span class="line">十进制：<span class="number">172.1.1.255</span></span><br></pre></td></tr></table></figure>
-
-<p>4、那么我们的主机位有多少呢？</p>
-<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">172.1.1.128</span> ~<span class="number">172</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">255</span> 之间（抛开网络地址和广播地址）一共可以有<span class="number">126</span>个主机位。</span><br></pre></td></tr></table></figure>
-
-<p>当然这样算太累了，用一个比较简便的算法，<strong>IP地址总长 32 - 子网掩码长度 25 &#x3D; 主机位 7，那么根据排列组合主机位 &#x3D; 2 ^ 7 - 2 &#x3D; 126</strong>，减2是减去广播地址以及网络地址。</p>
-<p>算完上面的题目，是不是感觉清晰了很多，那问题又来了？<strong>255.255.255.198这个掩码又是不是合法呢？</strong></p>
-<p>我们上面的掩码长度，都是连续的1，可 255.255.255.198转为二进制是：11111111.11111111.11111111.11000110</p>
-<p>不是连续的1了，很多人认为，这样的子网掩码是不合法的。这是错误的理解，IP协议中给子网掩码提供了一定得灵活性，允许子网掩码中的0和1不连续，但是这样的子网掩码给分配主机以及找到相同网段都造成了一定的难度。市面上也只有极少路由器支持在子网中这样使用。所以实际应用中大多都是采用上述方式。</p>
-<p>当我们的企业、公司去申请一个IP地址时，实际上拿到的是网络号，通过网络的性质以及规模，由自己的企业去自行分配主机号。</p>
-<p>当然，网络号自然是要划分三六九等的，因为网络的规模差异比较大、而我们的IP资源有限，根据网络号和主机地址来分，主要分为A、B、C三类和特殊地址D、E（可以粗略了解，传送门：<a href="https://link.segmentfault.com/?enc=fReILbGBAK25qpXGAwKzzQ==.nx8VGSwf8h9QAo6De4PXQhTeF6ZCQOzmX6D60jJ+e1pt3OiOfArjmmvC0WyqNP++">https://blog.51cto.com/huchina/2159073</a>）</p>
-<p>至此，文章开头的问题，应该是有所解答了。</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JDBC,连接池，数据库驱动的关系？</title>
-    <url>/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><a href="https://www.jianshu.com/p/0eb44feeb54e">JDBC,连接池，数据库驱动的关系？使用JDBC简化工具包DBUtils完成单表的增删改查操作 - 简书 (jianshu.com)</a></p>
-]]></content>
-      <categories>
-        <category>好文转发</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Ayer中文说明</title>
     <url>/2019/12/03/2019-12-03-Ayer%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="介绍"><span id="介绍">介绍</span></h1><blockquote>
@@ -236,56 +169,70 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下目录/usr缩写 及 目录结构说明</title>
-    <url>/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>原文链接：<a href="https://blog.csdn.net/u010692239/article/details/52756014">https://blog.csdn.net/u010692239/article/details/52756014</a></p>
-<p>在 linux 文件结构中，有一个很神奇的目录 —— &#x2F;usr。</p>
-<p>讨论中，大部分观点认为：</p>
-<p>usr 是 unix system resources 的缩写；</p>
-<p>usr 是 user 的缩写；</p>
-<p>usr 是 unix software resources 的缩写。</p>
-<p>根据常识判断，是 user 缩写的可能性不大，因为和 &#x2F;home 冲突了嘛。不过是 system resources 还是 software resources 的缩写还真不好说。特此查了好多东西，却发现竟然连 wikipedia 也模棱两可。</p>
-<p>后来终于找到了 相关的文档和介绍。（via，cache）</p>
-<p>&#x2F;usr usually contains by far the largest share of data on a system. Hence, this is one of the most important directories in the system as it contains all the user binaries, their documentation, libraries, header files, etc…. X and its supporting libraries can be found here. User programs like telnet, ftp, etc…. are also placed here. In the original Unix implementations, &#x2F;usr was where the home directories of the users were placed (that is to say, &#x2F;usr&#x2F;someone was then the directory now known as &#x2F;home&#x2F;someone). In current Unices, &#x2F;usr is where user-land programs and data (as opposed to ’system land’ programs and data) are. The name hasn’t changed, but it’s meaning has narrowed and lengthened from “everything user related” to “user usable programs and data”. As such, some people may now refer to this directory as meaning ‘User System Resources’ and not ‘user’ as was originally intended.（via 1,2）</p>
-<p>&#x2F;usr 是系统核心所在，包含了所有的共享文件。它是 unix 系统中最重要的目录之一，涵盖了二进制文件，各种文档，各种头文件，x，还有各种库文件；还有诸多程序，例如 ftp，telnet 等等。</p>
-<p>曾经的 &#x2F;usr 还是用户的家目录，存放着各种用户文件 —— 现在已经被 &#x2F;home 取代了（例如 &#x2F;usr&#x2F;someone 已经改为 &#x2F;home&#x2F;someone）。现代的 &#x2F;usr 只专门存放各种程序和数据，用户目录已经转移。虽然  &#x2F;usr 名称未改，不过其含义已经从“用户目录”变成了“unix 系统资源”目录。值得注意的是，在一些 unix 系统上，仍然把 &#x2F;usr&#x2F;someone 当做用户家目录，如 Minix。</p>
-<p>至此，真相大白。看来就像前一阵子的 &#x2F;var&#x2F;run 移到 &#x2F;run 一样。</p>
-<p>真的是不看不知道，一看吓一跳呀。原来 linux 几经进化，好多目录的诞生和用途已经产生了根本的变化。历史车轮在前进，长江后浪推前浪，正所谓：学习历史，收获真知；尽心竭力，前进不止。</p>
-<p><em><strong>*&#x2F;usr 目录结构：*</strong></em></p>
-<p>&#x2F;usr&#x2F;bin : 所有可执行文件，如 gcc，firefox 等（指不包含在 &#x2F;sbin 和 &#x2F;bin 内的）；</p>
-<p>&#x2F;usr&#x2F;include : 各种头文件，编译文件等时需要使用；</p>
-<p>&#x2F;usr&#x2F;include&#x2F;’package-name’ : 程序特定的头文件；</p>
-<p>&#x2F;usr&#x2F;lib : 所以可执行文件所需要的库文件；</p>
-<p>&#x2F;usr&#x2F;local : &#x2F;usr 通常只包含系统发行时自带的程序，而 &#x2F;usr&#x2F;local 则是本地系统管理员用来自由添加程序的目录；</p>
-<p>&#x2F;usr&#x2F;X11R6 : x 系统的二进制文件，库文件，文档，字体等。它不等同于 &#x2F;usr 的作用，只有 x 才能调用这些库文件等，其他程序不读取或者使用。因为 linux 没有原生图形界面，而且 linux 大部分情况下是 for server 的，所以图形界面没有意义；其中 X11R6 代表 version 11 release 6；</p>
-<p>&#x2F;usr&#x2F;X11R6&#x2F;bin : x 的二进制文件，包含运行 x 的必须文件；</p>
-<p>&#x2F;usr&#x2F;X11R6&#x2F;include : x 相关的头文件；</p>
-<p>&#x2F;usr&#x2F;X11R6&#x2F;lib : x 库文件；</p>
-<p>&#x2F;usr&#x2F;X11R6&#x2F;lib&#x2F;modules : x 的模块，启动时加载。缺少 video4linux, DRI and GLX 和 输入输出设备 模块，将工作不正常；</p>
-<p>&#x2F;usr&#x2F;X11R6&#x2F;lib&#x2F;X11&#x2F;fonts : x font server 的字体文件；</p>
-<p>&#x2F;usr&#x2F;doc : 文档。实际是 &#x2F;usr&#x2F;share&#x2F;doc 的软链接；</p>
-<p>&#x2F;usr&#x2F;etc : 一个极少用到的配置文件存放地；</p>
-<p>&#x2F;usr&#x2F;games : 曾经包含游戏等文件，现在很少用到；</p>
-<p>&#x2F;usr&#x2F;info : 系统相关信息，是 &#x2F;usr&#x2F;share&#x2F;info 的软链接；</p>
-<p>&#x2F;usr&#x2F;man : man 手册，已经移至 &#x2F;usr&#x2F;share&#x2F;man；</p>
-<p>&#x2F;usr&#x2F;sbin : 类似 &#x2F;sbin，root 可以执行。但此目录不包含在环境变量 $PATH 中，它包含的程序类似于 chroot, useradd, in.tftpd and pppconfig；</p>
-<p>&#x2F;usr&#x2F;share : 它包含了各种程序间的共享文件，如字体，图标，文档等。（&#x2F;usr&#x2F;local 对应的目录是  &#x2F;usr&#x2F;loca&#x2F;share）;</p>
-<p>&#x2F;usr&#x2F;share&#x2F;doc : 类似应用程序的 man 手册。它包含程序的说明文件，默认配置文件等；</p>
-<p>&#x2F;usr&#x2F;share&#x2F;info : 不常用，已经被 man 代替；</p>
-<p>&#x2F;usr&#x2F;share&#x2F;man : app 的 manual；</p>
-<p>&#x2F;usr&#x2F;share&#x2F;icons : 应用程序的图标等文件，分为 png，svg 等多种格式；</p>
-<p>&#x2F;usr&#x2F;share&#x2F;fonts : 字体文件，系统范围内可使用，~&#x2F;.fonts 仅当前用户可用；</p>
-<p>&#x2F;usr&#x2F;src : linux 内核的源码和说明文档等；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux : linux 源代码；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;.config : 内核编译过程产生的文件；通常由命令 ‘make config’ ， ‘make menuconfig’ 或 ‘make xconfig’ 执行后产生；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;.depend, &#x2F;usr&#x2F;src&#x2F;linux&#x2F;.hdepend : ‘make dep’ 检测编译依赖时需要的文件，由 &#x2F;usr&#x2F;src&#x2F;linux&#x2F;.config 产生；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;COPYING : GNU license；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;Makefile : 编译内核所需的 Makefile；</p>
-<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;Rules.make : 当有多个 Makefile 时，根据它的规则执行 make；</p>
-<p>&#x2F;usr&#x2F;tmp : 已经被众多发行版抛弃的临时文件夹。</p>
+    <title>IP地址的构成、相同网段、网络掩码</title>
+    <url>/2022/03/11/IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%9E%84%E6%88%90%E3%80%81%E7%9B%B8%E5%90%8C%E7%BD%91%E6%AE%B5%E3%80%81%E7%BD%91%E7%BB%9C%E6%8E%A9%E7%A0%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><strong>看完这篇文章希望可以解答的问题是：</strong></p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>、<span class="built_in">IP</span>地址的构成</span><br><span class="line"><span class="number">2</span>、什么是网络掩码？</span><br><span class="line"><span class="number">3</span>、如何才算是处于相同网段的通信？</span><br></pre></td></tr></table></figure>
+
+<p><strong>看懂所需要的门槛是</strong>：二进制换算</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">计算机之间的通信，可以分为相同网段的通信和不同网段的通信。那什么是相同网段和不同网段呢？不管三七二十一，先画个图，感受一下。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/UE61DOpI934ztyF.jpg" alt="download.png"><br>员工A和B就属于相同网段，A与C、B与C就是不同网段。在图中我们可以看到有IP地址和网关两个玩意儿，他们究竟是什么呢？为什么又能来区分相同网段和不同网段？</p>
+<p>在回答之前，先介绍一下什么是IP地址：</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="built_in">IP</span>地址相当于网络中的身份唯一认证ID，跟身份证ID一样是唯一的，唯一不同的是，<span class="built_in">IP</span>地址是可以变的，只是不管怎么变，都将会是唯一的。Mac地址的性质更加接近于身份证ID，它是设备的唯一ID。</span><br></pre></td></tr></table></figure>
+
+<p><strong>IP地址 &#x3D; 网络地址 + 主机地址</strong></p>
+<p>IP地址目前普遍是IPv4版本，由32位二进制数分成4组，每组1字节Byte（8比特Bit）组成。分别用十进制表示再用圆点隔开，就是现在的172.1.1.10。</p>
+<p><strong>什么是网络地址和主机地址？图中172.1.1.10&#x2F;24的24又指的是什么？</strong><br>说到这里不得不解释一下什么是子网掩码(又称网络掩码)</p>
+<p>24指的是子网掩码的长度，用子网掩码来表示，就是：255.255.255.0。它的作用主要是用来区分网络地址和主机地址。</p>
+<p>上面我们说了，员工A和B就属于相同网段。而归根究底是因为他们有相同的网络号，偏偏子网掩码又是用来告诉我们他们是真的有着相同的网络号的。</p>
+<p>255.255.255.0用二进制表示，则是：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
+
+<p>172.1.1.10用二进制表示，则是：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
+
+<p>连续24个1，也就是172.1.1.10&#x2F;24中24的由来。</p>
+<p>通过按位与最终得到网段号：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00000000</span></span><br></pre></td></tr></table></figure>
+
+<p>按位与&#x2F;&amp; : 1 &amp; 1 &#x3D;&gt; 1 、 1 &amp; 0 &#x3D;&gt; 0 、 0 &amp; 0 &#x3D;&gt; 0<br><img src="https://s2.loli.net/2022/03/11/yLrwR3f2sN1DVdx.png" alt="download \(1\).png"></p>
+<p>所以172.1.1.10中剩下的10(00001010)即是主机号，172.1.1是网段号，那回到上面的员工A、B、C中：<br>    员工A（172.1.1.10&#x2F;24）的网段号：172.1.1<br>    员工B（172.1.1.11&#x2F;24）的网段号：172.1.1<br>    员工C（172.1.2.10&#x2F;24）的网段号：172.1.2<br>    显然A、B在同一个网段里</p>
+<p>是不是看上去很容易了，那我们学以致用，<strong>现在有一个IP地址：172.1.1.10&#x2F;25，请问，这里的网络位、主机位是多少？主机数是多少？网络地址和广播地址是多少？网络掩码是多少？</strong></p>
+<p>解题步骤：<br>1、首先我们将IP地址转为32位二进制：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">00001010</span></span><br></pre></td></tr></table></figure>
+
+<p>2、从地址中知道子网掩码的长度是25，总长为32Bit，那我们可以写上25个连续的1，剩下的补上0，得到：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line"><span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">11111111</span>.<span class="number">10000000</span> (<span class="number">255.255.255.128</span>)</span><br></pre></td></tr></table></figure>
+
+<p>按位与操作后，可以拿到网络位：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">1</span>xxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p>3、那网络地址和广播地址是什么呢，我们将上面的7个x，改为0，得到的就是网络地址（网络号），全部改为1，得到的就是广播地址。所以：</p>
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">网络地址：<span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">10000000</span></span><br><span class="line">十进制：<span class="number">172.1.1.128</span></span><br><span class="line">广播地址: <span class="number">10101100</span>.<span class="number">00000001</span>.<span class="number">00000001</span>.<span class="number">11111111</span></span><br><span class="line">十进制：<span class="number">172.1.1.255</span></span><br></pre></td></tr></table></figure>
+
+<p>4、那么我们的主机位有多少呢？</p>
+<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line"><span class="number">172.1.1.128</span> ~<span class="number">172</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">255</span> 之间（抛开网络地址和广播地址）一共可以有<span class="number">126</span>个主机位。</span><br></pre></td></tr></table></figure>
+
+<p>当然这样算太累了，用一个比较简便的算法，<strong>IP地址总长 32 - 子网掩码长度 25 &#x3D; 主机位 7，那么根据排列组合主机位 &#x3D; 2 ^ 7 - 2 &#x3D; 126</strong>，减2是减去广播地址以及网络地址。</p>
+<p>算完上面的题目，是不是感觉清晰了很多，那问题又来了？<strong>255.255.255.198这个掩码又是不是合法呢？</strong></p>
+<p>我们上面的掩码长度，都是连续的1，可 255.255.255.198转为二进制是：11111111.11111111.11111111.11000110</p>
+<p>不是连续的1了，很多人认为，这样的子网掩码是不合法的。这是错误的理解，IP协议中给子网掩码提供了一定得灵活性，允许子网掩码中的0和1不连续，但是这样的子网掩码给分配主机以及找到相同网段都造成了一定的难度。市面上也只有极少路由器支持在子网中这样使用。所以实际应用中大多都是采用上述方式。</p>
+<p>当我们的企业、公司去申请一个IP地址时，实际上拿到的是网络号，通过网络的性质以及规模，由自己的企业去自行分配主机号。</p>
+<p>当然，网络号自然是要划分三六九等的，因为网络的规模差异比较大、而我们的IP资源有限，根据网络号和主机地址来分，主要分为A、B、C三类和特殊地址D、E（可以粗略了解，传送门：<a href="https://link.segmentfault.com/?enc=fReILbGBAK25qpXGAwKzzQ==.nx8VGSwf8h9QAo6De4PXQhTeF6ZCQOzmX6D60jJ+e1pt3OiOfArjmmvC0WyqNP++">https://blog.51cto.com/huchina/2159073</a>）</p>
+<p>至此，文章开头的问题，应该是有所解答了。</p>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>计算机网络</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JDBC,连接池，数据库驱动的关系？</title>
+    <url>/2022/03/17/JDBC,%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><a href="https://www.jianshu.com/p/0eb44feeb54e">JDBC,连接池，数据库驱动的关系？使用JDBC简化工具包DBUtils完成单表的增删改查操作 - 简书 (jianshu.com)</a></p>
+]]></content>
+      <categories>
+        <category>好文转发</category>
       </categories>
   </entry>
   <entry>
@@ -339,6 +286,59 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux下目录/usr缩写 及 目录结构说明</title>
+    <url>/2022/03/13/Linux%E4%B8%8B-%E7%9B%AE%E5%BD%95usr%E7%BC%A9%E5%86%99-%E5%8F%8A-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>原文链接：<a href="https://blog.csdn.net/u010692239/article/details/52756014">https://blog.csdn.net/u010692239/article/details/52756014</a></p>
+<p>在 linux 文件结构中，有一个很神奇的目录 —— &#x2F;usr。</p>
+<p>讨论中，大部分观点认为：</p>
+<p>usr 是 unix system resources 的缩写；</p>
+<p>usr 是 user 的缩写；</p>
+<p>usr 是 unix software resources 的缩写。</p>
+<p>根据常识判断，是 user 缩写的可能性不大，因为和 &#x2F;home 冲突了嘛。不过是 system resources 还是 software resources 的缩写还真不好说。特此查了好多东西，却发现竟然连 wikipedia 也模棱两可。</p>
+<p>后来终于找到了 相关的文档和介绍。（via，cache）</p>
+<p>&#x2F;usr usually contains by far the largest share of data on a system. Hence, this is one of the most important directories in the system as it contains all the user binaries, their documentation, libraries, header files, etc…. X and its supporting libraries can be found here. User programs like telnet, ftp, etc…. are also placed here. In the original Unix implementations, &#x2F;usr was where the home directories of the users were placed (that is to say, &#x2F;usr&#x2F;someone was then the directory now known as &#x2F;home&#x2F;someone). In current Unices, &#x2F;usr is where user-land programs and data (as opposed to ’system land’ programs and data) are. The name hasn’t changed, but it’s meaning has narrowed and lengthened from “everything user related” to “user usable programs and data”. As such, some people may now refer to this directory as meaning ‘User System Resources’ and not ‘user’ as was originally intended.（via 1,2）</p>
+<p>&#x2F;usr 是系统核心所在，包含了所有的共享文件。它是 unix 系统中最重要的目录之一，涵盖了二进制文件，各种文档，各种头文件，x，还有各种库文件；还有诸多程序，例如 ftp，telnet 等等。</p>
+<p>曾经的 &#x2F;usr 还是用户的家目录，存放着各种用户文件 —— 现在已经被 &#x2F;home 取代了（例如 &#x2F;usr&#x2F;someone 已经改为 &#x2F;home&#x2F;someone）。现代的 &#x2F;usr 只专门存放各种程序和数据，用户目录已经转移。虽然  &#x2F;usr 名称未改，不过其含义已经从“用户目录”变成了“unix 系统资源”目录。值得注意的是，在一些 unix 系统上，仍然把 &#x2F;usr&#x2F;someone 当做用户家目录，如 Minix。</p>
+<p>至此，真相大白。看来就像前一阵子的 &#x2F;var&#x2F;run 移到 &#x2F;run 一样。</p>
+<p>真的是不看不知道，一看吓一跳呀。原来 linux 几经进化，好多目录的诞生和用途已经产生了根本的变化。历史车轮在前进，长江后浪推前浪，正所谓：学习历史，收获真知；尽心竭力，前进不止。</p>
+<p><em><strong>*&#x2F;usr 目录结构：*</strong></em></p>
+<p>&#x2F;usr&#x2F;bin : 所有可执行文件，如 gcc，firefox 等（指不包含在 &#x2F;sbin 和 &#x2F;bin 内的）；</p>
+<p>&#x2F;usr&#x2F;include : 各种头文件，编译文件等时需要使用；</p>
+<p>&#x2F;usr&#x2F;include&#x2F;’package-name’ : 程序特定的头文件；</p>
+<p>&#x2F;usr&#x2F;lib : 所以可执行文件所需要的库文件；</p>
+<p>&#x2F;usr&#x2F;local : &#x2F;usr 通常只包含系统发行时自带的程序，而 &#x2F;usr&#x2F;local 则是本地系统管理员用来自由添加程序的目录；</p>
+<p>&#x2F;usr&#x2F;X11R6 : x 系统的二进制文件，库文件，文档，字体等。它不等同于 &#x2F;usr 的作用，只有 x 才能调用这些库文件等，其他程序不读取或者使用。因为 linux 没有原生图形界面，而且 linux 大部分情况下是 for server 的，所以图形界面没有意义；其中 X11R6 代表 version 11 release 6；</p>
+<p>&#x2F;usr&#x2F;X11R6&#x2F;bin : x 的二进制文件，包含运行 x 的必须文件；</p>
+<p>&#x2F;usr&#x2F;X11R6&#x2F;include : x 相关的头文件；</p>
+<p>&#x2F;usr&#x2F;X11R6&#x2F;lib : x 库文件；</p>
+<p>&#x2F;usr&#x2F;X11R6&#x2F;lib&#x2F;modules : x 的模块，启动时加载。缺少 video4linux, DRI and GLX 和 输入输出设备 模块，将工作不正常；</p>
+<p>&#x2F;usr&#x2F;X11R6&#x2F;lib&#x2F;X11&#x2F;fonts : x font server 的字体文件；</p>
+<p>&#x2F;usr&#x2F;doc : 文档。实际是 &#x2F;usr&#x2F;share&#x2F;doc 的软链接；</p>
+<p>&#x2F;usr&#x2F;etc : 一个极少用到的配置文件存放地；</p>
+<p>&#x2F;usr&#x2F;games : 曾经包含游戏等文件，现在很少用到；</p>
+<p>&#x2F;usr&#x2F;info : 系统相关信息，是 &#x2F;usr&#x2F;share&#x2F;info 的软链接；</p>
+<p>&#x2F;usr&#x2F;man : man 手册，已经移至 &#x2F;usr&#x2F;share&#x2F;man；</p>
+<p>&#x2F;usr&#x2F;sbin : 类似 &#x2F;sbin，root 可以执行。但此目录不包含在环境变量 $PATH 中，它包含的程序类似于 chroot, useradd, in.tftpd and pppconfig；</p>
+<p>&#x2F;usr&#x2F;share : 它包含了各种程序间的共享文件，如字体，图标，文档等。（&#x2F;usr&#x2F;local 对应的目录是  &#x2F;usr&#x2F;loca&#x2F;share）;</p>
+<p>&#x2F;usr&#x2F;share&#x2F;doc : 类似应用程序的 man 手册。它包含程序的说明文件，默认配置文件等；</p>
+<p>&#x2F;usr&#x2F;share&#x2F;info : 不常用，已经被 man 代替；</p>
+<p>&#x2F;usr&#x2F;share&#x2F;man : app 的 manual；</p>
+<p>&#x2F;usr&#x2F;share&#x2F;icons : 应用程序的图标等文件，分为 png，svg 等多种格式；</p>
+<p>&#x2F;usr&#x2F;share&#x2F;fonts : 字体文件，系统范围内可使用，~&#x2F;.fonts 仅当前用户可用；</p>
+<p>&#x2F;usr&#x2F;src : linux 内核的源码和说明文档等；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux : linux 源代码；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;.config : 内核编译过程产生的文件；通常由命令 ‘make config’ ， ‘make menuconfig’ 或 ‘make xconfig’ 执行后产生；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;.depend, &#x2F;usr&#x2F;src&#x2F;linux&#x2F;.hdepend : ‘make dep’ 检测编译依赖时需要的文件，由 &#x2F;usr&#x2F;src&#x2F;linux&#x2F;.config 产生；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;COPYING : GNU license；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;Makefile : 编译内核所需的 Makefile；</p>
+<p>&#x2F;usr&#x2F;src&#x2F;linux&#x2F;Rules.make : 当有多个 Makefile 时，根据它的规则执行 make；</p>
+<p>&#x2F;usr&#x2F;tmp : 已经被众多发行版抛弃的临时文件夹。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Mysql远程登录授权</title>
     <url>/2022/03/16/Mysql%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%8E%88%E6%9D%83/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h5 id="允许mysql远程访问-及-如何修改密码_wudinaniya的博客-csdn博客_mysql修改远程连接密码"><span id="允许mysql远程访问-及-如何修改密码_wudinaniya的博客-csdn博客_mysql修改远程连接密码">)</span></h5><p>1、登陆mysql数据库  </p>
@@ -366,14 +366,6 @@
       <categories>
         <category>Mysql</category>
       </categories>
-  </entry>
-  <entry>
-    <title>jdk-6u24-windows-i586/ia64/x64 区别</title>
-    <url>/2022/03/16/jdk-6u24-windows-i586ia64x64-%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>IA64处理器I-tanium（安腾）是Intel自推出32位微处理器以来，在高性能计算机领域的又一座里程碑。基于IA64处理器架构的服务器具有64位运算能力、64位寻址空间和64位数据通路，突破了传统IA32架构的许多限制，在数据的处理能力，系统的稳定性、安全性、可用性、可观理性等方面获得了突破性的提高。</p>
-<p>一般64位系统安装x64；</p>
-<p>32位系统安装i586</p>
-]]></content>
   </entry>
   <entry>
     <title>linux基本知识（二）</title>
@@ -424,6 +416,14 @@
       <tags>
         <tag>linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>jdk-6u24-windows-i586/ia64/x64 区别</title>
+    <url>/2022/03/16/jdk-6u24-windows-i586ia64x64-%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>IA64处理器I-tanium（安腾）是Intel自推出32位微处理器以来，在高性能计算机领域的又一座里程碑。基于IA64处理器架构的服务器具有64位运算能力、64位寻址空间和64位数据通路，突破了传统IA32架构的许多限制，在数据的处理能力，系统的稳定性、安全性、可用性、可观理性等方面获得了突破性的提高。</p>
+<p>一般64位系统安装x64；</p>
+<p>32位系统安装i586</p>
+]]></content>
   </entry>
   <entry>
     <title>linux常见命令</title>
@@ -789,6 +789,24 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中文输入时,使用英文的标点符号</title>
+    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
+<span id="more"></span>
+</blockquote>
+<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
+
+<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
+]]></content>
+      <categories>
+        <category>小技巧</category>
+      </categories>
+      <tags>
+        <tag>tips</tag>
       </tags>
   </entry>
   <entry>
@@ -1169,24 +1187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>中文输入时,使用英文的标点符号</title>
-    <url>/2022/03/11/%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6,%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%E7%9A%84%E6%A0%87%E7%82%B9%E7%AC%A6%E5%8F%B7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
-<p>大家敲代码的时候应该会经常进行中英文的切换吧,大多数人都是采用shift键进行切换的,我发现了win10自带的输入法可以在中文状态下输出英文的标点符号,切换之后可以更加方便使用markdown语法和编写代码的注释</p>
-<span id="more"></span>
-</blockquote>
-<h3 id="切换方式"><span id="切换方式">切换方式</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctrl+.</span><br></pre></td></tr></table></figure>
-
-<p>目前在微软自带的输入法有效,其他输入法自行测试</p>
-]]></content>
-      <categories>
-        <category>小技巧</category>
-      </categories>
-      <tags>
-        <tag>tips</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>了解ip、子网掩码、网关、DNS</title>
     <url>/2022/03/11/%E4%BA%86%E8%A7%A3ip%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>网络管理中的IP地址、子网掩码和网关是每个网管必须要掌握的基础知识，只有掌握它，才能够真正理解TCP&#x2F;IP协议的设置。以下我们就来深入浅出地讲解什么是子网掩码。</p>
@@ -1299,6 +1299,29 @@
       </tags>
   </entry>
   <entry>
+    <title>端口被莫名进程占用怎么办？</title>
+    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
+<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
+<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
+<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
+<p>查询到被占用端口号（10000）的进程</p>
+<p>netstat常见参数</p>
+<ul>
+<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
+</ul>
+<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
+<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
+<p>经过此过程、程序可以正常启动</p>
+]]></content>
+  </entry>
+  <entry>
     <title>故事的开始</title>
     <url>/2022/03/10/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="介绍"><span id="介绍">介绍</span></h1><blockquote>
@@ -1331,31 +1354,220 @@
 ]]></content>
   </entry>
   <entry>
-    <title>端口被莫名进程占用怎么办？</title>
-    <url>/2022/03/11/%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>在写TCP&#x2F;UDP网络编程时，遇到如下异常,端口被莫名的进程给占用了</p>
-<p><img src="https://s2.loli.net/2022/03/11/ONcXUQrABFJdhKv.png"></p>
-<p>很明显由于程序异常关闭导致的端口被异常关闭的僵尸程序所占用</p>
-<p>解决方案<br>在命令行中通过，其中10000是被占用的端口，netstart查看端口的情况</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">netstat -ano|findstr 10000</span><br></pre></td></tr></table></figure>
+    <title>spring体系结构</title>
+    <url>/2022/03/18/spring%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Spring 框架基本涵盖了企业级应用开发的各个方面，它包含了 20 多个不同的模块。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spring-aop      spring-context-indexer  spring-instrument  spring-orm    spring-web</span><br><span class="line">spring-aspects  spring-context-support  spring-jcl         spring-oxm    spring-webflux</span><br><span class="line">spring-beans    spring-core             spring-jdbc        spring-r2dbc  spring-webmvc</span><br><span class="line">spring-context  spring-expression       spring-jms         spring-test   spring-websocket</span><br><span class="line">spring-messaging   spring-tx  </span><br></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/03/11/mZFvdxX2b7fHMol.png" alt="image-20220311153357262"></p>
-<p>查询到被占用端口号（10000）的进程</p>
-<p>netstat常见参数</p>
+
+
+<p><img src="https://s2.loli.net/2022/03/18/rqBT7nka4w9ihd8.png" alt="image-20220318151740672"><br>图1：Spring架构图</p>
+<p>上图中包含了 Spring 框架的所有模块，这些模块可以满足一切企业级应用开发的需求，在开发过程中可以根据需求有选择性地使用所需要的模块。下面分别对这些模块的作用进行简单介绍。</p>
+<h2 id="1-data-accessx2fintegration数据访问集成"><span id="1-data-accessx2fintegration数据访问集成">1. Data Access&#x2F;Integration（数据访问／集成）</span></h2><p>数据访问／集成层包括 JDBC、ORM、OXM、JMS 和 Transactions 模块，具体介绍如下。</p>
 <ul>
-<li>-a (all) 显示所有选项，默认不显示LISTEN相关。</li>
+<li>JDBC 模块：提供了一个 JBDC 的样例模板，使用这些模板能消除传统冗长的 JDBC 编码还有必须的事务控制，而且能享受到 Spring 管理事务的好处。</li>
+<li>ORM 模块：提供与流行的“对象-关系”映射框架无缝集成的 API，包括 JPA、JDO、Hibernate 和 MyBatis 等。而且还可以使用 Spring 事务管理，无需额外控制事务。</li>
+<li>OXM 模块：提供了一个支持 Object &#x2F;XML 映射的抽象层实现，如 JAXB、Castor、XMLBeans、JiBX 和 XStream。将 Java 对象映射成 XML 数据，或者将XML 数据映射成 Java 对象。</li>
+<li>JMS 模块：指 Java 消息服务，提供一套 “消息生产者、消息消费者”模板用于更加简单的使用 JMS，JMS 用于用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。</li>
+<li>Transactions 事务模块：支持编程和声明式事务管理。</li>
 </ul>
-<p>-t (tcp) 仅显示tcp相关选项。<br>-u (udp) 仅显示udp相关选项。<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服务状态。</p>
-<p>根据进程号（pid），输入以下命令，强制杀死占用该端口号的僵尸程序</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">taskkill /pid 26484 /F</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2022/03/11/YdKcNq7E2y5OClj.png" alt="image-20220311153433476"></p>
-<p>经过此过程、程序可以正常启动</p>
+<h2 id="2-web-模块"><span id="2-web-模块">2. Web 模块</span></h2><p>Spring 的 Web 层包括 Web、Servlet、WebSocket 和 Portlet 组件，具体介绍如下。</p>
+<ul>
+<li>Web 模块：提供了基本的 Web 开发集成特性，例如多文件上传功能、使用的 Servlet 监听器的 IOC 容器初始化以及 Web 应用上下文。</li>
+<li>Servlet 模块：提供了一个 Spring MVC Web 框架实现。Spring MVC 框架提供了基于注解的请求资源注入、更简单的数据绑定、数据验证等及一套非常易用的 JSP 标签，完全无缝与 Spring 其他技术协作。</li>
+<li>WebSocket 模块：提供了简单的接口，用户只要实现响应的接口就可以快速的搭建 WebSocket Server，从而实现双向通讯。</li>
+<li>Portlet 模块：提供了在 Portlet 环境中使用 MVC 实现，类似 Web-Servlet 模块的功能。</li>
+</ul>
+<h2 id="3-core-containerspring-的核心容器"><span id="3-core-containerspring-的核心容器">3. Core Container（Spring 的核心容器）</span></h2><p>Spring 的核心容器是其他模块建立的基础，由 Beans 模块、Core 核心模块、Context 上下文模块和 SpEL 表达式语言模块组成，没有这些核心容器，也不可能有 AOP、Web 等上层的功能。具体介绍如下。</p>
+<ul>
+<li>Beans 模块：提供了框架的基础部分，包括控制反转和依赖注入。</li>
+<li>Core 核心模块：封装了 Spring 框架的底层部分，包括资源访问、类型转换及一些常用工具类。</li>
+<li>Context 上下文模块：建立在 Core 和 Beans 模块的基础之上，集成 Beans 模块功能并添加资源绑定、数据验证、国际化、Java EE 支持、容器生命周期、事件传播等。ApplicationContext 接口是上下文模块的焦点。</li>
+<li>SpEL 模块：提供了强大的表达式语言支持，支持访问和修改属性值，方法调用，支持访问及修改数组、容器和索引器，命名变量，支持算数和逻辑运算，支持从 Spring 容器获取 Bean，它也支持列表投影、选择和一般的列表聚合等。</li>
+</ul>
+<h2 id="4-aop-aspects-instrumentation-和-messaging"><span id="4-aop-aspects-instrumentation-和-messaging">4. AOP、Aspects、Instrumentation 和 Messaging</span></h2><p>在 Core Container 之上是 AOP、Aspects 等模块，具体介绍如下：</p>
+<ul>
+<li>AOP 模块：提供了面向切面编程实现，提供比如日志记录、权限控制、性能统计等通用功能和业务逻辑分离的技术，并且能动态的把这些功能添加到需要的代码中，这样各司其职，降低业务逻辑和通用功能的耦合。</li>
+<li>Aspects 模块：提供与 AspectJ 的集成，是一个功能强大且成熟的面向切面编程（AOP）框架。</li>
+<li>Instrumentation 模块：提供了类工具的支持和类加载器的实现，可以在特定的应用服务器中使用。</li>
+<li>messaging 模块：Spring 4.0 以后新增了消息（Spring-messaging）模块，该模块提供了对消息传递体系结构和协议的支持。</li>
+</ul>
+<h2 id="5-test-模块"><span id="5-test-模块">5. Test 模块</span></h2><p>Test 模块：Spring 支持 Junit 和 TestNG 测试框架，而且还额外提供了一些基于 Spring 的测试功能，比如在测试 Web 框架时，模拟 Http 请求的功能。</p>
 ]]></content>
+      <categories>
+        <category>SSM框架</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>spring是什么？</title>
+    <url>/2022/03/18/spring%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Spring 是 Java EE 编程领域的一款轻量级的开源框架，由被称为“Spring 之父”的 Rod Johnson 于 2002 年提出并创立，它的目标就是要简化 Java 企业级应用程序的开发难度和周期。</p>
+<p>Spring 自诞生以来备受青睐，一直被广大开发人员作为 Java 企业级应用程序开发的首选。时至今日，Spring 俨然成为了 Java EE 代名词，成为了构建 Java EE 应用的事实标准。</p>
+<h2 id="spring-的诞生与发展"><span id="spring-的诞生与发展">Spring 的诞生与发展</span></h2><p>早期的 J2EE（Java EE 平台）推崇以 EJB 为核心的开发方式，但这种开发方式在实际的开发过程中存在种种弊端，例如使用复杂、代码臃肿、代码侵入性强、开发周期长、移植难度大等。</p>
+<p>Rod Johnson 在其 2002 年编著的畅销书《Expert One-on-One J2EE Design and Development》中，针对 EJB 各种臃肿的结构进行了逐一的分析和否定，并分别以更加简洁的方式进行了替换。</p>
+<p>在这本书中，Rod Johnson 通过一个包含 3 万行代码的附件，展示了如何在不使用 EJB 的情况下构建一个高质量、可扩展的 Java 应用程序。在这个附件中，Rod Johnson 编写了上万行基础结构代码，其中包含了许多可重用的 Java 接口和类，例如 ApplicationContext、BeanFactory 等。这些类的根包被命名为 com.interface21，含义为：这是提供给 21 世纪的一个参考。</p>
+<p>这本书影响甚远，后来 Rod Johnson 将 com.interface21 的代码开源，并把这个新框架并命名为“Spring”，含义为：Spring 像一缕春风一样，扫平传统 J2EE 的寒冬。</p>
+<p>2003 年 2 月，Spring 0.9 版本发布，它采用了 Apache 2.0 开源协议；2004 年 4 月，Spring 1.0 版本正式发布。到目前为止，Spring 已经步入到了第 5 个大版本，也就是我们常说的 Spring 5。</p>
+<h2 id="spring-的狭义和广义"><span id="spring-的狭义和广义">Spring 的狭义和广义</span></h2><p>在不同的语境中，Spring 所代表的含义是不同的。下面我们就分别从“广义”和“狭义”两个角度，对 Spring 进行介绍。</p>
+<h4 id="广义的-springspring-技术栈"><span id="广义的-springspring-技术栈">广义的 Spring：Spring 技术栈</span></h4><p><strong>广义上的 Spring 泛指以 Spring Framework 为核心的 Spring 技术栈。</strong></p>
+<p>经过十多年的发展，Spring 已经不再是一个单纯的应用框架，而是逐渐发展成为一个由多个不同子项目（模块）组成的成熟技术，例如 Spring Framework、Spring MVC、SpringBoot、Spring Cloud、Spring Data、Spring Security 等，其中 Spring Framework 是其他子项目的基础。</p>
+<p>这些子项目涵盖了从企业级应用开发到云计算等各方面的内容，能够帮助开发人员解决软件发展过程中不断产生的各种实际问题，给开发人员带来了更好的开发体验。</p>
+<table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spring Data</td>
+<td>Spring 提供的数据访问模块，对 JDBC 和 ORM 提供了很好的支持。通过它，开发人员可以使用一种相对统一的方式，来访问位于不同类型数据库中的数据。</td>
+</tr>
+<tr>
+<td>Spring Batch</td>
+<td>一款专门针对企业级系统中的日常批处理任务的轻量级框架，能够帮助开发人员方便的开发出健壮、高效的批处理应用程序。</td>
+</tr>
+<tr>
+<td>Spring Security</td>
+<td>前身为 Acegi，是 Spring 中较成熟的子模块之一。它是一款可以定制化的身份验证和访问控制框架。</td>
+</tr>
+<tr>
+<td>Spring Mobile</td>
+<td>是对 Spring MVC 的扩展，用来简化移动端 Web 应用的开发。</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>是 Spring 团队提供的全新框架，它为 Spring 以及第三方库一些开箱即用的配置，可以简化 Spring 应用的搭建及开发过程。</td>
+</tr>
+<tr>
+<td>Spring Cloud</td>
+<td>一款基于 Spring Boot 实现的微服务框架。它并不是某一门技术，而是一系列微服务解决方案或框架的有序集合。它将市面上成熟的、经过验证的微服务框架整合起来，并通过 Spring Boot 的思想进行再封装，屏蔽调其中复杂的配置和实现原理，最终为开发人员提供了一套简单易懂、易部署和易维护的分布式系统开发工具包。</td>
+</tr>
+</tbody></table>
+<h4 id="狭义的-springspring-framework"><span id="狭义的-springspring-framework">狭义的 Spring：Spring Framework</span></h4><p><strong>狭义的 Spring 特指 Spring Framework，通常我们将它称为 Spring 框架。</strong></p>
+<p>Spring 框架是一个分层的、面向切面的 Java 应用程序的一站式轻量级解决方案，它是 Spring 技术栈的核心和基础，是为了解决企业级应用开发的复杂性而创建的。</p>
+<p>Spring 有两个核心部分： IoC 和 AOP。</p>
+<table>
+<thead>
+<tr>
+<th>核心</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IOC</td>
+<td>Inverse of Control 的简写，译为“控制反转”，指把创建对象过程交给 Spring 进行管理。</td>
+</tr>
+<tr>
+<td>AOP</td>
+<td>Aspect Oriented Programming 的简写，译为“面向切面编程”。  AOP 用来封装多个类的公共行为，将那些与业务无关，却为业务模块所共同调用的逻辑封装起来，减少系统的重复代码，降低模块间的耦合度。另外，AOP 还解决一些系统层面上的问题，比如日志、事务、权限等。</td>
+</tr>
+</tbody></table>
+<p>Spring 是一种基于 Bean 的编程技术，它深刻地改变着 Java 开发世界。Spring 使用简单、基本的 Java Bean 来完成以前只有 EJB 才能完成的工作，使得很多复杂的代码变得优雅和简洁，避免了 EJB 臃肿、低效的开发模式，极大的方便项目的后期维护、升级和扩展。</p>
+<p>在实际开发中，服务器端应用程序通常采用三层体系架构，分别为表现层（web）、业务逻辑层（service）、持久层（dao）。</p>
+<p>Spring 致力于 Java EE 应用各层的解决方案，对每一层都提供了技术支持。</p>
+<ul>
+<li>在表现层提供了对 Spring MVC、Struts2 等框架的整合；</li>
+<li>在业务逻辑层提供了管理事务和记录日志的功能；</li>
+<li>在持久层还可以整合 MyBatis、Hibernate 和 JdbcTemplate 等技术，对数据库进行访问。</li>
+</ul>
+<p>这充分地体现了 Spring 是一个全面的解决方案，对于那些已经有较好解决方案的领域，Spring 绝不做重复的事情。</p>
+<p>从设计上看，Spring 框架给予了 Java 程序员更高的自由度，对业界的常见问题也提供了良好的解决方案，因此在开源社区受到了广泛的欢迎，并且被大部分公司作为 Java 项目开发的首选框架。</p>
+<h2 id="spring-framework-的特点"><span id="spring-framework-的特点">Spring Framework 的特点</span></h2><p>Spring 框架具有以下几个特点。</p>
+<h4 id="方便解耦简化开发"><span id="方便解耦简化开发"><strong>方便解耦，简化开发</strong></span></h4><p>Spring 就是一个大工厂，可以将所有对象的创建和依赖关系的维护交给 Spring 管理。</p>
+<h4 id="方便集成各种优秀框架"><span id="方便集成各种优秀框架"><strong>方便集成各种优秀框架</strong></span></h4><p>Spring 不排斥各种优秀的开源框架，其内部提供了对各种优秀框架（如 Struts2、Hibernate、MyBatis 等）的直接支持。</p>
+<h4 id="降低-java-ee-api-的使用难度"><span id="降低-java-ee-api-的使用难度"><strong>降低 Java EE API 的使用难度</strong></span></h4><p>Spring 对 Java EE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了封装，使这些 API 应用的难度大大降低。</p>
+<h4 id="方便程序的测试"><span id="方便程序的测试"><strong>方便程序的测试</strong></span></h4><p>Spring 支持 JUnit4，可以通过注解方便地测试 Spring 程序。</p>
+<h4 id="aop-编程的支持"><span id="aop-编程的支持"><strong>AOP 编程的支持</strong></span></h4><p>Spring 提供面向切面编程，可以方便地实现对程序进行权限拦截和运行监控等功能。</p>
+<h4 id="声明式事务的支持"><span id="声明式事务的支持"><strong>声明式事务的支持</strong></span></h4><p>只需要通过配置就可以完成对事务的管理，而无须手动编程。</p>
+]]></content>
+      <categories>
+        <category>SSM框架</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>sping的ioc原理</title>
+    <url>/2022/03/18/sping%E7%9A%84ioc%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>spring提供的容器又称为是ioc容器，全称Inversion of Control，直译为控制反转，通常情况下的组件都是采用简单的new创建实例并持有方式，但是其存在很多缺点。<strong>在IoC模式下，控制权发生了反转，即从应用程序转移到了IoC容器，所有组件不再由应用程序自己创建和配置，而是由IoC容器负责</strong>，这样，应用程序只需要直接使用已经创建好并且配置好的组件。为了能让组件在IoC容器中被“装配”出来，需要某种“注入”机制</p>
+</blockquote>
+<p>我们假定一个在线书店，通过<code>BookService</code>获取书籍：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class BookService &#123;</span><br><span class="line">    private HikariConfig config = new HikariConfig();</span><br><span class="line">    private DataSource dataSource = new HikariDataSource(config);</span><br><span class="line"></span><br><span class="line">    public Book getBook(long bookId) &#123;</span><br><span class="line">        try (Connection conn = dataSource.getConnection()) &#123;</span><br><span class="line">            ...</span><br><span class="line">            return book;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了从数据库查询书籍，<code>BookService</code>持有一个<code>DataSource</code>。为了实例化一个<code>HikariDataSource</code>，又不得不实例化一个<code>HikariConfig</code>。</p>
+<p>现在，我们继续编写<code>UserService</code>获取用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class UserService &#123;</span><br><span class="line">    private HikariConfig config = new HikariConfig();</span><br><span class="line">    private DataSource dataSource = new HikariDataSource(config);</span><br><span class="line"></span><br><span class="line">    public User getUser(long userId) &#123;</span><br><span class="line">        try (Connection conn = dataSource.getConnection()) &#123;</span><br><span class="line">            ...</span><br><span class="line">            return user;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为<code>UserService</code>也需要访问数据库，因此，我们不得不也实例化一个<code>HikariDataSource</code>。</p>
+<p>在处理用户购买的<code>CartServlet</code>中，我们需要实例化<code>UserService</code>和<code>BookService</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class CartServlet extends HttpServlet &#123;</span><br><span class="line">    private BookService bookService = new BookService();</span><br><span class="line">    private UserService userService = new UserService();</span><br><span class="line"></span><br><span class="line">    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">        long currentUserId = getFromCookie(req);</span><br><span class="line">        User currentUser = userService.getUser(currentUserId);</span><br><span class="line">        Book book = bookService.getBook(req.getParameter(&quot;bookId&quot;));</span><br><span class="line">        cartService.addToCart(currentUser, book);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似的，在购买历史<code>HistoryServlet</code>中，也需要实例化<code>UserService</code>和<code>BookService</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class HistoryServlet extends HttpServlet &#123;</span><br><span class="line">    private BookService bookService = new BookService();</span><br><span class="line">    private UserService userService = new UserService();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述每个组件都采用了一种简单的通过<code>new</code>创建实例并持有的方式。仔细观察，会发现以下缺点：</p>
+<ol>
+<li>实例化一个组件其实很难，例如，<code>BookService</code>和<code>UserService</code>要创建<code>HikariDataSource</code>，实际上需要读取配置，才能先实例化<code>HikariConfig</code>，再实例化<code>HikariDataSource</code>。</li>
+<li>没有必要让<code>BookService</code>和<code>UserService</code>分别创建<code>DataSource</code>实例，完全可以共享同一个<code>DataSource</code>，但谁负责创建<code>DataSource</code>，谁负责获取其他组件已经创建的<code>DataSource</code>，不好处理。类似的，<code>CartServlet</code>和<code>HistoryServlet</code>也应当共享<code>BookService</code>实例和<code>UserService</code>实例，但也不好处理。</li>
+<li>很多组件需要销毁以便释放资源，例如<code>DataSource</code>，但如果该组件被多个组件共享，如何确保它的使用方都已经全部被销毁？</li>
+<li>随着更多的组件被引入，例如，书籍评论，需要共享的组件写起来会更困难，这些组件的依赖关系会越来越复杂。</li>
+<li>测试某个组件，例如<code>BookService</code>，是复杂的，因为必须要在真实的数据库环境下执行。</li>
+</ol>
+<p>从上面的例子可以看出，如果一个系统有大量的组件，其生命周期和相互之间的依赖关系如果由组件自身来维护，不但大大增加了系统的复杂度，而且会导致组件之间极为紧密的耦合，继而给测试和维护带来了极大的困难。</p>
+<p>因此，核心问题是：</p>
+<ol>
+<li>谁负责创建组件？</li>
+<li>谁负责根据依赖关系组装组件？</li>
+<li>销毁时，如何按依赖顺序正确销毁？</li>
+</ol>
+<p>解决这一问题的核心方案就是IoC。</p>
+<p>传统的应用程序中，控制权在程序本身，程序的控制流程完全由开发者控制，例如：</p>
+<p><code>CartServlet</code>创建了<code>BookService</code>，在创建<code>BookService</code>的过程中，又创建了<code>DataSource</code>组件。因此，核心问题是：</p>
+<ol>
+<li>谁负责创建组件？</li>
+<li>谁负责根据依赖关系组装组件？</li>
+<li>销毁时，如何按依赖顺序正确销毁？</li>
+</ol>
+<p>解决这一问题的核心方案就是IoC。</p>
+<p>传统的应用程序中，控制权在程序本身，程序的控制流程完全由开发者控制，例如：</p>
+<p><code>CartServlet</code>创建了<code>BookService</code>，在创建<code>BookService</code>的过程中，又创建了<code>DataSource</code>组件。<strong>这种模式的缺点是，一个组件如果要使用另一个组件，必须先知道如何正确地创建它。</strong>例如，<code>BookService</code>自己并不会创建<code>DataSource</code>，而是等待外部通过<code>setDataSource()</code>方法来注入一个<code>DataSource</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class BookService &#123;</span><br><span class="line">    private DataSource dataSource;</span><br><span class="line"></span><br><span class="line">    public void setDataSource(DataSource dataSource) &#123;</span><br><span class="line">        this.dataSource = dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不直接<code>new</code>一个<code>DataSource</code>，而是注入一个<code>DataSource</code>，这个小小的改动虽然简单，却带来了一系列好处：</p>
+<ol>
+<li><code>BookService</code>不再关心如何创建<code>DataSource</code>，因此，不必编写读取数据库配置之类的代码；</li>
+<li><code>DataSource</code>实例被注入到<code>BookService</code>，同样也可以注入到<code>UserService</code>，因此，共享一个组件非常简单；</li>
+<li>测试<code>BookService</code>更容易，因为注入的是<code>DataSource</code>，可以使用内存数据库，而不是真实的MySQL配置。</li>
+</ol>
+<p>因此，IoC又称为依赖注入（DI：Dependency Injection），它解决了一个最主要的问题：将组件的创建+配置与组件的使用相分离，并且，由IoC容器负责管理组件的生命周期。</p>
+<p>因为IoC容器要负责实例化所有的组件，因此，有必要告诉容器如何创建组件，以及各组件的依赖关系。一种最简单的配置是通过XML文件来实现，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;beans&gt;</span><br><span class="line">    &lt;bean id=&quot;dataSource&quot; class=&quot;HikariDataSource&quot; /&gt;</span><br><span class="line">    &lt;bean id=&quot;bookService&quot; class=&quot;BookService&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">    &lt;bean id=&quot;userService&quot; class=&quot;UserService&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述XML配置文件指示IoC容器创建3个JavaBean组件，并把id为<code>dataSource</code>的组件通过属性<code>dataSource</code>（即调用<code>setDataSource()</code>方法）注入到另外两个组件中。</p>
+<p>在Spring的IoC容器中，我们把所有组件统称为JavaBean，即配置一个组件就是配置一个Bean。</p>
+<h3 id="依赖注入方式"><span id="依赖注入方式">依赖注入方式</span></h3><p>我们从上面的代码可以看到，依赖注入可以通过<code>set()</code>方法实现。但依赖注入也可以通过构造方法实现。</p>
+<p>很多Java类都具有带参数的构造方法，如果我们把<code>BookService</code>改造为通过构造方法注入，那么实现代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class BookService &#123;</span><br><span class="line">    private DataSource dataSource;</span><br><span class="line"></span><br><span class="line">    public BookService(DataSource dataSource) &#123;</span><br><span class="line">        this.dataSource = dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Spring的IoC容器同时支持属性注入和构造方法注入，并允许混合使用。</p>
+<h3 id="无侵入容器"><span id="无侵入容器">无侵入容器</span></h3><p>在设计上，Spring的IoC容器是一个高度可扩展的无侵入容器。所谓无侵入，是指应用程序的组件无需实现Spring的特定接口，或者说，组件根本不知道自己在Spring的容器中运行。这种无侵入的设计有以下好处：</p>
+<ol>
+<li>应用程序组件既可以在Spring的IoC容器中运行，也可以自己编写代码自行组装配置；</li>
+<li>测试的时候并不依赖Spring容器，可单独进行测试，大大提高了开发效率。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>SSM框架</category>
+      </categories>
   </entry>
   <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
+  </entry>
+  <entry>
+    <title>Gallery</title>
+    <url>/photos/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
@@ -1367,7 +1579,7 @@
     <title>影音播放</title>
     <url>/player/index.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="aplayer演示"><span id="aplayer演示">aplayer演示：</span></h3>
-    <div id="aplayer-GuvvSLjw" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
+    <div id="aplayer-TRXCSTWQ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2121130123" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#555"></div>
 
 <br>
 
@@ -1380,11 +1592,6 @@
 <br>
 
 <h3 id="acfun"><span id="acfun">acfun：</span></h3><iframe src="https://www.acfun.cn/player/ac12945786" style="width:100%;height:500px;min-width:375px;min-height:200px" id="ACPlayer-re" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>]]></content>
-  </entry>
-  <entry>
-    <title>Gallery</title>
-    <url>/photos/index.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script>]]></content>
   </entry>
   <entry>
     <title>tags</title>
