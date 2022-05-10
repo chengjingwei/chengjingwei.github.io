@@ -2,36 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chengjingwei.gitee.io/2022/05/06/java8%E4%B9%8B%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/</loc>
+    <loc>https://chengjingwei.gitee.io/2022/05/10/git%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     
-    <lastmod>2022-05-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengjingwei.gitee.io/2022/05/06/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://chengjingwei.gitee.io/2022/05/06/Spring%20Boot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://chengjingwei.gitee.io/2022/05/08/Mybatis%E6%89%A7%E8%A1%8C%E4%B8%80%E6%9D%A1sql%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B/</loc>
     
-    <lastmod>2022-05-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengjingwei.gitee.io/2022/05/06/git%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-05-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -265,29 +247,29 @@
 
   <url>
     <loc>https://chengjingwei.gitee.io/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://chengjingwei.gitee.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <loc>https://chengjingwei.gitee.io/tags/linux/</loc>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://chengjingwei.gitee.io/tags/linux/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <loc>https://chengjingwei.gitee.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/tags/tips/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -295,64 +277,64 @@
 
   
   <url>
-    <loc>https://chengjingwei.gitee.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://chengjingwei.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengjingwei.gitee.io/categories/Mysql/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E5%A5%BD%E6%96%87%E8%BD%AC%E5%8F%91/</loc>
-    <lastmod>2022-05-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://chengjingwei.gitee.io/categories/JAVA/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/linux/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://chengjingwei.gitee.io/categories/Spring-Boot/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <loc>https://chengjingwei.gitee.io/categories/Mysql/</loc>
+    <lastmod>2022-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjingwei.gitee.io/categories/Git/</loc>
+    <lastmod>2022-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjingwei.gitee.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-05-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chengjingwei.gitee.io/categories/Mybatis/</loc>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/SSM%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chengjingwei.gitee.io/categories/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
